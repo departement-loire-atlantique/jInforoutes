@@ -1,2 +1,2 @@
 # jInforoutes
-Module dédié au site Observatoire
+Module dédié au site Inforoutes
