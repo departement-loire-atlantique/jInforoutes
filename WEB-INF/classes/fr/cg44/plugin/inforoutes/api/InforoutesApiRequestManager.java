@@ -40,7 +40,7 @@ public class InforoutesApiRequestManager {
       try {
         return mapper.readValue(getDtoJsonStringFromApi(url), clazz);
       } catch (Exception e) {
-        LOGGER.warn("Erreur sur getObjectFromJson pour classe" + clazz.getName() + " -> " + e.getMessage());
+        LOGGER.warn("Erreur sur getObjectFromJson pour classe " + clazz.getName() + " -> " + e.getMessage());
         return null;
       }
     }
