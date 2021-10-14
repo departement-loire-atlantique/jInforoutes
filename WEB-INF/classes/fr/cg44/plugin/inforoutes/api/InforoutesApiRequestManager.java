@@ -1,8 +1,9 @@
 package fr.cg44.plugin.inforoutes.api;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalios.jcms.Channel;
 
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
@@ -37,6 +38,7 @@ public class InforoutesApiRequestManager {
      */
     private static <T> Object getObjectFromJson(Class<T> clazz, String url) {
       ObjectMapper mapper = new ObjectMapper();
+      mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
       try {
         return mapper.readValue(getDtoJsonStringFromApi(url), clazz);
       } catch (Exception e) {
