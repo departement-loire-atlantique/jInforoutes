@@ -1,0 +1,10 @@
+jcmsplugin.inforoute.senscirculation: Sens de la circulation
+jcmsplugin.inforoute.encours: En cours
+jcmsplugin.inforoute.rienasignaler: Rien à signaler.
+jcmsplugin.inforoute.avenir: À venir
+
+# ----------------------------------------------------------------------
+# Propriétés éditables
+# ----------------------------------------------------------------------
+
+jcmsplugin.inforoute.minimum.trafic.dense: Temps en minutes min. pour considérer un trafic dense
