@@ -8,6 +8,8 @@
 
 PsnStatutDTO psnStatut = InforoutesApiRequestManager.getPsnStatut();
 TraficParametersDTO traficParams = InforoutesApiRequestManager.getTraficParameters();
+String lblCityA = glp("jcmsplugin.inforoute.stnazaire");
+String lblCityB = glp("jcmsplugin.inforoute.stbrevin");
 %>
 
 <%@ include file="./includes/displayTraffic.jspf" %>
