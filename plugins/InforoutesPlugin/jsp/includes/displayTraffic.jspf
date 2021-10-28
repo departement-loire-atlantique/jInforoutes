@@ -13,15 +13,15 @@ String lblTimeBToA = "";
 if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsn_densite_limite_fluide())) {
     // fluide
     lblInfoAToB = glp("jcmsplugin.inforoute.fluide");
-    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + "car.svg";
+    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
 } else if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsn_densite_limite_dense())) {
     // dense
     lblInfoAToB = glp("jcmsplugin.inforoute.dense");
-    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") +  "cars.svg";
+    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
 } else {
     // saturé
     lblInfoAToB = glp("jcmsplugin.inforoute.sature");
-    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") +  "cars.svg";
+    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.sature");
 }
 
 lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugin.inforoute.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_certe() + " " + glp("msg.tag.duration.minutes");
@@ -30,15 +30,15 @@ lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugi
 if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsn_densite_limite_fluide())) {
  // fluide
  lblBToA = glp("jcmsplugin.inforoute.fluide");
- imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + "car.svg";
+ imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
 } else if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsn_densite_limite_dense())) {
  // dense
  lblBToA = glp("jcmsplugin.inforoute.dense");
- imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") +  "cars.svg";
+ imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
 } else {
  // saturé
  lblBToA = glp("jcmsplugin.inforoute.sature");
- imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") +  "cars.svg";
+ imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.sature");
 }
 
 lblTimeBToA = Integer.parseInt(psnStatut.getTime_st_brevin()) >= 20 ? glp("jcmsplugin.inforoute.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_st_brevin() + " " + glp("msg.tag.duration.minutes");

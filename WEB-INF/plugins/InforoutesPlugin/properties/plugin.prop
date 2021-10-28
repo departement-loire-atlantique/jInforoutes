@@ -1,4 +1,7 @@
 jcmsplugin.inforoute.designsystem.svg.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/
+jcmsplugin.inforoute.designsystem.svg.icon.fluide: car.svg
+jcmsplugin.inforoute.designsystem.svg.icon.dense: cars.svg
+jcmsplugin.inforoute.designsystem.svg.icon.sature: cars.svg
 
 # ----------------------------------------------------------------------
 # Propriétés éditables API
