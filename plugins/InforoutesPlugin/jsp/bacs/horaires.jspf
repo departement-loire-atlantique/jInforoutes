@@ -1,0 +1,132 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@page	import="fr.cg44.plugin.inforoutes.api.InforoutesApiRequestManager"%>
+<%@page import="fr.cg44.plugin.inforoutes.dto.TraficParametersDTO"%>
+<%@page import="fr.cg44.plugin.inforoutes.dto.BacsHorairesDTO"%>
+<%@page import="fr.cg44.plugin.inforoutes.dto.LiaisonDTO"%>
+<%
+TraficParametersDTO traficParams = new TraficParametersDTO();
+BacsHorairesDTO bacsHoraires = new BacsHorairesDTO();
+LiaisonDTO bacLiaison = new LiaisonDTO();
+
+String from = "";
+String to = "";
+String from_first = "";
+String from_last = "";
+String from_period = "";
+String from_message = "";
+String to_first = "";
+String to_last = "";
+Boolean apiOK = true;
+
+try{
+  traficParams = InforoutesApiRequestManager.getTraficParameters();
+  bacsHoraires = traficParams.getBacsHoraires();
+  
+  if(liaisonBac.equals("liaison1"))
+    bacLiaison = bacsHoraires.getLiaison1();
+  else if(liaisonBac.equals("liaison2")){
+    bacLiaison = bacsHoraires.getLiaison2();
+  }
+  
+  from = bacLiaison.getFrom();
+  to = bacLiaison.getTo();
+  from_first = bacLiaison.getFromFirst();
+  from_last = bacLiaison.getFromLast();
+  from_period = bacLiaison.getFromPeriod();
+  from_message = bacLiaison.getFromMessage();
+  to_first = bacLiaison.getToFirst();
+  to_last = bacLiaison.getToLast();
+
+}
+catch(Exception e){
+  apiOK = false;
+  logger.error("Erreur de récupération des horaires des bacs. Vérifier les données Json : "+e.getMessage());
+}
+
+
+%>
+
+<h2 class="h2-like"><%= glp("jcmsplugin.inforoutes.horaires") %></h2>
+
+<jalios:select>
+
+    <jalios:if predicate='<%= apiOK %>'>
+
+		<section class="ds44-mtb3">
+			<h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.premier-depart-titre") %></h3>
+			<section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
+				<div class="">
+					<div class="ds44-card__section--horizontal ds44-center">
+						<p><%= glp("jcmsplugin.inforoutes.premier-depart-soustitre", from) %></p>
+						<p role="heading" class="h3-like"><%= from_first %></p>
+					</div>
+				</div>
+			</section>
+		
+			<section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
+				<div class="">
+					<div class="ds44-card__section--horizontal ds44-center">
+						<p><%= glp("jcmsplugin.inforoutes.premier-depart-soustitre", to) %></p>
+						<p role="heading" class="h3-like"><%= to_first %></p>
+					</div>
+				</div>
+			</section>
+		</section>
+		
+		<section class="ds44-mtb3">
+			<h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.ensuite-titre") %></h3>
+			<section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
+				<div class="">
+					<div class="ds44-card__section--horizontal ds44-center">
+						<p role="heading" class="h3-like"><%= from_period %></p>
+					</div>
+					<div class="ds44-card__section--horizontal ds44-bacs-info ds44-center">
+						<p class="p-light">Votre temps d’attente dépend de votre emplacement dans la file d’attente :</p>
+						<ol class="ds44-list">
+							<li>60 min</li>
+							<li>40 min</li>
+							<li>20 min</li>
+							<li>Départ</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+		</section>
+		
+		<section class="ds44-mtb3">
+			<h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.dernier-depart-titre") %></h3>
+			<section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
+				<div class="">
+					<div class="ds44-card__section--horizontal ds44-center">
+		                <p><%= glp("jcmsplugin.inforoutes.premier-depart-soustitre", from) %></p>
+						<p role="heading" class="h3-like"><%= from_last %></p>
+					</div>
+					<div
+						class="ds44-card__section--horizontal ds44-bacs-info ds44-center no-img">
+						<p class="p-light"><%= from_message %></p>
+					</div>
+				</div>
+			</section>
+		    <section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
+		        <div class="">
+		            <div class="ds44-card__section--horizontal ds44-center">
+		                <p><%= glp("jcmsplugin.inforoutes.premier-depart-soustitre", to) %></p>
+		                <p role="heading" class="h3-like"><%= to_last %></p>
+		            </div>
+		            <div
+		                class="ds44-card__section--horizontal ds44-bacs-info ds44-center no-img">
+		                <p class="p-light"><%= from_message %></p>
+		            </div>
+		        </div>
+		    </section>	
+		</section>
+		
+    </jalios:if>
+    
+    <jalios:default>
+        <section class="ds44-mtb3">
+            <p><%= glp("jcmsplugin.inforoutes.erreur.bacs-horaires") %></p>
+        </section>
+    </jalios:default>
+    
+</jalios:select>		

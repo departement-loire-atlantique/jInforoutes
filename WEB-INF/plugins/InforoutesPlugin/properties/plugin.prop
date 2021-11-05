@@ -7,14 +7,39 @@ jcmsplugin.inforoute.designsystem.svg.icon.sature: cars.svg
 # Propriétés éditables API
 # ----------------------------------------------------------------------
 
-jcmsplugin.inforoutes.api.root: https://api.loire-atlantique.fr/opendata/1.0/
+jcmsplugin.inforoutes.api.root: https://rec-api.loire-atlantique.fr/opendata/1.0/
 
 # ----------------------------------------------------------------------
 # Propriétés non éditables API
 # ----------------------------------------------------------------------
 
 jcmsplugin.inforoutes.api.psnstatus: psnstatus
-jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fluide&id=psn_densite_limite_dense
+jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fluide&id=psn_densite_limite_dense&id=bacs_horaires
+
+# ----------------------------------------------------------------------
+# Propriétés éditables bacs de Loire
+# ----------------------------------------------------------------------
+## Liaison 1
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from:          Basse-Indre
+jcmsplugin.inforoutes.bacs.horaire.liaison1.to:            Indret
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_first:    5h30
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_last:     22h30
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_period:   puis toutes les 15 minutes...
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_message:  Message manuel dans JCMS
+jcmsplugin.inforoutes.bacs.horaire.liaison1.to_first:      5h35
+jcmsplugin.inforoutes.bacs.horaire.liaison1.to_last:       22h35
+## Liaison 2
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from:          Couëron
+jcmsplugin.inforoutes.bacs.horaire.liaison2.to:            Le Pellerin
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_first:    6h30
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_last:     20h30 ou 21h20
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_period:   puis toutes les 15 minutes...
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_message:  horaire du XX au YY
+jcmsplugin.inforoutes.bacs.horaire.liaison2.to_first:      6h20
+jcmsplugin.inforoutes.bacs.horaire.liaison2.to_last:       20h20 ou 21h20
+# ----------------------------------------------------------------------
+# Fin propriétés éditables bacs de Loire
+# ----------------------------------------------------------------------
 
 # ----------------------------------------------------------------------
 # Déclaration des médias
