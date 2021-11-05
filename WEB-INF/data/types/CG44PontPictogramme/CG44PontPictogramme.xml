@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="CG44PontPictogramme" superclass="com.jalios.jcms.Content" reviewable="false" debatable="false" unitFieldEdition="false" audienced="false" categoryTab="false" readRightTab="false" updateRightTab="false" templateTab="false" workflowTab="false" advancedTab="false" titleML="false" hbm="true" authgroups="||||||">
+  <title ml="false" searchable="false">
+    <label xml:lang="fr">Titre</label>
+    <description xml:lang="fr">Important : C'est le code du pictogramme.</description>
+  </title>
+  <fields>
+    <field name="pictogramme" editor="image" required="true" compactDisplay="false" type="String" searchable="false" size="80" maxlength="500" ml="false" fileChooser="false" imageMap="false">
+      <label xml:lang="fr">Pictogramme</label>
+    </field>
+    <field name="texteAlternatif" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Texte alternatif</label>
+      <description xml:lang="fr">Obligatoire pour répondre aux besoins d'accessibilité Web.</description>
+    </field>
+    <field name="mentionHTMLHaut" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Mention HTML haut</label>
+      <description xml:lang="fr">S'affiche au dessus du pictogramme</description>
+    </field>
+    <field name="mentionHTMLBas" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Mention HTML bas</label>
+      <description xml:lang="fr">S'affiche en dessous du pictogramme</description>
+    </field>
+    <field name="masqueLetatDuTrafic" editor="boolean" required="false" compactDisplay="false" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Masque l'état du trafic</label>
+      <description xml:lang="fr">Si cette case est coché, alors lorsque le pictogramme est affiché, le bloc Etat du trafic ne s'affiche pas.</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+  </fields>
+  <label xml:lang="fr">Pont Saint-Nazaire - Pictogramme</label>
+  <description xml:lang="fr">L'ensemble de ses contenus représente la table de correspondance des modes de circulation courant.</description>
+</type>
+

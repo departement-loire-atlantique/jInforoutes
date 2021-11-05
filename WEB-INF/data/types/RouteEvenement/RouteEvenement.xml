@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="RouteEvenement" superclass="com.jalios.jcms.Content" reviewable="false" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="false" readRightTab="false" updateRightTab="false" templateTab="false" workflowTab="true" advancedTab="false" titleML="false" hbm="true">
+  <title ml="false" searchable="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="statut" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="listbox" valueList="en cours|prévisionnel|terminé" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="En cours|A venir|Terminé">
+      <label xml:lang="fr">Statut</label>
+    </field>
+    <field name="dateDePublicationModification" editor="date" required="false" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+      <label xml:lang="fr">Date de publication-Modification</label>
+    </field>
+    <field name="identifiantEvenement" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Identifiant Evenement</label>
+    </field>
+    <field name="snm" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">SNM</label>
+    </field>
+    <field name="ligne1" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Ligne1</label>
+    </field>
+    <field name="ligne2" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Ligne2</label>
+    </field>
+    <field name="ligne3" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Ligne3</label>
+    </field>
+    <field name="ligne4" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Ligne4</label>
+    </field>
+    <field name="ligne5" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Ligne5</label>
+    </field>
+    <field name="ligne6" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Ligne6</label>
+    </field>
+    <field name="rattachement" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Rattachement</label>
+    </field>
+    <field name="sousCategorie" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Sous-Catégorie</label>
+    </field>
+    <field name="typeEvenement" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">TypeEvenement</label>
+    </field>
+    <field name="nature" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Nature</label>
+    </field>
+    <field name="informationComplementaire" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Information complémentaire</label>
+    </field>
+    <field name="longitude" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Longitude</label>
+    </field>
+    <field name="latitude" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Latitude</label>
+    </field>
+    <field name="significatif" editor="enumerate" required="true" compactDisplay="false" type="String" chooser="checkbox" valueList="oui|non" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="oui|non">
+      <label xml:lang="fr">Significatif</label>
+      <description xml:lang="fr">Les évènements significatifs sont automatiquement envoyés dans le point route.</description>
+    </field>
+  </fields>
+  <label xml:lang="fr">Route - Evènement</label>
+</type>
+
