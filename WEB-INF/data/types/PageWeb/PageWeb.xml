@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="PageWeb" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false" hbm="true" authgroups="||||||">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="cle" editor="textfield" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Clé</label>
+    </field>
+    <field name="texte" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" wikiwyg="false" html="true" checkHtml="false" descriptionType="text">
+      <label xml:lang="fr">Texte</label>
+    </field>
+    <field name="page" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="true" wikiwyg="true" html="false" checkHtml="true" descriptionType="text">
+      <label xml:lang="fr">Page</label>
+    </field>
+    <field name="contenuJSON" editor="textarea" required="false" compactDisplay="false" type="String" searchable="false" rows="5" cols="80" ml="false" wiki="false" wikiwyg="false" html="true" checkHtml="false" descriptionType="text">
+      <label xml:lang="fr">Contenu JSON</label>
+    </field>
+    <field name="debut" editor="date" required="false" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+      <label xml:lang="fr">Debut</label>
+    </field>
+    <field name="fin" editor="date" required="false" compactDisplay="false" type="java.util.Date" future="true" past="true" dateOnly="false" dateFormat="short">
+      <label xml:lang="fr">Fin</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Configuration API</label>
+</type>
+

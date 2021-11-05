@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="ModeleNewsletter" superclass="com.jalios.jcms.Content" debatable="false" unitFieldEdition="true" audienced="false" categoryTab="true" readRightTab="true" updateRightTab="true" templateTab="true" workflowTab="true" advancedTab="true" titleML="false">
+  <label xml:lang="fr">Modèle Newsletter</label>
+  <title ml="false" searchable="true">
+    <label xml:lang="fr">Titre</label>
+    <description xml:lang="fr">Nom du modèle</description>
+  </title>
+  <fields>
+    <field name="groupeDuModele" editor="textfield" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="modele">
+      <label xml:lang="fr">Groupe</label>
+      <description xml:lang="fr">Les modèles sont classés par Groupe et sous groupe en back office</description>
+    </field>
+    <field name="sousGroupeDuModele" editor="textfield" required="false" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="modele">
+      <label xml:lang="fr">Sous groupe</label>
+      <description xml:lang="fr">Les modèles sont classés par Groupe et sous groupe en back office</description>
+    </field>
+    <field name="objet" editor="textfield" required="true" compactDisplay="false" type="String" searchable="true" size="80" ml="false" html="true" checkHtml="false" descriptionType="tooltip" tab="modele">
+      <label xml:lang="fr">Sujet de l'email</label>
+      <description xml:lang="fr">Sujet / Objet dans le lecteur de messagerie.&amp;lt;br/&gt; Supporte les champs personnalisables</description>
+    </field>
+    <field name="expediteur" editor="textfield" required="true" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="modele">
+      <label xml:lang="fr">Expéditeur</label>
+      <description xml:lang="fr">ID de l'expéditeur de Mailjet.</description>
+    </field>
+    <field name="idDuGroupeDeContactsDansMailjet" editor="textfield" required="false" compactDisplay="false" type="String" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tab="modele">
+      <label xml:lang="fr">ID de la liste de contacts dans Mailjet</label>
+      <description xml:lang="fr">Pour récupérer l'ID d'un groupe, aller dans le BO de Mailjet : https://app.mailjet.com/contacts Exemple : 1512236 pour 'Alertes info route'</description>
+    </field>
+    <field name="groupeJCMS" editor="group" required="false" compactDisplay="false" tab="modele" type="com.jalios.jcms.Group" chooser="popup">
+      <label xml:lang="fr">Groupe JCMS</label>
+    </field>
+    <field name="repriseDesValeursDuDernierEnvoi" editor="boolean" required="false" compactDisplay="false" type="boolean" default="off" ml="false" descriptionType="tooltip" searchable="false" html="false" checkHtml="true" tab="modele">
+      <label xml:lang="fr">Reprise des valeurs du dernier envoi</label>
+      <description xml:lang="fr">Reprend automatiquement les valeurs du dernier envoi en tant que valeur par défaut si valeur fixée à OUI</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="newsletterLiee" editor="link" required="false" compactDisplay="false" tab="modele" type="generated.ModeleNewsletter" parent="false" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Newsletter liée</label>
+      <description xml:lang="fr">Reprend automatiquement les valeurs du dernier envoi en tant que valeur par défaut pour la newsletter liée.</description>
+    </field>
+    <field name="modeleDeTest" editor="boolean" required="false" compactDisplay="false" tab="modele" type="boolean" default="off" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">Modèle de test</label>
+      <description xml:lang="fr">La newsletter sera enregistrée en tant que brouillon dans Mailjet</description>
+      <onLabel xml:lang="fr">Oui</onLabel>
+      <offLabel xml:lang="fr">Non</offLabel>
+    </field>
+    <field name="gabaritHTML" editor="textarea" required="true" compactDisplay="false" type="String" searchable="false" rows="100" cols="180" ml="false" wiki="false" wikiwyg="false" html="true" checkHtml="false" descriptionType="tooltip" tab="modele">
+      <label xml:lang="fr">Gabarit HTML</label>
+      <description xml:lang="fr">Gabarit Freemarker du corps de la newslettre.&amp;lt;br/&gt;Pour utiliser le champ personnalité date saisir ${champs.date.val} pour le libellé ${champs.date.lib} et pour le nom technique ${champs.date.tech}</description>
+    </field>
+    <field name="libelle" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="Champs" tab="champs_personnalisables">
+      <label xml:lang="fr">Libellé</label>
+      <description xml:lang="fr">Libellé du champ affiché en back office dans l'éditeur de newsletter</description>
+    </field>
+    <field name="type1" editor="enumerate" required="false" compactDisplay="false" type="String[]" chooser="multilistbox" valueList="text|area|select" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" tabGroup="Champs" labelList="1 ligne|multiligne|sélection" tab="champs_personnalisables">
+      <label xml:lang="fr">Type</label>
+      <description xml:lang="fr">Type du champs dans l'éditeur de newsletter</description>
+    </field>
+    <field name="listeDeValeurs" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="text" tabGroup="Champs" tab="champs_personnalisables">
+      <label xml:lang="fr">Liste de valeurs</label>
+      <description xml:lang="fr">En cas de type selection, permet de définir les valeurs proposées.&#xD;
+Séparer les valeurs par des points virgule&#xD;
+Exemple : choix 1 ; choix 2 ; choix 3</description>
+    </field>
+    <field name="valeurParDefaut" editor="textarea" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="true" checkHtml="false" descriptionType="tooltip" tabGroup="Champs" tab="champs_personnalisables">
+      <label xml:lang="fr">Valeur par défaut</label>
+      <description xml:lang="fr">Valeur par défaut pour le champs ou valeur du précédent envoi si le modèle reprend automatiquement les valeurs du dernier envoi en tant que valeur par défaut</description>
+    </field>
+    <field name="nomTechnique" editor="textfield" required="false" compactDisplay="false" type="String[]" searchable="false" size="80" ml="false" html="false" checkHtml="true" descriptionType="tooltip" tabGroup="Champs" tab="champs_personnalisables">
+      <label xml:lang="fr">Nom technique</label>
+      <description xml:lang="fr">Nom technique du champ utilisé dans le sujet ou le gabarit HTML.&amp;lt;br/&gt;Exemple :&amp;lt;br/&gt;Nom technique : titre&amp;lt;br/&gt;Balise Freemarker pour le gabarit :&amp;lt;br/&gt; ${champs.titre.val} ${champs.titre.lib} ${champs.titre.tech}</description>
+    </field>
+  </fields>
+  <tabs>
+    <tab id="champs_personnalisables">
+      <label xml:lang="fr">Champs personnalisables</label>
+    </tab>
+    <tab id="modele">
+      <label xml:lang="fr">Modèle</label>
+    </tab>
+  </tabs>
+</type>
+
