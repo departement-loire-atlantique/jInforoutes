@@ -15,3 +15,10 @@ jcmsplugin.inforoutes.api.root: https://api.loire-atlantique.fr/opendata/1.0/
 
 jcmsplugin.inforoutes.api.psnstatus: psnstatus
 jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fluide&id=psn_densite_limite_dense
+
+# ----------------------------------------------------------------------
+# Déclaration des médias
+# ----------------------------------------------------------------------
+
+media.data-template.card.EvenementInforoute: /plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteCard.jsp
+
