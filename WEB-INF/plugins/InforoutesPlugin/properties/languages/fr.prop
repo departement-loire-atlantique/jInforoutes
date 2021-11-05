@@ -1,9 +1,6 @@
-
 # ----------------------------------------------------------------------
 # Propriétés éditables
 # ----------------------------------------------------------------------
-
-jcmsplugin.inforoute.minimum.trafic.dense: Temps en minutes min. pour considérer un trafic dense
 ## Liaison 1
 jcmsplugin.inforoutes.bacs.horaire.liaison1.from:          [Bacs] Liaison 1 départ
 jcmsplugin.inforoutes.bacs.horaire.liaison1.to:            [Bacs] Liaison 1 arrivée
@@ -22,12 +19,11 @@ jcmsplugin.inforoutes.bacs.horaire.liaison2.from_period:   [Bacs] Liaison 2 Inte
 jcmsplugin.inforoutes.bacs.horaire.liaison2.from_message:  [Bacs] Liaison 2 Message
 jcmsplugin.inforoutes.bacs.horaire.liaison2.to_first:      [Bacs] Liaison 2 Heure de la première arrivée 
 jcmsplugin.inforoutes.bacs.horaire.liaison2.to_last:       [Bacs] Liaison 2 Heure de la dernière arrivée
-
 # ----------------------------------------------------------------------
 # Fin propriétés éditables
 # ----------------------------------------------------------------------
 
-# Labels
+# Labels bacs
 jcmsplugin.inforoutes.liaison1.from: Basse-Indre
 jcmsplugin.inforoutes.liaison1.to:Indret
 jcmsplugin.inforoutes.liaison2.from: Couëron
@@ -38,8 +34,26 @@ jcmsplugin.inforoutes.premier-depart-titre: Premiers départs
 jcmsplugin.inforoutes.premier-depart-soustitre: Depuis {0}
 jcmsplugin.inforoutes.ensuite-titre: Ensuite
 jcmsplugin.inforoutes.dernier-depart-titre: Dernier départ
+
+# Labels PSN
+jcmsplugin.inforoute.senscirculation: Sens de la circulation
+jcmsplugin.inforoute.encours: En cours
+jcmsplugin.inforoute.rienasignaler: Rien à signaler.
+jcmsplugin.inforoute.avenir: À venir
+jcmsplugin.inforoute.trafic: Trafic
+jcmsplugin.inforoute.vers: vers
+jcmsplugin.inforoute.fluide: Fluide
+jcmsplugin.inforoute.dense: Dense
+jcmsplugin.inforoute.sature: Saturé
+jcmsplugin.inforoute.stnazaire: Saint-Nazaire
+jcmsplugin.inforoute.stbrevin: Saint-Brevin
+jcmsplugin.inforoute.morethantime: + de {0}
+jcmsplugin.inforoute.minimum.trafic.dense: Temps en minutes min. pour considérer un trafic dense
+
+# Labels communs
 jcmsplugin.inforoutes.evenements-en-cours: Les événements en cours
 jcmsplugin.inforoutes.evenements-a-venir: Les événements à venir
+jcmsplugin.inforoutes.evenements-aucun: Aucun événement
 
 # Messages d'erreur
 jcmsplugin.inforoutes.erreur.bacs-horaires : Les horaires sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.

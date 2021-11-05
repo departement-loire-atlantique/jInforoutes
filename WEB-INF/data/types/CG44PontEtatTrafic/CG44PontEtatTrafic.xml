@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type name="CG44PontEtatTrafic" superclass="com.jalios.jcms.Content" reviewable="false" debatable="false" unitFieldEdition="false" audienced="false" categoryTab="false" readRightTab="false" updateRightTab="false" templateTab="false" workflowTab="false" advancedTab="false" titleML="false" database="true" hbm="true">
+  <title ml="false">
+    <label xml:lang="fr">Titre</label>
+  </title>
+  <fields>
+    <field name="stNazVersStBrevinEtatDuTrafic" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="listbox" valueList="Fluide|Dense|Saturé" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" labelList="Fluide|Dense|Saturé" tab="st_naz_vers_st_brevin">
+      <label xml:lang="fr">St Naz vers St Brévin – Etat du trafic</label>
+    </field>
+    <field name="stNazVersStBrevinTempsDeParcours" editor="int" required="false" compactDisplay="false" type="int" default="0" ml="false" descriptionType="text" tab="st_naz_vers_st_brevin" searchable="false" html="false" checkHtml="true" unit="min" unitPos="after">
+      <label xml:lang="fr">St Naz vers St Brévin – Temps de parcours</label>
+    </field>
+    <field name="stBrevinVersStNazEtatDuTrafic" editor="enumerate" required="false" compactDisplay="false" type="String" chooser="listbox" valueList="Fluide|Dense|Saturé" ml="false" descriptionType="text" labelList="Fluide|Dense|Saturé" tab="st_brevin_vers_st_nazaire" searchable="false" html="false" checkHtml="true">
+      <label xml:lang="fr">St Brévin vers St Naz – Etat du trafic</label>
+    </field>
+    <field name="stBrevinVersStNazTempsDeParcours" editor="int" required="false" compactDisplay="false" tab="st_brevin_vers_st_nazaire" type="int" default="0" ml="false" descriptionType="text" searchable="false" html="false" checkHtml="true" unit="min" unitPos="after">
+      <label xml:lang="fr">St Brévin vers St Naz – Temps de parcours</label>
+    </field>
+  </fields>
+  <label xml:lang="fr">Pont Saint-Nazaire - Etat trafic</label>
+  <description xml:lang="fr">Indique les utilisateurs de l'état du trafic en court.</description>
+  <tabs>
+    <tab id="st_naz_vers_st_brevin">
+      <label xml:lang="fr">St Naz vers St Brévin</label>
+    </tab>
+    <tab id="st_brevin_vers_st_nazaire">
+      <label xml:lang="fr">St Brévin vers St Nazaire</label>
+    </tab>
+  </tabs>
+</type>
+

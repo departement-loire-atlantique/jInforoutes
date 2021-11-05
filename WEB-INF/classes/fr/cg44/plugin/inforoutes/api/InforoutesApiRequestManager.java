@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalios.jcms.Channel;
 
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
+import fr.cg44.plugin.inforoutes.dto.TraficParametersDTO;
 import fr.cg44.plugin.socle.ApiUtil;
 
 public class InforoutesApiRequestManager {
@@ -18,6 +19,8 @@ public class InforoutesApiRequestManager {
     private static String baseUrl = channel.getProperty("jcmsplugin.inforoutes.api.root");
     
     private static String suffixPsnStatut = channel.getProperty("jcmsplugin.inforoutes.api.psnstatus");
+    
+    private static String suffixTraficParameters = channel.getProperty("jcmsplugin.inforoutes.api.traficParams");
     
     /**
      * Récupérer le JSON renvoyé par une URL sous la forme d'un InputStream, utilisé plus tard pour un ObjectMapper
@@ -54,6 +57,15 @@ public class InforoutesApiRequestManager {
      */
     public static PsnStatutDTO getPsnStatut() {
       return (PsnStatutDTO) getObjectFromJson(PsnStatutDTO.class, baseUrl + suffixPsnStatut);
+    }
+    
+    /**
+     * Renvoie un objet TraficParameters à partir du JSON fourni par l'API Inforoute
+     * En cas d'échec, l'object est 'null'
+     * @return
+     */
+    public static TraficParametersDTO getTraficParameters() {
+        return (TraficParametersDTO) getObjectFromJson(TraficParametersDTO.class, baseUrl + suffixTraficParameters);
     }
     
 }

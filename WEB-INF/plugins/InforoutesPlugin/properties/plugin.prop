@@ -1,3 +1,8 @@
+jcmsplugin.inforoute.designsystem.svg.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/
+jcmsplugin.inforoute.designsystem.svg.icon.fluide: car.svg
+jcmsplugin.inforoute.designsystem.svg.icon.dense: cars.svg
+jcmsplugin.inforoute.designsystem.svg.icon.sature: cars.svg
+
 # ----------------------------------------------------------------------
 # Propriétés éditables API
 # ----------------------------------------------------------------------
@@ -14,7 +19,6 @@ jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fl
 # ----------------------------------------------------------------------
 # Propriétés éditables bacs de Loire
 # ----------------------------------------------------------------------
-
 ## Liaison 1
 jcmsplugin.inforoutes.bacs.horaire.liaison1.from:          Basse-Indre
 jcmsplugin.inforoutes.bacs.horaire.liaison1.to:            Indret
@@ -33,12 +37,9 @@ jcmsplugin.inforoutes.bacs.horaire.liaison2.from_period:   puis toutes les 15 mi
 jcmsplugin.inforoutes.bacs.horaire.liaison2.from_message:  horaire du XX au YY
 jcmsplugin.inforoutes.bacs.horaire.liaison2.to_first:      6h20
 jcmsplugin.inforoutes.bacs.horaire.liaison2.to_last:       20h20 ou 21h20
-
 # ----------------------------------------------------------------------
 # Fin propriétés éditables bacs de Loire
 # ----------------------------------------------------------------------
-
-
 
 # ----------------------------------------------------------------------
 # Déclaration des médias

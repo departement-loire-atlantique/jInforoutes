@@ -10,6 +10,23 @@
     <dependency name="SoclePlugin" />
   </dependencies>
 
+  <types>
+    <type name="ModeleNewsletter"></type>
+    
+    <!-- Anciens types à reprendre pour V1 -->
+    <type name="CollectivityArticle"></type>
+    <type name="CG44PontEtatTrafic" />
+    <type name="CG44PontPictogramme" />
+    <type name="PageWeb"></type>
+    <type name="RouteEvenement" />
+    <type name="RouteEvenementAlerte" />  
+    <type name="PSNSens" />
+  </types>
+  
+  <workflows>
+    <workflow id="workflow_alerte" />
+  </workflows>  
+
   <java-classes>
     <java package="fr.cg44.plugin.inforoutes" />
   </java-classes>

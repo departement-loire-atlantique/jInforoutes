@@ -1,0 +1,82 @@
+<%
+
+// initialiser les deux trajets pour l'affichage du trafic
+String lblInfoAToB = "";
+String imgAToB = "";
+String lblTimeAToB = "";
+
+String lblBToA = "";
+String imgBToA = "";
+String lblTimeBToA = "";
+
+// déterminer le label / l'image du premier -> de A à B
+if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsn_densite_limite_fluide())) {
+    // fluide
+    lblInfoAToB = glp("jcmsplugin.inforoute.fluide");
+    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
+} else if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsn_densite_limite_dense())) {
+    // dense
+    lblInfoAToB = glp("jcmsplugin.inforoute.dense");
+    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
+} else {
+    // saturé
+    lblInfoAToB = glp("jcmsplugin.inforoute.sature");
+    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.sature");
+}
+
+lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugin.inforoute.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_certe() + " " + glp("msg.tag.duration.minutes");
+
+//déterminer le label / l'image du premier -> de B à A
+if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsn_densite_limite_fluide())) {
+ // fluide
+ lblBToA = glp("jcmsplugin.inforoute.fluide");
+ imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
+} else if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsn_densite_limite_dense())) {
+ // dense
+ lblBToA = glp("jcmsplugin.inforoute.dense");
+ imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
+} else {
+ // saturé
+ lblBToA = glp("jcmsplugin.inforoute.sature");
+ imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.sature");
+}
+
+lblTimeBToA = Integer.parseInt(psnStatut.getTime_st_brevin()) >= 20 ? glp("jcmsplugin.inforoute.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_st_brevin() + " " + glp("msg.tag.duration.minutes");
+
+%>
+
+<h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoute.trafic") %></h2>
+
+<section class="ds44-mtb3">
+   <h3 class="h5-like ds44-mb1" role="heading"><%= lblCityA %><span aria-hidden="true"> &gt; <span class="visually-hidden"><%= glp("jcmsplugin.inforoute.vers") %></span></span><%= lblCityB %></h3>
+   <section class="ds44-card ds44-card--horizontal--inforoutes">
+      <div class="ds44-flex-container ds44-flex-valign-center">
+         <div class="ds44-card__section--horizontal--img">
+            <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
+               <img src="<%= imgAToB %>" alt="" class="ds44-imgRatio">
+            </picture>
+         </div>
+         <div class="ds44-card__section--horizontal">
+            <p role="heading" "aria-level="4" class="h4-like"><%= lblInfoAToB %></p>
+            <p class=""><%= lblTimeAToB %></p>
+         </div>
+      </div>
+   </section>
+</section>
+
+<section class="ds44-mtb3">
+   <h3 class="h5-like ds44-mb1" role="heading"><%= lblCityB %> &gt; <%= lblCityA %></h3>
+   <section class="ds44-card ds44-card--horizontal--inforoutes">
+      <div class="ds44-flex-container ds44-flex-valign-center">
+         <div class="ds44-card__section--horizontal--img">
+            <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
+               <img src="<%= imgBToA %>" alt="" class="ds44-imgRatio">
+            </picture>
+         </div>
+         <div class="ds44-card__section--horizontal">
+            <p role="heading" "aria-level="4" class="h4-like"><%= lblBToA %></p>
+            <p class=""><%= lblTimeBToA %></p>
+         </div>
+      </div>
+   </section>
+</section>

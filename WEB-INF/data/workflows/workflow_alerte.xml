@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow id='workflow_alerte' type='process' init='-200' version='4' >
+
+  <label xml:lang='fr'>Workflow alerte</label>
+
+  <state pstatus='-300'	reminder='0' duration='0' targetPstatus='0'   >
+    <label xml:lang='fr'>En erreur</label>
+    <action when='in'	type='alertWorkers'	repeat='0' />
+  </state>
+
+  <state pstatus='-200'	reminder='0' duration='0' targetPstatus='0'   >
+    <label xml:lang='en'>Submitted</label>
+    <label xml:lang='fr'>A venir</label>
+  </state>
+
+  <state pstatus='-100'	reminder='0' duration='0' targetPstatus='-200'   >
+    <label xml:lang='fr'>En cours</label>
+  </state>
+
+  <state pstatus='5'	reminder='0' duration='0' targetPstatus='-200'   >
+    <label xml:lang='fr'>Envoy&#xe9;e</label>
+  </state>
+
+  <state pstatus='20' reminder='0' duration='0' targetPstatus='0' >
+  </state>
+
+
+  <transition source='-200'	target='-300'	roleId='prevenus_en_cas_derreur' />
+  <transition source='-200'	target='-100'	roleId='redacteur' />
+  <transition source='-100'	target='-200'	roleId='redacteur' />
+  <transition source='-100'	target='-300'	roleId='prevenus_en_cas_derreur' />
+  <transition source='-100'	target='5'	roleId='redacteur' />
+
+  <role roleId='prevenus_en_cas_derreur'>
+    <name xml:lang='fr'>Pr&#xe9;venus en cas d&#x27;erreur</name>
+  </role>
+
+  <role roleId='redacteur'>
+    <name xml:lang='fr'>Redacteur</name>
+  </role>
+
+
+</workflow>
