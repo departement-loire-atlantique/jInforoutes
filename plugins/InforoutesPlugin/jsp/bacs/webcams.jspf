@@ -1,0 +1,61 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ include file='/jcore/doInitPage.jspf'%>
+
+<%= liaisonBac %>
+
+<h2 class="h2-like"><%= glp("jcmsplugin.inforoutes.en-direct") %></h2>
+<div class="grid-12-small-1 ds44-noMrg">
+	<div class="col-6">
+		<section class="ds44-mtb3">
+			<h3 class="h5-like ds44-mb1" role="heading">Le Pellerin</h3>
+			<div class="iframe_inforoutes">
+				<img src="../../assets/images/apps/ponts/img/iframe_cam_2.jpg"
+					alt="">
+			</div>
+			<p class="p-light ds44-mt1">
+				<span class=”visually-hidden”>La webcam : Le Pellerin. </span>Rafraîchie
+				toutes les 10 s (Mise à jour auto
+				<button type="button" class="ds44-linkUnderline"
+					title="Activer la webcam : Le Pellerin">Activer</button>
+				)
+			</p>
+		</section>
+	</div>
+	<div class="col-6">
+		<section class="ds44-mtb3">
+			<h3 class="h5-like ds44-mb1" role="heading">Couëron</h3>
+			<div class="iframe_inforoutes">
+				<img src="../../assets/images/apps/ponts/img/iframe_cam_3.jpg"
+					alt="">
+			</div>
+			<p class="p-light ds44-mt1">
+				<span class=”visually-hidden”>La webcam : Couëron. </span>Rafraîchie
+				toutes les 10 s (Mise à jour auto
+				<button type="button" class="ds44-linkUnderline"
+					title="Activer la webcam : Couëron">Activer</button>
+				)
+			</p>
+		</section>
+	</div>
+</div>
+
+<div class="grid-12-small-1 ds44-noMrg">
+	<div class="col-2 grid-offset ds44-hide-tiny-to-medium"></div>
+	<div class="col-6">
+		<section class="">
+			<h3 class="h5-like ds44-mb1" role="heading">Lorem ipsum</h3>
+			<div class="iframe_inforoutes">
+				<img src="../../assets/images/apps/ponts/img/iframe_cam_3.jpg"
+					alt="">
+			</div>
+			<p class="p-light ds44-mt1">
+				<span class=”visually-hidden”>La webcam : Lorem ipsum. </span>Rafraîchie
+				toutes les 10 s (Mise à jour auto
+				<button type="button" class="ds44-linkUnderline"
+					title="Activer la webcam : Lorem ipsum">Activer</button>
+				)
+			</p>
+		</section>
+	</div>
+</div>
+

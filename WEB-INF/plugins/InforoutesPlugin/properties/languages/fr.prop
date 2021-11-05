@@ -1,0 +1,47 @@
+
+# ----------------------------------------------------------------------
+# Propriétés éditables
+# ----------------------------------------------------------------------
+
+jcmsplugin.inforoute.minimum.trafic.dense: Temps en minutes min. pour considérer un trafic dense
+## Liaison 1
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from:          [Bacs] Liaison 1 départ
+jcmsplugin.inforoutes.bacs.horaire.liaison1.to:            [Bacs] Liaison 1 arrivée
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_first:    [Bacs] Liaison 1 Heure du premier départ
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_last:     [Bacs] Liaison 1 Heure du dernier départ
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_period:   [Bacs] Liaison 1 Intervalle des départs
+jcmsplugin.inforoutes.bacs.horaire.liaison1.from_message:  [Bacs] Liaison 1 Message
+jcmsplugin.inforoutes.bacs.horaire.liaison1.to_first:      [Bacs] Liaison 1 Heure de la première arrivée 
+jcmsplugin.inforoutes.bacs.horaire.liaison1.to_last:       [Bacs] Liaison 1 Heure de la dernière arrivée 
+## Liaison 2
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from:          [Bacs] Liaison 2 départ
+jcmsplugin.inforoutes.bacs.horaire.liaison2.to:            [Bacs] Liaison 2 arrivée
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_first:    [Bacs] Liaison 2 Heure du premier départ
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_last:     [Bacs] Liaison 2 Heure du dernier départ
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_period:   [Bacs] Liaison 2 Intervalle des départs
+jcmsplugin.inforoutes.bacs.horaire.liaison2.from_message:  [Bacs] Liaison 2 Message
+jcmsplugin.inforoutes.bacs.horaire.liaison2.to_first:      [Bacs] Liaison 2 Heure de la première arrivée 
+jcmsplugin.inforoutes.bacs.horaire.liaison2.to_last:       [Bacs] Liaison 2 Heure de la dernière arrivée
+
+# ----------------------------------------------------------------------
+# Fin propriétés éditables
+# ----------------------------------------------------------------------
+
+# Labels
+jcmsplugin.inforoutes.liaison1.from: Basse-Indre
+jcmsplugin.inforoutes.liaison1.to:Indret
+jcmsplugin.inforoutes.liaison2.from: Couëron
+jcmsplugin.inforoutes.liaison2.to: Le Pellerin
+jcmsplugin.inforoutes.horaires: Horaires
+jcmsplugin.inforoutes.en-direct: En direct
+jcmsplugin.inforoutes.premier-depart-titre: Premiers départs
+jcmsplugin.inforoutes.premier-depart-soustitre: Depuis {0}
+jcmsplugin.inforoutes.ensuite-titre: Ensuite
+jcmsplugin.inforoutes.dernier-depart-titre: Dernier départ
+jcmsplugin.inforoutes.evenements-en-cours: Les événements en cours
+jcmsplugin.inforoutes.evenements-a-venir: Les événements à venir
+
+# Messages d'erreur
+jcmsplugin.inforoutes.erreur.bacs-horaires : Les horaires sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.
+jcmsplugin.inforoutes.erreur.bacs-webcams : Les webcams sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.
+jcmsplugin.inforoutes.erreur.psn-webcam : La webcam est momentanément indisponible. Merci de bien vouloir essayer ultérieurement.

@@ -1,0 +1,11 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@page	import="fr.cg44.plugin.inforoutes.api.InforoutesApiRequestManager"%>
+<%@page import="fr.cg44.plugin.inforoutes.dto.PsnStatutDTO"%>
+
+
+<%= liaisonBac %>
+
+<h2 class="h2-like">Les événements à venir</h2>
+<p>Aucun événement</p>
+
+
