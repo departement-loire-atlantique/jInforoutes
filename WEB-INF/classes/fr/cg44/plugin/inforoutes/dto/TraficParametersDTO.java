@@ -1,31 +1,73 @@
 package fr.cg44.plugin.inforoutes.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.util.HashMap;
+import java.util.Map;
 
-@JsonInclude(Include.NON_NULL)
+import javax.annotation.Generated;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "psn_densite_limite_fluide",
+    "psn_densite_limite_dense",
+    "bacs_horaires"
+})
+@Generated("jsonschema2pojo")
 public class TraficParametersDTO {
 
-	private String psn_densite_limite_fluide;
+    @JsonProperty("psn_densite_limite_fluide")
+    private String psnDensiteLimiteFluide;
+    @JsonProperty("psn_densite_limite_dense")
+    private String psnDensiteLimiteDense;
+    @JsonProperty("bacs_horaires")
+    private BacsHorairesDTO bacsHoraires;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	private String psn_densite_limite_dense;
-
-    public String getPsn_densite_limite_fluide() {
-        return psn_densite_limite_fluide;
+    @JsonProperty("psn_densite_limite_fluide")
+    public String getPsnDensiteLimiteFluide() {
+        return psnDensiteLimiteFluide;
     }
 
-    public void setPsn_densite_limite_fluide(String psn_densite_limite_fluide) {
-        this.psn_densite_limite_fluide = psn_densite_limite_fluide;
+    @JsonProperty("psn_densite_limite_fluide")
+    public void setPsnDensiteLimiteFluide(String psnDensiteLimiteFluide) {
+        this.psnDensiteLimiteFluide = psnDensiteLimiteFluide;
     }
 
-    public String getPsn_densite_limite_dense() {
-        return psn_densite_limite_dense;
+    @JsonProperty("psn_densite_limite_dense")
+    public String getPsnDensiteLimiteDense() {
+        return psnDensiteLimiteDense;
     }
 
-    public void setPsn_densite_limite_dense(String psn_densite_limite_dense) {
-        this.psn_densite_limite_dense = psn_densite_limite_dense;
+    @JsonProperty("psn_densite_limite_dense")
+    public void setPsnDensiteLimiteDense(String psnDensiteLimiteDense) {
+        this.psnDensiteLimiteDense = psnDensiteLimiteDense;
     }
 
-	
+    @JsonProperty("bacs_horaires")
+    public BacsHorairesDTO getBacsHoraires() {
+        return bacsHoraires;
+    }
+
+    @JsonProperty("bacs_horaires")
+    public void setBacsHoraires(BacsHorairesDTO bacsHoraires) {
+        this.bacsHoraires = bacsHoraires;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
 
 }
