@@ -65,15 +65,14 @@
   </workflows>  
 
   <jars>
-    <jar path="freemarker.jar" />
-    <jar path="json-simple-1.1.1.jar" />
     <jar path="axis.jar" />
     <jar path="commons-discovery-0.4.jar" />
+    <jar path="freemarker.jar" />
     <jar path="jaxrpc.jar" />
+    <jar path="javax.xml.soap-api-1.4.0.jar" />
+    <jar path="json-simple-1.1.1.jar" />
     <jar path="jxl.jar" />
     <jar path="wsdl4j-1.6.2.jar" />
-    <jar path="javax.xml.soap-api-1.4.0.jar" /> 
-       
   </jars>
 
   <java-classes>
