@@ -1,0 +1,1 @@
+<%response.setContentType("application/json; charset=UTF-8");%>{ "success": true, "id_notification": 0, "message": "" }

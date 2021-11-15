@@ -14,6 +14,7 @@
     <type name="ModeleNewsletter"></type>
     
     <!-- Anciens types à reprendre pour V1 -->
+    <type name="Alerte"></type>
     <type name="CollectivityArticle"></type>
     <type name="CG44PontEtatTrafic" />
     <type name="CG44PontPictogramme" />
@@ -21,15 +22,77 @@
     <type name="RouteEvenement" />
     <type name="RouteEvenementAlerte" />  
     <type name="PSNSens" />
+    
+    <!-- Anciens types à reprendre pour V1 -->
+    <templates type="PortletQueryForeach">
+      <!-- Info trafic -->
+      <template name="event_list_encours" file="doPortletQueryForeachInfoTraficEventsEnCours.jsp" usage="box">
+        <label xml:lang="en">Trafic Event gabarit</label>
+        <label xml:lang="fr">Gabarit des événements en cours du trafic, dans des tableaux</label>
+      </template>
+       <template name="event_list_avenir" file="doPortletQueryForeachInfoTraficEventsAVenir.jsp" usage="box">
+        <label xml:lang="en">Trafic Event gabarit</label>
+        <label xml:lang="fr">Gabarit des événements à venir du trafic, dans des tableaux</label>
+      </template>
+      <template name="event_list_termines" file="doPortletQueryForeachInfoTraficEventsTermines.jsp" usage="box">
+        <label xml:lang="en">Trafic Event gabarit</label>
+        <label xml:lang="fr">Gabarit des événements terminés du trafic, dans des tableaux</label>
+      </template>
+      <!-- Bacs de Loire --> 
+      <template name="event_list_encours_bdl" file="doPortletQueryForeachBacDeLoireEventsEnCours.jsp" usage="box">
+        <label xml:lang="en">Trafic Event gabarit</label>
+        <label xml:lang="fr">Gabarit des événements en cours du trafic Bacs de Loire, dans des tableaux</label>
+      </template>
+      <template name="event_list_futurs_bdl" file="doPortletQueryForeachBacDeLoireEventsFuturs.jsp" usage="box">
+        <label xml:lang="en">Trafic Event gabarit</label>
+        <label xml:lang="fr">Gabarit des événements à venir du trafic Bacs de Loire, dans des tableaux</label>
+      </template> 
+      <!-- Pont Saint-Nazaire -->
+      <template name="event_list_encours_psz" file="doPortletQueryForeachPontSaintNazaireEventsEnCours.jsp" usage="box">
+        <label xml:lang="en">Trafic Event gabarit</label>
+        <label xml:lang="fr">Gabarit des événements en cours du trafic Pont de Saint-Nazaire, dans des tableaux</label>
+      </template> 
+      <template name="saintnaz_page_etat" file="doPortletQueryForeachPontEtat.jsp" usage="box">
+        <label xml:lang="en">St Nazaire Bridge gabarit - State</label>
+        <label xml:lang="fr">Pont de Saint-Nazaire - Etat du trafic</label>
+      </template>
+    </templates>
+        
   </types>
   
   <workflows>
     <workflow id="workflow_alerte" />
   </workflows>  
 
+  <jars>
+    <jar path="axis.jar" />
+    <jar path="commons-discovery-0.4.jar" />
+    <jar path="freemarker.jar" />
+    <jar path="jaxrpc.jar" />
+    <jar path="javax.xml.soap-api-1.4.0.jar" />
+    <jar path="json-simple-1.1.1.jar" />
+    <jar path="jxl.jar" />
+    <jar path="wsdl4j-1.6.2.jar" />
+  </jars>
+
   <java-classes>
     <java package="fr.cg44.plugin.inforoutes" />
+    <java package="org.osgeo.proj4j" />
   </java-classes>
+  
+  <plugincomponents>
+        <!-- Inforoutes -->
+        <!--<channellistener class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.InfoTraficTempsReelChannelListener" />-->  
+        <!-- Pont Saint-Nazaire -->
+        <!--<channellistener class="fr.cg44.plugin.inforoutes.legacy.pont.PontChannelListener" /> -->
+        <!--<channellistener class="fr.cg44.plugin.inforoutes.legacy.webcam.WebCamManager" />-->
+        <!-- Evenements -->
+        <!--<datacontroller class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.datacontroller.RouteEvenementDataController" types="RouteEvenement" />-->
+        <!--<datacontroller class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.dataController.ContactDataController" types="ContactForm" />-->
+        <!--<alarmlistener class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.alarm.RouteEvenementAlerteAlarmListener" frequency="1" manager="PluginAlarmManager" />-->
+        <!-- purges des contenus tous les dimanche à 00:05 -->
+        <!--<alarmlistener class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.alarm.DeleteContentsAlarm" schedule="00 05 * * 1 *" />-->
+  </plugincomponents>  
 
   <private-files>
     <directory path="properties" />
@@ -39,6 +102,7 @@
     <directory path="css" />
     <directory path="docs" />
     <directory path="jsp" />
+    <directory path="nad" />
   </public-files>
 </plugin>
 
