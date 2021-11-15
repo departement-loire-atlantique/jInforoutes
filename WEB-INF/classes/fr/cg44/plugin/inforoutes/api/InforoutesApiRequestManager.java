@@ -27,9 +27,9 @@ public class InforoutesApiRequestManager {
     
     private static String suffixTraficParameters = channel.getProperty("jcmsplugin.inforoutes.api.traficParams");
     
-    private static String suffixTraficEventParameters = channel.getProperty("jcmsplugin.inforoutes.api.traficParams");
+    private static String suffixTraficEventParameters = channel.getProperty("jcmsplugin.inforoutes.api.traficEventParams");
     
-    private static String paramTrafficTous = channel.getProperty("jcmsplugin.inforoutes.api.traficParams");
+    private static String paramTraficTous = channel.getProperty("jcmsplugin.inforoutes.api.params.tous");
     
     /**
      * Récupérer le JSON renvoyé par une URL sous la forme d'un InputStream, utilisé plus tard pour un ObjectMapper
@@ -38,6 +38,16 @@ public class InforoutesApiRequestManager {
     private static String getDtoJsonStringFromApi(String url) {
         
       return ApiUtil.getJsonObjectFromApi(url, null).toString();
+      
+    }
+    
+    /**
+     * Récupérer le JSON renvoyé par une URL sous la forme d'un InputStream, utilisé plus tard pour un ObjectMapper
+     * qui définiera un objet Java
+     */
+    private static String getDtoJsonArrayStringFromApi(String url) {
+        
+      return ApiUtil.getJsonArrayFromApi(url, null).toString();
       
     }
     
@@ -70,9 +80,9 @@ public class InforoutesApiRequestManager {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
         try {
-          JSONArray itJsonArray = new JSONArray(getDtoJsonStringFromApi(url));
+          JSONArray itJsonArray = new JSONArray(getDtoJsonArrayStringFromApi(url));
           for (int counter = 0; counter < itJsonArray.length(); counter++) {
-              returnedList.add(mapper.readValue(getDtoJsonStringFromApi(url), clazz));  
+              returnedList.add(mapper.readValue(itJsonArray.getString(counter), clazz));  
           }
           return returnedList;
         } catch (Exception e) {
@@ -105,7 +115,7 @@ public class InforoutesApiRequestManager {
      * @return
      */
     public static List<EvenementDTO> getTraficEvents() {       
-        return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO.class, baseUrl + suffixTraficEventParameters + paramTrafficTous);
+        return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO.class, baseUrl + suffixTraficEventParameters + paramTraficTous);
     }
     
     /**

@@ -34,8 +34,8 @@
 			            </div>
 			            <div class="ds44-card__section--horizontal"><%
 			                
-			                SimpleDateFormat sdfJson = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss Z");
-			                SimpleDateFormat sdfShownHour = new SimpleDateFormat("hh'h'MM");
+			                SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.jsondate"));
+			                SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.shownhour"));
 			                Date itDate = sdfJson.parse(itPsnCalendrier.getFrom());
 			                
 			                %><p role="heading" "aria-level="4 " class="h4-like "><%= sdfShownHour.format(itDate) %></p>

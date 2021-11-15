@@ -270,6 +270,13 @@ jcmsplugin.inforoutes.api.root: https://rec-api.loire-atlantique.fr/opendata/1.0
 
 jcmsplugin.inforoutes.api.psnstatus: psnstatus
 jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fluide&id=psn_densite_limite_dense&id=bacs_horaires
+jcmsplugin.inforoutes.api.traficEventParams: traficevents?filter=
+jcmsplugin.inforoute.pattern.jsondate: yyyy-MM-dd'T'hh:mm:ss Z
+jcmsplugin.inforoute.pattern.showndate: dd/MM/yyyy
+jcmsplugin.inforoute.pattern.shownhour: hh'h'MM
+
+jcmsplugin.inforoutes.api.params.tous: Tous
+jcmsplugin.inforoute.api.params.pt-st-nazaire: Pont%20de%20Saint-Nazaire
 
 # ----------------------------------------------------------------------
 # Propriétés éditables bacs de Loire
