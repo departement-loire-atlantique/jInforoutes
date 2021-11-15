@@ -1,3 +1,258 @@
+# -------------------------------------------------------------------------------------------------
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+# ATTENTION : début anciennes propriétés utilisées dans le package fr.cg44.plugin.inforoutes.legacy
+# A nettoyer progressivement 
+# NE RIEN ECRIRE AU-DESSUS
+#
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# -------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
+# Pont Saint-Nazaire
+# ----------------------------------------------------------------------
+fr.cg44.plugin.alertemobilite.psn.rattachement: Pont de Saint-Nazaire
+fr.cg44.plugin.alertemobilite.psn.code.fermeture: M000
+fr.cg44.plugin.alertemobilite.psn.code.indetermine: INDETERMINE
+fr.cg44.plugin.pont.workspace.id: dev_5154
+fr.cg44.pont.picto.fermeture: 
+fr.cg44.plugin.pont.tps.parcours.min.max:5|25
+fr.cg44.plugin.pont.tps.traffic.etat:8|13
+fr.cg44.plugin.pont.code.trajet.2:STBREVIN-CERTE|Saint-Brevin &gt; Saint-Nazaire
+fr.cg44.plugin.pont.code.trajet.1:CERTE-STBREVIN|Saint-Nazaire &gt; Saint-Brevin
+
+# PROPRIETES DES WEB SERVICES  
+fr.cg44.plugin.pont.ws.url: http://10.30.0.1:8080|http://10.30.0.2:8080
+fr.cg44.plugin.pont.ws.authentification.login: 
+fr.cg44.plugin.pont.ws.authentification.password: 
+fr.cg44.plugin.pont.ws.service.temps.de.parcours: psn-ear-tr-psn-ejb-dyn/ServiceTdpTrajetImpl
+fr.cg44.plugin.pont.ws.service.temps.de.parcours.activate: true
+fr.cg44.plugin.pont.ws.service.mode.de.circulation: psn-ear-tr-psn-ejb-dyn/ServiceModeCirculationCourantImpl
+fr.cg44.plugin.pont.ws.service.mode.de.circulation.activate: true
+fr.cg44.plugin.pont.ws.service.calendrier: psn-ear-tr-psn-ejb-dyn/ServiceCalendrierImpl
+fr.cg44.plugin.pont.ws.service.calendrier.activate: true
+fr.cg44.plugin.pont.ws.service.etat.serveur: psn-ear-tr-psn-ejb-dyn/EtatServeurWSImpl
+fr.cg44.plugin.pont.ws.service.etat.serveur.activate: true
+
+fr.cg44.plugin.pont.param.alerte.mails :                
+fr.cg44.plugin.pont.param.alert.max : 3|15
+fr.cg44.plugin.pont.param.mode_particulier : 3
+fr.cg44.plugin.pont.voir.plan.image:
+
+# PARAMETRES WEBCAM
+cg44.plugin.webcam.capture.active: true    
+cg44.plugin.webcam.capture.url: http://10.10.0.71/mjpeg/video.jpg
+cg44.plugin.webcam.capture.http.authenticate: false
+cg44.plugin.webcam.capture.http.user:
+cg44.plugin.webcam.capture.http.password:  
+cg44.plugin.webcam.capture.frequence: 2
+cg44.plugin.webcam.capture.delai_demarrage: 30
+cg44.plugin.webcam.capture.max: 12000
+cg44.plugin.webcam.capture.image.preffixe: psn_webcam_
+cg44.plugin.webcam.capture.image.relative_path: upload/webcam/psn
+cg44.plugin.webcam.delai.images.erreur: 25
+
+cg44.plugin.webcam.supervision.alerte.mail: support.jcms@loire-atlantique.fr
+cg44.plugin.webcam.supervision.frequence: 10
+cg44.plugin.webcam.supervision.preserve.history: 10
+cg44.plugin.webcam.supervision.frequence.alerte: 120
+cg44.plugin.webcam.default.portlet.image: sro20120416_6430
+
+# ----------------------------------------------------------------------
+# Pont d'ancenis
+# ----------------------------------------------------------------------
+fr.cg44.plugin.ancenis.json.url : http://188.165.253.140/anc_if/anc_if_1.1.php
+
+# ----------------------------------------------------------------------
+# Pont de Mauves
+# ----------------------------------------------------------------------
+fr.cg44.plugin.mauves.json.url: http://37.187.167.221/cgi-bin/cpm.json
+fr.cg44.plugin.alertemobilite.ws.parameter.ptmauves_densite_limite_fluide: 180
+fr.cg44.plugin.alertemobilite.ws.parameter.ptmauves_densite_limite_dense: 300
+fr.cg44.plugin.alertemobilite.ws.parameter.ptmauves_delai_reload_trafic: 5
+
+# ----------------------------------------------------------------------
+# Bacs de Loire
+# ----------------------------------------------------------------------
+fr.cg44.plugin.alertemobilite.bac.rattachement.coueron: Bac de Loire Coueron - Le Pellerin
+fr.cg44.plugin.alertemobilite.bac.rattachement.indret: Bac de Loire Basse-Indre - Indret
+
+# ----------------------------------------------------------------------
+# WEBCAM bacs de Loire
+# ----------------------------------------------------------------------
+cg44.mobilityplugin.bdl.coueron.cat :   dev_5035
+cg44.mobilityplugin.bdl.indre.cat :     dev_5036
+cg44.mobilityplugin.bdl.refresh:10
+
+cg44.mobilityplugin.bdl.indre2: Indret|mediaCache/indre/2.jpg
+cg44.mobilityplugin.bdl.indre1: Basse-Indre|mediaCache/indre/1.jpg
+
+cg44.mobilityplugin.bdl.coueron2: Le-Pellerin|mediaCache/coueron/2.jpg
+cg44.mobilityplugin.bdl.coueron1: Coueron|mediaCache/coueron/1.jpg
+
+cg44.mobilityplugin.webcam.bdl.coueron.1: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/coueron1.jpg upload/webcam/bdl/coueron1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/1.jpg
+cg44.mobilityplugin.webcam.bdl.coueron.2: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/coueron2.jpg upload/webcam/bdl/coueron2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/2.jpg
+
+cg44.mobilityplugin.webcam.bdl.indre.1: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/indre1.jpg upload/webcam/bdl/indre1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/1.jpg
+cg44.mobilityplugin.webcam.bdl.indre.2: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/indre2.jpg upload/webcam/bdl/indre2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/2.jpg
+
+# ----------------------------------------------------------------------
+# HORAIRES bacs de Loire
+# ----------------------------------------------------------------------
+
+## Liaison 1
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from:          Basse-Indre
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to:            Indret
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_first:    5h30
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_last:     22h30
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_period:   puis toutes les 15 minutes …
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_message:  Message manuel dans JCMS
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_first:      5h35
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_last:       22h35
+## Liaison 2
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from:          Couëron
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to:            Le Pellerin
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_first:    6h30
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_last:     20h30 ou 21h20
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_period:   puis toutes les 15 minutes …
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_message:  horaire du XX au YY
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_first:      6h20
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_last:       20h20 ou 21h20
+
+# ----------------------------------------------------------------------
+# INFO TRAFIC
+# ----------------------------------------------------------------------
+# General
+plugin.corporateidentity.breadcrumb.showHome: false
+
+# Routes
+plugin.routes.general.ws.direction.id: dev_5153
+
+# Nom des balises retournées dans le wsdl
+cg44.infotrafic.entempsreel.event.ws.evenement.tagname:         evenement
+cg44.infotrafic.entempsreel.event.ws.ligne1.tagname:            ligne1
+cg44.infotrafic.entempsreel.event.ws.nature.tagname:            nature
+cg44.infotrafic.entempsreel.event.ws.ligne2.tagname:            ligne2
+cg44.infotrafic.entempsreel.event.ws.ligne3.tagname:            ligne3
+cg44.infotrafic.entempsreel.event.ws.ligne4.tagname:            ligne4
+cg44.infotrafic.entempsreel.event.ws.ligne5.tagname:            ligne5
+cg44.infotrafic.entempsreel.event.ws.ligne6.tagname:            ligne6
+cg44.infotrafic.entempsreel.event.ws.datepublication.tagname: datePublication
+cg44.infotrafic.entempsreel.event.ws.maj.tagname:               maj
+cg44.infotrafic.entempsreel.event.ws.erf.tagname:             erf
+cg44.infotrafic.entempsreel.event.ws.snm.tagname:             snm
+
+# Nom des balises alertes retournées dans le wsdl
+cg44.infotrafic.entempsreel.alert.ws.nom.tagname:             nom
+cg44.infotrafic.entempsreel.alert.ws.datepublie.tagname:      date__publiee
+cg44.infotrafic.entempsreel.alert.ws.corps.tagname:           corps
+cg44.infotrafic.entempsreel.alert.ws.recommandations.tagname: recommandation
+cg44.infotrafic.entempsreel.alert.ws.pied.tagname:            pied
+
+# Natures retournées par le webservice
+cg44.infotrafic.entempsreel.event.ws.nature.accident:               Accident
+cg44.infotrafic.entempsreel.event.ws.nature.autres:                 Autre danger
+cg44.infotrafic.entempsreel.event.ws.nature.autres.inondation:      Inondation
+cg44.infotrafic.entempsreel.event.ws.nature.bacs:                   Bacs de Loire
+cg44.infotrafic.entempsreel.event.ws.nature.bouchons:               Bouchon
+cg44.infotrafic.entempsreel.event.ws.nature.chantier:               Chantier
+cg44.infotrafic.entempsreel.event.ws.nature.deviation:              Déviation
+cg44.infotrafic.entempsreel.event.ws.nature.vent:                   Vent
+cg44.infotrafic.entempsreel.event.ws.nature.verglasneige:           Verglas et neige
+
+# Sous-catégories retournées par le webservice utiles à la notification
+cg44.infotrafic.entempsreel.event.ws.souscategorie.accident: Accident / Incident
+cg44.infotrafic.entempsreel.event.ws.souscategorie.bacs: Bacs de Loire
+cg44.infotrafic.entempsreel.event.ws.souscategorie.vent: Vent
+
+# Noms des pictos représentant les natures
+cg44.infotrafic.entempsreel.event.nature.picto.accident:            picto_accident.png
+cg44.infotrafic.entempsreel.event.nature.picto.autres:              picto_autres.png
+cg44.infotrafic.entempsreel.event.nature.picto.bacss:               picto_bacs.png
+cg44.infotrafic.entempsreel.event.nature.picto.bouchons:            picto_bouchon.png
+cg44.infotrafic.entempsreel.event.nature.picto.chantier:            picto_chantier.png
+cg44.infotrafic.entempsreel.event.nature.picto.deviation:           picto_deviation.png
+cg44.infotrafic.entempsreel.event.nature.picto.vent:                picto_vent.png
+cg44.infotrafic.entempsreel.event.nature.picto.verglasneige:        picto_verglasneige.png
+
+# Noms des pictos représentant les classes en fonction des natures
+cg44.infotrafic.entempsreel.event.nature.class.accident:            accident
+cg44.infotrafic.entempsreel.event.nature.class.autres:              autres
+cg44.infotrafic.entempsreel.event.nature.class.bacs:                bacs
+cg44.infotrafic.entempsreel.event.nature.class.bouchons:            bouchon
+cg44.infotrafic.entempsreel.event.nature.class.chantier:            chantier
+cg44.infotrafic.entempsreel.event.nature.class.deviation:           deviation
+cg44.infotrafic.entempsreel.event.nature.class.vent:                vent
+cg44.infotrafic.entempsreel.event.nature.class.verglasneige:        verglasneige
+
+# Identifiant technique pour le statut d'un évènement
+cg44.infotrafic.entempsreel.event.status.encours:                   en cours
+cg44.infotrafic.entempsreel.event.status.avenir:                    prévisionnel
+cg44.infotrafic.entempsreel.event.status.termine:                   terminé
+
+# Ordre à respecter pour l'affichage
+cg44.infotrafic.entempsreel.event.nature.ordre: @;Verglas, neige;Vent;Accident;Autre danger;Bacs de Loire;Bouchon;Chantier;Déviation
+
+# Paramètres de plugin
+
+cg44.infotrafic.entempsreel.param.ws.host:                          localhost
+cg44.infotrafic.entempsreel.param.ws.port:                          8088
+cg44.infotrafic.entempsreel.param.ws.need.authentication:           true
+cg44.infotrafic.entempsreel.param.ws.login:                         spiral
+cg44.infotrafic.entempsreel.param.ws.password:                      spiral
+
+cg44.infotrafic.entempsreel.param.ws.evenementsencours.service:     mockSpiralSoapBinding
+cg44.infotrafic.entempsreel.param.ws.evenementsavenir.service:      mockSpiralSoapBinding
+cg44.infotrafic.entempsreel.param.ws.alertes.service:               mockSpiralSoapBinding
+
+cg44.infotrafic.entempsreel.param.frequency: 1
+cg44.infotrafic.entempsreel.param.activate: true
+
+# durée de vie des contenus en nombre de jours
+cg44.infotrafic.entempsreel.duree.vie.nb.jour: 30
+
+# identifiant des portlets d'affichage des contenus
+cg44.infotrafic.entempsreel.portlet.alertes.id:                     
+cg44.infotrafic.entempsreel.portlet.evenement.encours.id:           
+cg44.infotrafic.entempsreel.portlet.evenement.avenir.id:            
+cg44.infotrafic.entempsreel.portlet.evenement.termines.id:          
+cg44.infotrafic.entempsreel.workspace.id: dev_5154
+
+# ----------------------------------------------------------------------
+# ALERTE mobilite
+# ----------------------------------------------------------------------
+
+fr.cg44.plugin.alertemobilite.firebase.bac.apikey: AAAAaJM8IAk:APA91bFJK__gn7FTV2YrG6CNZm9tF07CWq4-941rwEw17GVdV9uwUIHUU_XV0c96duvh6zqmr4x52A3U70Yi91CDcld5SNm3zSydCtmbRA6jlgBZMhu1fa19SnEJzsaTZBJOJgUD_wFk
+fr.cg44.plugin.alertemobilite.firebase.psn.apikey: AAAAJmh5Vv0:APA91bF2eSw2A_6OFi_sB3Swzi_69LXN2_DB5NLhFikWYjgQsIKX4-UHGnTmulfSyG44hXlXT7XiAe95eefdMIVRIgjeTHVPXxtheZ3wGB2NezdQatcohgXBm_zSVZDW4oiSxdYjfHAq
+
+# Id espace technique
+fr.cg44.plugin.alertemobilite.workspace.infotrafic.id: dev_5154
+
+# identifiant des groupes recevant l'alerte bdl et psn
+fr.cg44.plugin.alertemobilite.alert.bdlpsn.group.id:
+
+# Parameter
+fr.cg44.plugin.alertemobilite.ws.parameter.psn_densite_limite_fluide: 7
+fr.cg44.plugin.alertemobilite.ws.parameter.psn_densite_limite_dense: 14
+fr.cg44.plugin.alertemobilite.ws.parameter.psn_text_i: 
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs_text_i: 
+
+# Newsletters
+fr.cg44.plugin.newsletter.groupe.id: p2_7247
+fr.cg44.plugin.newsletter.groupe.pointroutes.name: 1 - Point routes
+
+# ----------------------------------------------------------------------
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+# Fin de la reprise des anciennes propriétés
+# SAISIR LES NOUVELLES PROPRIETES EN-DESSOUS DE CETTE LIGNE  
+#
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# ----------------------------------------------------------------------
+
+
+
+
 jcmsplugin.inforoute.designsystem.svg.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/
 jcmsplugin.inforoute.designsystem.svg.icon.fluide: car.svg
 jcmsplugin.inforoute.designsystem.svg.icon.dense: cars.svg
@@ -47,3 +302,24 @@ jcmsplugin.inforoutes.bacs.horaire.liaison2.to_last:       20h20 ou 21h20
 
 media.data-template.card.EvenementInforoute: /plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteCard.jsp
 
+# ----------------------------------------------------------------------
+# Natures d'événements
+# ---------------------------------------------------------------------- 
+jcmsplugin.inforoutes.evenement.nature.accident:            Accident
+jcmsplugin.inforoutes.evenement.nature.autres:              Autre danger
+jcmsplugin.inforoutes.evenement.nature.inondation:          Inondation
+jcmsplugin.inforoutes.evenement.nature.bacs:                Bacs de Loire
+jcmsplugin.inforoutes.evenement.nature.bouchons:            Bouchon
+jcmsplugin.inforoutes.evenement.nature.chantier:            Chantier
+jcmsplugin.inforoutes.evenement.nature.deviation:           Déviation
+jcmsplugin.inforoutes.evenement.nature.vent:                Vent
+jcmsplugin.inforoutes.evenement.nature.verglasneige:        Verglas et neige
+
+jcmsplugin.inforoutes.evenement.nature.css.accident:        icon-accident redFlag
+jcmsplugin.inforoutes.evenement.nature.css.autres:          icon-attention orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs:            icon-bacs orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bouchons:        icon-bouchons redFlag
+jcmsplugin.inforoutes.evenement.nature.css.chantier:        icon-travaux orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.deviation:       icon-deviation orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.vent:            icon-vent redFlag
+jcmsplugin.inforoutes.evenement.nature.css.verglasneige:    icon-glaces redFlag
