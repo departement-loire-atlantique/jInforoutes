@@ -1,3 +1,313 @@
+# -------------------------------------------------------------------------------------------------
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+# ATTENTION : début anciennes propriétés utilisées dans le package fr.cg44.plugin.inforoutes.legacy
+# A nettoyer progressivement 
+# NE RIEN ECRIRE AU-DESSUS
+#
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# -------------------------------------------------------------------------------------------------
+
+cg44.plugin.eserviceplugin.portal.header.altlogosite:Retour à l'accueil du site Inforoutes
+
+
+# ---------------------------------------------------------------------#
+#        PONT SAINT-NAZAIRE                                            #
+# ---------------------------------------------------------------------#
+
+fr.cg44.pont.picto.fermeture:               [PSN] Identifiant du pictograme fermeture
+
+fr.cg44.plugin.pont.tps.traffic.etat: [PSN] Temps de parcours maximum (Fluide|Dense) en minutes
+fr.cg44.pont.tps.parcours.min.max: [PSN] temps de parcours (minimum|maximum) en minutes
+
+fr.cg44.pont.code.trajet.stbrevin.vers.stnazaire: [PSN] Code du trajet St Brévin vers St Nazaire
+fr.cg44.pont.code.trajet.stnazaire.vers.stbrevin: [PSN] Code du trajet St Nazaire vers St Brévin
+
+fr.cg44.plugin.pont.code.trajet.1:[PSN] Code du trajet |Libellé trajet (St Brévin vers St Nazaire) - 1
+fr.cg44.plugin.pont.code.trajet.2:[PSN] Code du trajet |Libellé trajet (St Nazaire vers St Brévin) - 2
+
+fr.cg44.plugin.pont.ws.url: [PSN] Urls complète des serveurs séparé par |
+fr.cg44.plugin.pont.ws.authentification.login: [PSN] Login en cas d'authentification
+fr.cg44.plugin.pont.ws.authentification.password: [PSN] Mot de passe en cas d'authentification
+
+fr.cg44.plugin.pont.ws.service.temps.de.parcours:       [PSN] Identification du service Temps de parcours
+fr.cg44.plugin.pont.ws.service.mode.de.circulation:     [PSN] Identification du service Mode de circulation
+fr.cg44.plugin.pont.ws.service.calendrier:              [PSN] Identification du service Gestion calendaire
+fr.cg44.plugin.pont.ws.service.etat.serveur:            [PSN] Identification du service de l'etat du serveur
+
+fr.cg44.plugin.pont.service.indisponible:           Ce service est actuellement indisponible.
+
+fr.cg44.plugin.pont.param.mode_particulier:         [PSN] Nombre de minutes avant le passage en mode particulier
+
+# MAILS
+
+fr.cg44.plugin.pont.bo.mail.subject.sensok :            [Pont de Saint-Nazaire] - Sens de circulation retabli
+fr.cg44.plugin.pont.bo.mail.body.sensok :               La synchronisation avec le web service pour l'affichage du sens de circulation est de nouveau operationnelle.
+fr.cg44.plugin.pont.bo.mail.subject.sensko :            [Pont de Saint-Nazaire] -  Erreur sur le sens de circulation
+fr.cg44.plugin.pont.bo.mail.body.sensko :               La synchronisation avec le web service pour l'affichage du sens de circulation ne semble plus operationnelle.
+
+fr.cg44.plugin.pont.bo.mail.subject.tempsok :           [Pont de Saint-Nazaire] - Temps de parcours retabli
+fr.cg44.plugin.pont.bo.mail.body.tempsok :              La synchronisation du temps de parcours avec le web service est de nouveau operationnelle
+fr.cg44.plugin.pont.bo.mail.subject.tempsko :           [Pont de Saint-Nazaire] - Erreur sur temps de parcours
+fr.cg44.plugin.pont.bo.mail.body.tempsko :              La synchronisation du temps de parcours avec le web service ne semble plus operationnelle
+
+fr.cg44.plugin.pont.bo.mail.subject.cavok :             [Pont de Saint-Nazaire] - Changements a venir retabli
+fr.cg44.plugin.pont.bo.mail.body.cavok :                La synchronisation avec le web service pour l'affichage  des changements a venir retabli avec le web service est de nouveau operationnelle.
+fr.cg44.plugin.pont.bo.mail.subject.cavko :             [Pont de Saint-Nazaire] - Erreur sur les changements a venir
+fr.cg44.plugin.pont.bo.mail.body.cavko :                La synchronisation avec le web service pour l'affichage  des changements a venir retabli avec le web service ne semble plus operationnelle.
+
+# PARAMETRES
+
+fr.cg44.plugin.pont.param.alerte.mails :        [PSN] Destinataires des alertes (mails séparés par des virgules)
+fr.cg44.plugin.pont.param.alert.max :           [PSN] (Nombre d'erreur | Délai) avant envoie d'une alerte
+
+fr.cg44.plugin.pont.param.alertmaxerror: Nombre maximum d'erreur avant alert | Durée de validité des données en cas de web service inaccessible (minutes) - ex (3|15) : envoi de mail après 3 erreurs et expiration après 15 minutes 
+
+# PSN PARAMETRES WEBCAM
+
+cg44.plugin.webcam.capture.active:                      [PSN webcam] Activer la capture de la video
+cg44.plugin.webcam.capture.url:                         [PSN webcam] Url du flux video
+cg44.plugin.webcam.capture.http.authenticate:           [PSN webcam] Activer l'authentification HTTP (true/false)
+cg44.plugin.webcam.capture.http.user:                   [PSN webcam] Utilisateur pour l'authentification HTTP
+cg44.plugin.webcam.capture.http.password:               [PSN webcam] Mot de passe pour l'authentification HTTP
+cg44.plugin.webcam.capture.frequence:                   [PSN webcam] Fréquence de rafraichissement de l'image (secondes)
+cg44.plugin.webcam.capture.max:                         [PSN webcam] Nombre de capture maximum d'image avant réinitialisation du thread
+cg44.plugin.webcam.capture.image.preffixe:              [PSN webcam] Préfixe du nom de l'image
+cg44.plugin.webcam.capture.image.relative_path:         [PSN webcam] Répertoire relatif de dépôt des images
+cg44.plugin.webcam.delai.images.erreur:                 [PSN webcam] Nombre d'images avant passage en indisponible
+cg44.plugin.webcam.capture.delai_demarrage:             [PSN webcam] Délai avant démarrage de la capture (secondes)
+cg44.plugin.webcam.supervision.alerte.mail:             [PSN webcam] Adresses mail des destinataires du mail d'erreur (séparé par des virgules)
+cg44.plugin.webcam.supervision.frequence:               [PSN webcam] Fréquence de lancement de la supervision de la capture
+cg44.plugin.webcam.supervision.preserve.history:        [PSN webcam] Profondeur de conservation de l'historique des images en minutes (ex: 30)
+cg44.plugin.webcam.supervision.frequence.alerte:        [PSN webcam] Délai avant envoi du mail d'alerte
+
+cg44.plugin.webcam.default.portlet.image:               [PSN webcam] Identifiant de la portlet de l'image par défaut
+
+fr.cg44.plugin.pont.bo.mail.subject.psn.webcam.ok:  [Pont de Saint-Nazaire] Reprise du flux webcam
+fr.cg44.plugin.pont.bo.mail.body.psn.webcam.ok:         Le flux de la webcam est de nouveau disponible
+
+fr.cg44.plugin.pont.bo.mail.subject.psn.webcam.ko:  [Pont de Saint-Nazaire] Alerte le flux webcam est indisponible
+fr.cg44.plugin.pont.bo.mail.body.psn.webcam.ko:         Le flux de la webcam est indisponible
+
+fr.cg44.plugin.pont.voir.plan:                           Voir le plan de localisation des caméras
+fr.cg44.plugin.pont.voir.plan.image:                     [PSN] Image du plan de localisation des caméras du psn
+
+# ---------------------------------------------------------------------#
+#        Bacs de Loire                                         #
+# ---------------------------------------------------------------------#
+
+fr.cg44.plugin.alertemobilite.bac.rattachement.coueron: Rattachement Bac de Loire Couëron / Le Pellerin
+fr.cg44.plugin.alertemobilite.bac.rattachement.indret: Rattachement Bac de Loire Basse-Indre / Indret
+
+
+# ---------------------------------------------------------------------#
+#        WEBCAM bacs de Loire                                          #
+# ---------------------------------------------------------------------#
+
+cg44.mobilityplugin.bdl.refresh: [Bacs webcam] délai de rafraichissement
+cg44.mobilityplugin.bdl.indre1: [Bacs webcam] Nom indre 1|url Image indre 1
+cg44.mobilityplugin.bdl.indre2: [Bacs webcam] Nom indre 2|url Image indre 2
+
+cg44.mobilityplugin.bdl.coueron1:  [Bacs webcam] Nom coueron 1|url Image coueron 1
+cg44.mobilityplugin.bdl.coueron2:  [Bacs webcam] Nom coueron 2|url Image coueron 2
+
+
+cg44.mobilityplugin.webcam.bdl.coueron.1: [Bacs webcam] url imageOk imageKo delaiOk delaiKo servletPath
+cg44.mobilityplugin.webcam.bdl.coueron.2: [Bacs webcam] url imageOk imageKo delaiOk delaiKo servletPath
+
+cg44.mobilityplugin.webcam.bdl.indre.1: [Bacs webcam] url imageOk imageKo delaiOk delaiKo servletPath
+cg44.mobilityplugin.webcam.bdl.indre.2: [Bacs webcam] url imageOk imageKo delaiOk delaiKo servletPath
+
+
+# ----------------------------------------------------------------------
+# HORAIRES bacs de Loire
+# ----------------------------------------------------------------------
+
+## Liaison 1
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from:          [Bacs] Liaison 1 départ
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to:            [Bacs] Liaison 1 arrivée
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_first:    [Bacs] Liaison 1 Heure du premier départ
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_last:     [Bacs] Liaison 1 Heure du dernier départ
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_period:   [Bacs] Liaison 1 Interval des départs
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_message:  [Bacs] Liaison 1 Message
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_first:      [Bacs] Liaison 1 Heure de la première arrivée 
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_last:       [Bacs] Liaison 1 Heure de la dernière arrivée 
+## Liaison 2
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from:          [Bacs] Liaison 2 départ
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to:            [Bacs] Liaison 2 arrivée
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_first:    [Bacs] Liaison 2 Heure du premier départ
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_last:     [Bacs] Liaison 2 Heure du dernier départ
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_period:   [Bacs] Liaison 2 Interval des départs
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_message:  [Bacs] Liaison 2 Message
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_first:      [Bacs] Liaison 2 Heure de la première arrivée 
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_last:       [Bacs] Liaison 2 Heure de la dernière arrivée
+
+
+# ---------------------------------------------------------------------#
+#         INFO TRAFIC                                                  #
+# ---------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------#
+#         Liste des évènements en cours, à venir et terminés           #
+# ---------------------------------------------------------------------#
+cg44.infotrafic.entempsreel.event.encours:                          Les évènements en cours
+cg44.infotrafic.entempsreel.event.avenir:                           Les évènements à venir
+cg44.infotrafic.entempsreel.event.termines:                         Les évènements terminés
+
+cg44.infotrafic.entempsreel.event.col1.lbl:                         Type
+cg44.infotrafic.entempsreel.event.col2.lbl:                         Lieu
+cg44.infotrafic.entempsreel.event.col3.lbl:                         Date(s)
+cg44.infotrafic.entempsreel.event.col4.lbl:                         Conditions de circulation
+cg44.infotrafic.entempsreel.event.col5.lbl:                         Publication / Mise à jour
+
+cg44.infotrafic.entempsreel.event.date.format.debut                 Le
+cg44.infotrafic.entempsreel.event.date.format.debutfin.debut        Du
+cg44.infotrafic.entempsreel.event.date.format.debutfin.fin          au
+cg44.infotrafic.entempsreel.event.date.format.publication.fin       à
+
+cg44.infotrafic.entempsreel.event.sortlabel.title.type:             Trier la liste par type
+cg44.infotrafic.entempsreel.event.sortlabel.title.date:             Trier la liste par date
+
+cg44.infotrafic.entempsreel.event.ws.afficher.suivant:              Afficher {0} suivants
+
+cg44.infotrafic.entempsreel.event.ws.indispo.cartecidessus:         Ce service est actuellement indisponible. Vous pouvez retrouver ces informations sur la carte ci-dessus.
+cg44.infotrafic.entempsreel.event.ws.indispo.cartecidessous:        Ce service est actuellement indisponible. Vous pouvez retrouver ces informations sur la carte ci-dessous.
+cg44.infotrafic.entempsreel.event.ws.indispo:                       Service temporairement indisponible
+cg44.infotrafic.entempsreel.event.aucunevenement:                   Aucun événement
+
+# ---------------------------------------------------------------------#
+#                 Intitulés des paramètres de plugin                   #
+# ---------------------------------------------------------------------#
+
+cg44.infotrafic.entempsreel.param.ws.host:                           [infotrafic] Serveur hébergeur des Web Services
+cg44.infotrafic.entempsreel.param.ws.port:                           [infotrafic] Port des Web Services (peut être vide)
+cg44.infotrafic.entempsreel.param.ws.need.authentication:            [infotrafic] Nécessite une authentification ?
+cg44.infotrafic.entempsreel.param.ws.login:                          [infotrafic] Login en cas d'authentification
+cg44.infotrafic.entempsreel.param.ws.password:                       [infotrafic] Mot de passe en cas d'authentification
+cg44.infotrafic.entempsreel.param.ws.evenementsencours.service:      [infotrafic] Identification du service Evènements en cours
+cg44.infotrafic.entempsreel.param.ws.evenementsavenir.service:       [infotrafic] Identification du service Evènements à venir
+cg44.infotrafic.entempsreel.param.ws.alertes.service:                [infotrafic] Identification du service Alerte
+
+cg44.infotrafic.entempsreel.param.frequency:                         [infotrafic] Fréquence d'actualisation des contenus (en mn)
+cg44.infotrafic.entempsreel.param.activate:                          [infotrafic] Activation de l'actualisation
+
+# Ordre à respecter pour l'affichage
+cg44.infotrafic.entempsreel.event.nature.ordre:                      [infotrafic] Ordre d'affichage des natures des évènements pour la gestion de l'affichage
+
+
+# durée de vie des contenus en nombre de jours
+cg44.infotrafic.entempsreel.duree.vie.nb.jour:                      [infotrafic] Durée de vie des contenus en nombre de jours
+
+# identifiant des portlets d'affichage des contenus
+cg44.infotrafic.entempsreel.portlet.alertes.id:                      Identifiant de la portlet d'affichage des alertes
+cg44.infotrafic.entempsreel.portlet.evenement.encours.id:            Identifiant de la portlet d'affichage des évènements en cours
+cg44.infotrafic.entempsreel.portlet.evenement.avenir.id:             Identifiant de la portlet d'affichage des évènements à venir
+cg44.infotrafic.entempsreel.portlet.evenement.termines.id:           Identifiant de la portlet d'affichage des évènements terminés
+
+
+# ---------------------------------------------------------------------#
+#                FORMULAIRE DE CONTACT                                 #
+# ---------------------------------------------------------------------#
+
+plugin.businessRules.applyForm.mailTo:              Email du destinataire du formulaire de contact
+
+plugin.businessRules.contact.subject.prefix:        Inforoutes.loire-atlantique.fr
+plugin.businessRules.contact.name:                  Le nom est obligatoire. Ce champ doit être rempli.
+plugin.businessRules.contact.firstName:             Le prénom est obligatoire. Ce champ doit être rempli.
+plugin.businessRules.contact.mail:                  Le courriel est obligatoire. Ce champ doit être rempli.
+plugin.businessRules.contact.mail.regexp:           Le format du champ "Courriel" est incorrect. Veuillez le vérifier. Exemple: contact@mail.fr
+plugin.businessRules.contact.subject:               Le sujet est obligatoire. Ce champ doit être rempli.
+plugin.businessRules.contact.phone:                 Le format du champ "Téléphone" est incorrect (Exemple de format attendu : 02 XX XX XX XX).
+plugin.businessRules.contact.postalcode:            Le format du champ "Code postal" est incorrect (Exemple de format attendu : 44000).
+plugin.businessRules.contact.message:               Le message est obligatoire. Ce champ doit être rempli.
+plugin.businessRules.contact.success:               Votre demande a bien été transmise aux services concernés.
+plugin.businessRules.contact.fail:                  Une erreur s'est produite lors de l'envoi de l'email.
+
+cg44.succes.send.mail.contact:                      Votre demande a bien été transmise aux services concernés.
+cg44.echec.send.mail:                               Erreur d'envoi du mail de validation de compte à l'adresse mail :
+cg44.echec.send.mail.contact:                       Une erreur s'est produite lors de l'envoi de l'email.
+
+
+# ---------------------------------------------------------------------#
+#                ALERTES                                               #
+# ---------------------------------------------------------------------#
+
+fr.cg44.plugin.alertemobilite.firebase.bac.apikey: Clé api firebase pour notifications mobile Bac de Loire
+fr.cg44.plugin.alertemobilite.firebase.psn.apikey: Clé api firebase pour notifications mobile pont de Saint-Nazaire
+
+alert.name.myDomain:                              Alertes Inforoutes
+alert.name.myDomain.bdl:                          Bacs de Loire
+alert.msg.myDomain.bdl.title:                     Bacs de Loire
+alert.msg.myDomain.bdl.short-description:         Alerte bacs de Loire
+
+
+alert.name.myDomain:                              Alertes Inforoutes
+alert.name.myDomain.psn:                          Pont de Saint-Nazaire
+alert.msg.myDomain.psn.title:                     Pont de Saint-Nazaire
+alert.msg.myDomain.psn.short-description:         Alerte pont de Saint-Nazaire
+
+
+
+fr.cg44.plugin.alertemobilite.alert.bdlpsn.group.id:    [Alertes] Identifiant des groupes recevant l'alerte bdl et psn
+
+## Bacs de Loire
+
+fr.cg44.plugin.alertemobilite.bac.rattachement.coueron: [Alertes] Rattachement Bac de Loire Couëron / Le Pellerin
+fr.cg44.plugin.alertemobilite.bac.rattachement.indret: [Alertes] Rattachement Bac de Loire Basse-Indre / Indret
+jcmsplugin.alertemobiliteplugin.alerte.bac.reprise.service: Reprise du service suite
+jcmsplugin.alertemobiliteplugin.alerte.bac.echec.parse.date: Evènement prévisionnel, impossible de parser la date de début: 
+
+## PSN
+fr.cg44.plugin.alertemobilite.psn.rattachement: [Alertes] Rattachement PSN
+fr.cg44.plugin.alertemobilite.psn.code.fermeture:   [Alertes] Code PSN de fermeture
+fr.cg44.plugin.alertemobilite.psn.code.indetermine: [Alertes] Code PSN d'état indéterminé
+jcmsplugin.alertemobiliteplugin.alerte.psn.vent.cloture:    Vent : retour à la normale.
+jcmsplugin.alertemobiliteplugin.alerte.psn.other.cloture: : retour à la normale.
+jcmsplugin.alertemobiliteplugin.alerte.psn.cloture.annonce:   Annonce de fermeture du Pont de Saint-Nazaire : du
+jcmsplugin.alertemobiliteplugin.alerte.psn.cloture.annonce.demain:   Annonce de fermeture demain du Pont de Saint-Nazaire : du
+jcmsplugin.alertemobiliteplugin.alerte.psn.cloture.annonce.rappel:   Rappel - fermeture demain du Pont de Saint-Nazaire du 
+jcmsplugin.alertemobiliteplugin.alerte.psn.cloture.encours:         Fermeture du Pont de Saint-Nazaire. Déviation par Nantes.
+jcmsplugin.alertemobiliteplugin.alerte.psn.cloture.reouverture:     Réouverture du Pont de Saint-Nazaire.
+
+## Parameter
+fr.cg44.plugin.alertemobilite.ws.parameter.psn_densite_limite_fluide:           [Alertes] PSN densité limite fluide
+fr.cg44.plugin.alertemobilite.ws.parameter.psn_densite_limite_dense:            [Alertes] PSN densité limite dense
+fr.cg44.plugin.alertemobilite.ws.parameter.psn_text_i:                          [Alertes] Texte de crédit pour le pont
+
+fr.cg44.plugin.alertemobilite.ws.parameter.ptmauves_densite_limite_fluide: [Pont de Mauves] Limite supérieure en secondes du trafic fluide (avant dense)
+fr.cg44.plugin.alertemobilite.ws.parameter.ptmauves_densite_limite_dense: [Pont de Mauves] Limite supérieure en secondes du trafic dense (avant saturé)
+fr.cg44.plugin.alertemobilite.ws.parameter.ptmauves_delai_reload_trafic: [Pont de Mauves] Délai en secondes avant rechargement carte trafic
+
+## BACS
+fr.cg44.plugin.alertemobilite.ws.parameter.bacs_text_i:                         [Alertes] Texte de crédit pour les bacs
+
+## Push API
+fr.cg44.plugin.alertemobilite.push.api.url:     [Alertes - push API] Url d'envoie de notification
+fr.cg44.plugin.alertemobilite.push.api.sandbox: [Alertes - push API] Mode recette (0= Tous les devices, 1= Uniquement les devices de recette)
+fr.cg44.plugin.alertemobilite.push.api.ios:     [Alertes - push API] Devices sous IOS (0=Non, 1= Oui)
+fr.cg44.plugin.alertemobilite.push.api.android: [Alertes - push API] Devices sous Android (0=Non, 1= Oui)
+fr.cg44.plugin.alertemobilite.push.api.windows: [Alertes - push API] Devices sous Windows (0=Non, 1= Oui)
+
+## BO historique des alertes
+jcmsplugin.alertemobiliteplugin.administration.link: Historique des alertes
+jcmsplugin.alertemobiliteplugin.administration.titre: Historique des alertes
+jcmsplugin.alertemobiliteplugin.administration.config: Configuration des alertes
+jcmsplugin.alertemobiliteplugin.administration.future: Envois programmés
+jcmsplugin.alertemobiliteplugin.administration.future.no: Aucun envoi programmé
+jcmsplugin.alertemobiliteplugin.administration.current: Envois en cours
+jcmsplugin.alertemobiliteplugin.administration.current.no: Aucun envoi en cours
+jcmsplugin.alertemobiliteplugin.administration.last: Envois effectués
+jcmsplugin.alertemobiliteplugin.administration.last.no: Aucun envoi effectué
+
+# ----------------------------------------------------------------------
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# Fin de la reprise des anciennes propriétés
+# SAISIR LES NOUVELLES PROPRIETES EN-DESSOUS DE CETTE LIGNE
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# ----------------------------------------------------------------------
+
 # ----------------------------------------------------------------------
 # Propriétés éditables
 # ----------------------------------------------------------------------
@@ -54,6 +364,11 @@ jcmsplugin.inforoute.minimum.trafic.dense: Temps en minutes min. pour considére
 jcmsplugin.inforoutes.evenements-en-cours: Les événements en cours
 jcmsplugin.inforoutes.evenements-a-venir: Les événements à venir
 jcmsplugin.inforoutes.evenements-aucun: Aucun événement
+jcmsplugin.inforoutes.type: Type
+jcmsplugin.inforoutes.lieu: Lieu
+jcmsplugin.inforoutes.date: Date(s)
+jcmsplugin.inforoutes.conditions-circulation: Conditions de circulation
+jcmsplugin.inforoutes.date-maj: Publication / Mise à jour
 
 # Messages d'erreur
 jcmsplugin.inforoutes.erreur.bacs-horaires : Les horaires sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.

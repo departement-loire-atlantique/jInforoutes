@@ -1,0 +1,252 @@
+<%@page import="fr.cg44.plugin.inforoutes.InforoutesUtils"%>
+<%!
+private static final int TRI_PAR_DEFAUT 			= 99;
+private static final int TRI_INVERSE 				= 88;
+private static final int TRI_SECONDAIRE_PAR_DEFAUT	= 66;
+private static final int TRI_SECONDAIRE_INVERSE 	= 77;
+	private static final String PARAM_TRI   = "paramTriP";	
+%><%
+  PortletQueryForeach box = (PortletQueryForeach) portlet;
+  //jcmsContext.addCSSHeader("plugins/InforoutesPlugin/css/infoRoutes/types/PortletQueryForeach/doPortletQueryForeachInfoTraficEvents.css");
+%><%@ include file='/types/PortletQueryForeach/doQuery.jsp' %>
+<%@ include file='/types/PortletQueryForeach/doSort.jsp' %><%
+   Publication displayedPub = null;
+%>
+<% 
+//Comparateur d'évènements en fonction de leur nature
+EventByDateAndNatureComparator eventComparator = new EventByDateAndNatureComparator(userLang);
+EventDatePubMAJComparator eventSecondaireComparator = new EventDatePubMAJComparator();
+Comparator bdc = null;
+
+String fleche_path = "plugins/InforoutesPlugin/images/infoRoutes/tab_inforoutes_chevron_bas.png";
+String fleche_inv_path = "plugins/InforoutesPlugin/images/infoRoutes/tab_inforoutes_chevron_haut.png";
+String tri_type_fleche = fleche_path;
+String tri_date_fleche = fleche_path;
+
+//Est-ce le tableau des événements terminés ?
+Boolean isPastEvents = false;
+if(Util.notEmpty(request.getAttribute("pastEvents"))){
+	isPastEvents = (Boolean) request.getAttribute("pastEvents");
+}
+
+//Récupération de l'état du tri
+int triCourant = TRI_PAR_DEFAUT;
+//0012648: site inforoutes - modifier l'ordre de tri des événements dans le bloc "Les événements terminés"
+if(isPastEvents) {
+	triCourant = TRI_SECONDAIRE_PAR_DEFAUT;
+}
+if (Util.notEmpty(request.getParameter(PARAM_TRI))) {
+	triCourant = Integer.parseInt(request.getParameter(PARAM_TRI));
+}
+
+//plier ou déplier principal
+Boolean isPlierPrincipal = false;
+
+if(Util.notEmpty(request.getAttribute("plierPrincipal"))){
+	isPlierPrincipal = (Boolean) request.getAttribute("plierPrincipal");
+}
+	
+if(Util.notEmpty(request.getParameter("plierPrincipal"))){
+	isPlierPrincipal = Boolean.parseBoolean(request.getParameter("plierPrincipal"));
+}
+
+// plier ou déplier
+Boolean isDeplier = false;
+if(Util.notEmpty(request.getParameter("plier"))){
+	isDeplier = true ;
+}
+
+String url = null;
+String urlSecondaire = null;
+if (triCourant == TRI_PAR_DEFAUT) {
+	url = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_INVERSE));
+	urlSecondaire = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_SECONDAIRE_PAR_DEFAUT)); 
+	eventComparator.setTriInverse(false);
+	eventSecondaireComparator.setTriInverse(false);
+	bdc = eventComparator;
+	tri_type_fleche = fleche_path;
+} else if (triCourant == TRI_INVERSE) {
+	url = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_PAR_DEFAUT)); 
+	urlSecondaire = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_SECONDAIRE_PAR_DEFAUT)); 
+	eventComparator.setTriInverse(true);
+	eventSecondaireComparator.setTriInverse(false);
+	bdc = eventComparator;
+	tri_type_fleche = fleche_inv_path;
+} else if (triCourant == TRI_SECONDAIRE_PAR_DEFAUT) {
+	url = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_PAR_DEFAUT)); 
+	urlSecondaire = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_SECONDAIRE_INVERSE));
+	eventSecondaireComparator.setTriInverse(false);
+	eventComparator.setTriInverse(false);
+	bdc = eventSecondaireComparator;
+	tri_date_fleche = fleche_path;
+} else if (triCourant == TRI_SECONDAIRE_INVERSE) {
+	url = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_PAR_DEFAUT)); 
+	urlSecondaire = ServletUtil.getUrlWithUpdatedParam(request, PARAM_TRI, String.valueOf(TRI_SECONDAIRE_PAR_DEFAUT)); 
+	eventSecondaireComparator.setTriInverse(true);
+	eventComparator.setTriInverse(false);
+	bdc = eventSecondaireComparator;
+	tri_date_fleche = fleche_inv_path;
+}
+
+Set<RouteEvenement> curentEventSet = JcmsUtil.select(collection, eventSelector, bdc);
+int curentEventCount = curentEventSet.size();
+
+// Nombre d'évènements affichés (le reste est visible grace au lien)
+//int maxEventDisplayed = channel.getIntegerProperty("cg44.infotrafic.entempsreel.event.nbevenementsvisibles.max", 5);
+Integer maxEventDisplayed = Util.notEmpty(Util.getFirst(ArrayUtils.toObject(box.getPageSizes())))?Util.getFirst(ArrayUtils.toObject(box.getPageSizes())):3 ;
+// Nombre d'évènements terminés affichés
+int maxPastEventDisplayed = channel.getIntegerProperty("cg44.infotrafic.entempsreel.event.nbevenementstermines.max", 5);
+
+int nbEventCacher = curentEventCount - maxEventDisplayed ;
+
+// si tableau des événements terminés, pas de pager
+if (isPastEvents) {
+	nbEventCacher = 0;
+}
+
+// Classe css ajoutée pour avoir une barre de scroll si le nombre d'évènements est trop important
+String scrollCssClass;
+
+String plierPrincipal = isPlierPrincipal?"Déplier ":"Plier " ;
+
+//***********************************************************************
+// Groupe les déviations ratachées à un chantier en gardant l'odre de tri
+//***********************************************************************
+
+// Créer une map de chantier (clé) et déviations associées (valeurs)
+HashMap<String, List<RouteEvenement>> chantierDeviation = new HashMap<String, List<RouteEvenement>>();
+for(RouteEvenement event : curentEventSet){
+	if("Chantier".equals(event.getNature())){
+		chantierDeviation.put(event.getSnm(), new ArrayList<RouteEvenement>());
+	}	
+}
+
+// Associer les déviations à leur chantier
+Collection<RouteEvenement> CollectionChantier = new ArrayList<RouteEvenement>();
+for(RouteEvenement event : curentEventSet){
+	if("Déviation".equals(event.getNature())){
+		// Si un chanter éxiste pour cette déviation l'associer au chatier
+		if(chantierDeviation.get(event.getSnm()) != null ){
+			List<RouteEvenement> deviations = chantierDeviation.get(event.getSnm());
+			deviations.add(event);			
+		}else{
+			CollectionChantier.add(event);
+		}
+	}else{
+		CollectionChantier.add(event);
+	}
+}
+
+// Liste final avec chantiers et déviations associées et triés
+Collection<RouteEvenement> CollectionBis = new ArrayList<RouteEvenement>();
+for(RouteEvenement event : CollectionChantier){
+	CollectionBis.add(event);
+	if("Chantier".equals(event.getNature())){
+		for(RouteEvenement deviation : chantierDeviation.get(event.getSnm())){
+			if(deviation != null){
+				CollectionBis.add(deviation);
+			}
+		}
+	}
+}
+//*********************************************************
+//Fin de Groupement des déviations rattachées à un chantier
+//*********************************************************
+%>
+
+<div class="col-12">
+    <h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoutes.evenements-en-cours") %></h2>
+    
+    <jalios:select>
+    
+	    <jalios:if predicate='<%= Util.notEmpty(curentEventSet) %>'>
+	    
+		    <table class="inforoutes">
+		        <caption class="visually-hidden">Titre du tableau</caption>
+		        <thead>
+					<tr>
+						<th scope="col"><%= glp("jcmsplugin.inforoutes.type") %></th>
+						<th scope="col"></th>
+						<th scope="col"><%= glp("jcmsplugin.inforoutes.lieu") %></th>
+						<th scope="col"><%= glp("jcmsplugin.inforoutes.date") %></th>
+						<th scope="col"><%= glp("jcmsplugin.inforoutes.conditions-circulation") %></th>
+						<th scope="col"><%= glp("jcmsplugin.inforoutes.date-maj") %></th>
+					</tr>
+		        </thead>
+				<tbody>
+				
+				<!-- Début boucle sur les événements -->
+				<jalios:foreach collection='<%= CollectionBis %>' type='RouteEvenement' name='event'>
+		            <%
+		            String classeCss = InforoutesUtils.getClasseCssNatureEvt(event.getNature(userLang));
+		            %>
+					<tr class="ds44-card">
+		                <!-- Icone -->
+						<td class="ds44-cardTitle">
+						    <jalios:if predicate='<%= Util.notEmpty(event.getLigne1(userLang)) %>'>
+						        <i class="icon ds44-icoInfoRoutes <%= classeCss %>" aria-hidden="true"></i>
+						    </jalios:if>
+		                </td>
+		                
+		                <!-- Type -->
+		                <td>
+		                    <jalios:if predicate='<%= Util.notEmpty(event.getLigne1(userLang)) %>'>
+		                        <span><%= event.getLigne1(userLang) %></span>
+		                    </jalios:if>
+		                </td>
+		                
+		                <!-- Lieu -->
+						<td>
+						    <jalios:if predicate='<%= Util.notEmpty(event.getLigne2(userLang)) %>'>
+		                        <%= event.getLigne2(userLang) %><br />
+		                    </jalios:if>
+		                    <jalios:if predicate='<%= Util.notEmpty(event.getLigne3(userLang)) %>'>
+		                        <%= event.getLigne3(userLang) %><br />
+		                    </jalios:if>
+						</td>
+						
+						<!-- Date(s) de l'événement -->
+						<td>
+						    <jalios:if predicate='<%= Util.notEmpty(event.getLigne4(userLang)) %>'>
+		                        <%= event.getLigne4(userLang) %>
+		                    </jalios:if>
+						</td>
+						
+						<!-- Conditions de circulation -->
+						<td>
+						    <jalios:if predicate='<%= Util.notEmpty(event.getLigne5(userLang)) %>'>
+		                        <%= event.getLigne5(userLang) %>
+		                    </jalios:if>
+		                    <jalios:if predicate='<%= Util.notEmpty(event.getLigne6(userLang)) %>'>
+		                        <br><%= event.getLigne6(userLang) %>
+		                    </jalios:if>
+						</td>
+						
+						<!-- Date de publication / MAJ -->
+						<td>
+						    <jalios:if predicate='<%= Util.notEmpty(event.getDateDePublicationModification()) %>'>
+		                        <%= glp("cg44.infotrafic.entempsreel.event.date.format.debut") %> <jalios:date date='<%= event.getDateDePublicationModification() %>' format="short" />
+		                        <%= glp("cg44.infotrafic.entempsreel.event.date.format.publication.fin") %> <jalios:time date='<%= event.getDateDePublicationModification() %>' format="short" />
+		                    </jalios:if>
+		                </td>
+					</tr>
+		        </jalios:foreach>
+				
+				<!-- Fin boucle sur les événements -->
+				
+				</tbody>
+		    </table>
+	    
+	    </jalios:if>
+	        
+	        
+	    <jalios:default>
+	        <p class='warn'><%= glp("cg44.infotrafic.entempsreel.event.aucunevenement") %></p>
+	    </jalios:default>
+    </jalios:select>
+</div>
+
+<%
+	request.setAttribute("doPortletQueryForeachFulls.publication", displayedPub); 
+%>
+<%--@ include file='/types/PortletQueryForeach/doPager.jsp' --%>
