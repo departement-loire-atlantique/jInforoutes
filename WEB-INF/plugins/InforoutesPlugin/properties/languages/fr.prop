@@ -364,6 +364,7 @@ jcmsplugin.inforoute.minimum.trafic.dense: Temps en minutes min. pour considére
 jcmsplugin.inforoutes.evenements-en-cours: Les événements en cours
 jcmsplugin.inforoutes.evenements-en-cours.title: Les événements en cours : {0}
 jcmsplugin.inforoutes.evenements-a-venir: Les événements à venir
+jcmsplugin.inforoutes.evenements-a-venir.title: Les événements à venir : {0}
 jcmsplugin.inforoutes.evenements-aucun: Aucun événement
 jcmsplugin.inforoutes.type: Type
 jcmsplugin.inforoutes.lieu: Lieu

@@ -274,9 +274,12 @@ jcmsplugin.inforoutes.api.traficEventParams: traficevents?filter=
 jcmsplugin.inforoute.pattern.jsondate: yyyy-MM-dd'T'hh:mm:ss Z
 jcmsplugin.inforoute.pattern.showndate: dd/MM/yyyy
 jcmsplugin.inforoute.pattern.shownhour: hh'h'MM
+jcmsplugin.inforoute.api.filtre.encours: en cours
 
 jcmsplugin.inforoutes.api.params.tous: Tous
 jcmsplugin.inforoute.api.params.pt-st-nazaire: Pont%20de%20Saint-Nazaire
+jcmsplugin.inforoute.api.params.bac-loire-basse-indre: Bac%20de%20Loire%20Basse-Indre%20-%20Indret
+jcmsplugin.inforoute.api.params.bac-loire-coueron: Bac%20de%20Loire%20Coueron%20-%20Le%20Pellerin
 
 # ----------------------------------------------------------------------
 # Propriétés éditables bacs de Loire
