@@ -362,6 +362,7 @@ jcmsplugin.inforoute.minimum.trafic.dense: Temps en minutes min. pour considére
 
 # Labels communs
 jcmsplugin.inforoutes.evenements-en-cours: Les événements en cours
+jcmsplugin.inforoutes.evenements-en-cours.title: Les événements en cours : {0}
 jcmsplugin.inforoutes.evenements-a-venir: Les événements à venir
 jcmsplugin.inforoutes.evenements-aucun: Aucun événement
 jcmsplugin.inforoutes.type: Type
@@ -369,6 +370,7 @@ jcmsplugin.inforoutes.lieu: Lieu
 jcmsplugin.inforoutes.date: Date(s)
 jcmsplugin.inforoutes.conditions-circulation: Conditions de circulation
 jcmsplugin.inforoutes.date-maj: Publication / Mise à jour
+jcmsplugin.inforoutes.date-maj.display: Le {0} à {1}
 
 # Messages d'erreur
 jcmsplugin.inforoutes.erreur.bacs-horaires : Les horaires sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.

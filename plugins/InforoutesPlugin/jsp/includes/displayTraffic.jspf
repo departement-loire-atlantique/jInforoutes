@@ -10,11 +10,11 @@ String imgBToA = "";
 String lblTimeBToA = "";
 
 // déterminer le label / l'image du premier -> de A à B
-if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsn_densite_limite_fluide())) {
+if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteFluide())) {
     // fluide
     lblInfoAToB = glp("jcmsplugin.inforoute.fluide");
     imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
-} else if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsn_densite_limite_dense())) {
+} else if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteDense())) {
     // dense
     lblInfoAToB = glp("jcmsplugin.inforoute.dense");
     imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
@@ -27,11 +27,11 @@ if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams
 lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugin.inforoute.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_certe() + " " + glp("msg.tag.duration.minutes");
 
 //déterminer le label / l'image du premier -> de B à A
-if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsn_densite_limite_fluide())) {
+if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteFluide())) {
  // fluide
  lblBToA = glp("jcmsplugin.inforoute.fluide");
  imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
-} else if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsn_densite_limite_dense())) {
+} else if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteDense())) {
  // dense
  lblBToA = glp("jcmsplugin.inforoute.dense");
  imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
