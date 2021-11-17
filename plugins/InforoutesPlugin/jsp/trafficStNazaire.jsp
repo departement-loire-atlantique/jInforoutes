@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.TraficParametersDTO"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.PsnCalendrierDTO"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.EvenementDTO"%>
