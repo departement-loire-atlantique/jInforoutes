@@ -56,7 +56,7 @@ public final class InforoutesUtils {
   public static List<EvenementDTO> filterEvenementDtoEnCours(List<EvenementDTO> listEvents) {
       for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
           EvenementDTO itEvent = iter.next();
-          if (!channel.getProperty("jcmsplugin.inforoute.api.filtre.encours").equals(itEvent.getStatut())) {
+          if (!channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
               iter.remove();
           }
       }
@@ -71,7 +71,7 @@ public final class InforoutesUtils {
   public static List<EvenementDTO> filterEvenementDtoAVenir(List<EvenementDTO> listEvents) {
       for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
           EvenementDTO itEvent = iter.next();
-          if (channel.getProperty("jcmsplugin.inforoute.api.filtre.encours").equals(itEvent.getStatut())) {
+          if (channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
               iter.remove();
           }
       }
