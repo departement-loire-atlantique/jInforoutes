@@ -1,51 +1,52 @@
 <%@page import="fr.cg44.plugin.inforoutes.InforoutesUtils"%>
 <%
-SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.jsondate"));
-SimpleDateFormat sdfShownDate = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.showndate"));
-SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.shownhour"));
+SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.jsondate"));
+SimpleDateFormat sdfShownDate = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.showndate"));
+SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.shownhour"));
+boolean isAVenir = Util.notEmpty(request.getAttribute("eventsAVenir")) ? (Boolean) request.getAttribute("eventsAVenir") : false;
 %>
-<jalios:select>
-    <jalios:if predicate="<%= Util.notEmpty(traficEvents) %>">
 	<div class="grid-12-small-1">
 	   <div class="col-12">
-	      <h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoutes.evenements-en-cours") %></h2>
-	      <table class="inforoutes">
-	         <caption class="visually-hidden"><%= glp("jcmsplugin.inforoutes.evenements-en-cours.title", paramNameTableau) %></caption>
-	         <thead>
-	            <tr>
-	               <th colspan="2" scope="col"><%= glp("jcmsplugin.inforoutes.type") %></th>
-	               <th scope="col"><%= glp("jcmsplugin.inforoutes.lieu") %></th>
-	               <th scope="col"><%= glp("jcmsplugin.inforoutes.date") %></th>
-	               <th scope="col"><%= glp("jcmsplugin.inforoutes.conditions-circulation") %>n</th>
-	               <th scope="col"><%= glp("jcmsplugin.inforoutes.date-maj") %></th>
-	            </tr>
-	         </thead>
-	         <tbody>
-	            <jalios:foreach collection="<%= traficEvents %>" type="fr.cg44.plugin.inforoutes.dto.EvenementDTO" name="itEvent">
-		            <%
-		            Date itDate = sdfJson.parse(itEvent.getDatePublication());
-		            %>
-		            <tr>
-		               <td><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEvent.getNature()) %>" aria-hidden="true"></i></td>
-		               <td><span><%= itEvent.getType() %></span></td>
-		               <td>
-		                  <p><%= itEvent.getLigne2() %></p>
-		                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne3()) && !"null".equals(itEvent.getLigne3()) %>'><p><%= itEvent.getLigne3() %></p></jalios:if>
-		               </td>
-		               <td>
-		                  <p><%= itEvent.getLigne4() %></p>
-		                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne5()) && !"null".equals(itEvent.getLigne5()) %>'><p><%= itEvent.getLigne5() %></p></jalios:if>
-		               </td>
-		               <td><%= itEvent.getLigne1() %></td>
-		               <td><%= glp("jcmsplugin.inforoutes.date-maj.display", sdfShownDate.format(itDate), sdfShownHour.format(itDate)) %></td>
-		            </tr>
-	            </jalios:foreach>
-	         </tbody>
-	      </table>
+	      <h2 class="h2-like h2-like--mobileSize"><%= !isAVenir ? glp("jcmsplugin.inforoutes.evenements-en-cours") : glp("jcmsplugin.inforoutes.evenements-a-venir")  %></h2>
+	      <jalios:select>
+		      <jalios:if predicate="<%= Util.notEmpty(traficEvents) %>">
+			      <table class="inforoutes">
+			         <caption class="visually-hidden"><%= !isAVenir ? glp("jcmsplugin.inforoutes.evenements-en-cours.title", paramNameTableau) : glp("jcmsplugin.inforoutes.evenements-a-venir.title", paramNameTableau) %></caption>
+			         <thead>
+			            <tr>
+			               <th colspan="2" scope="col"><%= glp("jcmsplugin.inforoutes.type") %></th>
+			               <th scope="col"><%= glp("jcmsplugin.inforoutes.lieu") %></th>
+			               <th scope="col"><%= glp("jcmsplugin.inforoutes.date") %></th>
+			               <th scope="col"><%= glp("jcmsplugin.inforoutes.conditions-circulation") %></th>
+			               <th scope="col"><%= glp("jcmsplugin.inforoutes.date-maj") %></th>
+			            </tr>
+			         </thead>
+			         <tbody>
+			            <jalios:foreach collection="<%= traficEvents %>" type="fr.cg44.plugin.inforoutes.dto.EvenementDTO" name="itEvent">
+				            <%
+				            Date itDate = sdfJson.parse(itEvent.getDatePublication());
+				            %>
+				            <tr>
+				               <td><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEvent.getNature()) %>" aria-hidden="true"></i></td>
+				               <td><span><%= itEvent.getType() %></span></td>
+				               <td>
+				                  <p><%= itEvent.getLigne2() %></p>
+				                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne3()) && !"null".equals(itEvent.getLigne3()) %>'><p><%= itEvent.getLigne3() %></p></jalios:if>
+				               </td>
+				               <td>
+				                  <p><%= itEvent.getLigne4() %></p>
+				                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne5()) && !"null".equals(itEvent.getLigne5()) %>'><p><%= itEvent.getLigne5() %></p></jalios:if>
+				               </td>
+				               <td><%= itEvent.getLigne1() %></td>
+				               <td><%= glp("jcmsplugin.inforoutes.date-maj.display", sdfShownDate.format(itDate), sdfShownHour.format(itDate)) %></td>
+				            </tr>
+			            </jalios:foreach>
+			         </tbody>
+			      </table>
+		      </jalios:if>
+		      <jalios:default>
+		       <p><%= glp("jcmsplugin.inforoutes.rienasignaler") %></p>
+		      </jalios:default>
+          </jalios:select>
 	   </div>
 	</div>
-	</jalios:if>
-	<jalios:default>
-	   <p><%= glp("jcmsplugin.inforoute.rienasignaler") %></p>
-	</jalios:default>
-</jalios:select>

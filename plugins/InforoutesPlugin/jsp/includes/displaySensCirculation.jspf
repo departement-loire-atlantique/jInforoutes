@@ -1,13 +1,13 @@
-<h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoute.senscirculation") %></h2>
+<h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoutes.senscirculation") %></h2>
 
 <section class="ds44-mtb3">
-    <h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoute.encours") %></h3>
+    <h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.encours") %></h3>
     <jalios:select>
         <jalios:if predicate="<%= Util.notEmpty(psnStatut.getCode_current_mode()) %>">
             <section class="ds44-card ds44-card--horizontal--inforoutes">
 		        <div class="ds44-flex-container ds44-flex-valign-center">
 		            <div class="ds44-card__section--horizontal--img">
-		                <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre"> <img src='<%= channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") %><%= psnStatut.getCode_current_mode().toLowerCase() %>.svg' alt="" class="ds44-imgRatio"> </picture>
+		                <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre"> <img src='<%= channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") %><%= psnStatut.getCode_current_mode().toLowerCase() %>.svg' alt="" class="ds44-imgRatio"> </picture>
 		            </div>
 		            <div class="ds44-card__section--horizontal">
 		                <p class=""><%= psnStatut.getLib_current_mode() %></p>
@@ -16,26 +16,26 @@
 		    </section>
         </jalios:if>
         <jalios:default>
-            <p><%= glp("jcmsplugin.inforoute.rienasignaler") %></p>
+            <p><%= glp("jcmsplugin.inforoutes.rienasignaler") %></p>
         </jalios:default>
     </jalios:select>
     
 </section>
 
 <section class="ds44-mtb3">
-    <h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoute.avenir") %></h3>
+    <h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.avenir") %></h3>
     <jalios:select>
         <jalios:if predicate="<%= Util.notEmpty(psnStatut.getNext_mode()) %>">
             <jalios:foreach name="itPsnCalendrier" type="PsnCalendrierDTO" collection="<%= psnStatut.getNext_mode() %>">
                 <section class="ds44-card ds44-card--horizontal--inforoutes">
 			        <div class="ds44-flex-container ds44-flex-valign-center">
 			            <div class="ds44-card__section--horizontal--img">
-			                <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre"> <img src='<%= channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") %><%= itPsnCalendrier.getCode_mode().toLowerCase() %>.svg' alt="" class="ds44-imgRatio"> </picture>
+			                <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre"> <img src='<%= channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") %><%= itPsnCalendrier.getCode_mode().toLowerCase() %>.svg' alt="" class="ds44-imgRatio"> </picture>
 			            </div>
 			            <div class="ds44-card__section--horizontal"><%
 			                
-			                SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.jsondate"));
-			                SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.shownhour"));
+			                SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.jsondate"));
+			                SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.shownhour"));
 			                Date itDate = sdfJson.parse(itPsnCalendrier.getFrom());
 			                
 			                %><p role="heading" "aria-level="4 " class="h4-like "><%= sdfShownHour.format(itDate) %></p>
@@ -46,7 +46,7 @@
             </jalios:foreach>
         </jalios:if>
         <jalios:default>
-            <p><%= glp("jcmsplugin.inforoute.rienasignaler") %></p>
+            <p><%= glp("jcmsplugin.inforoutes.rienasignaler") %></p>
         </jalios:default>
     </jalios:select>
 </section>

@@ -4,8 +4,9 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%
 
-String paramNameTableau = channel.getProperty("jcmsplugin.inforoutes.api.params.pt-st-nazaire");
+String paramNameTableau = channel.getProperty("jcmsplugin.inforoutes.api.params.bac-loire-coueron");
 List<EvenementDTO> traficEvents = InforoutesApiRequestManager.getTraficEvents(paramNameTableau);
+traficEvents = InforoutesUtils.filterEvenementDtoEnCours(traficEvents);
 %>
 
 <%@ include file="./includes/displayTableauEvents.jspf" %>

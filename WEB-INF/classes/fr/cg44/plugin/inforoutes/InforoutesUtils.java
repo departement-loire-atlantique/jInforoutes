@@ -1,8 +1,13 @@
 package fr.cg44.plugin.inforoutes;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.jalios.jcms.Channel;
+
+import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
 
 public final class InforoutesUtils {
 	private static Channel channel = Channel.getChannel();
@@ -43,6 +48,34 @@ public final class InforoutesUtils {
     return classeCss;
   }	
 
-	
+  /**
+   * Retourne une liste nettoyée des événements inforoutes qui ne sont pas en cours
+   * @param listEvents
+   * @return
+   */
+  public static List<EvenementDTO> filterEvenementDtoEnCours(List<EvenementDTO> listEvents) {
+      for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
+          EvenementDTO itEvent = iter.next();
+          if (!channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
+              iter.remove();
+          }
+      }
+      return listEvents;
+  }
+  
+  /**
+   * Retourne une liste nettoyée des événements inforoutes qui sont en cours
+   * @param listEvents
+   * @return
+   */
+  public static List<EvenementDTO> filterEvenementDtoAVenir(List<EvenementDTO> listEvents) {
+      for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
+          EvenementDTO itEvent = iter.next();
+          if (channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
+              iter.remove();
+          }
+      }
+      return listEvents;
+  }
   
 }

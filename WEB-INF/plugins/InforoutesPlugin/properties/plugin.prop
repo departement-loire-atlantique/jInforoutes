@@ -253,10 +253,10 @@ fr.cg44.plugin.newsletter.groupe.pointroutes.name: 1 - Point routes
 
 
 
-jcmsplugin.inforoute.designsystem.svg.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/
-jcmsplugin.inforoute.designsystem.svg.icon.fluide: car.svg
-jcmsplugin.inforoute.designsystem.svg.icon.dense: cars.svg
-jcmsplugin.inforoute.designsystem.svg.icon.sature: cars.svg
+jcmsplugin.inforoutes.designsystem.svg.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/
+jcmsplugin.inforoutes.designsystem.svg.icon.fluide: car.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.dense: cars.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.sature: cars.svg
 
 # ----------------------------------------------------------------------
 # Propriétés éditables API
@@ -271,12 +271,15 @@ jcmsplugin.inforoutes.api.root: https://rec-api.loire-atlantique.fr/opendata/1.0
 jcmsplugin.inforoutes.api.psnstatus: psnstatus
 jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fluide&id=psn_densite_limite_dense&id=bacs_horaires
 jcmsplugin.inforoutes.api.traficEventParams: traficevents?filter=
-jcmsplugin.inforoute.pattern.jsondate: yyyy-MM-dd'T'hh:mm:ss Z
-jcmsplugin.inforoute.pattern.showndate: dd/MM/yyyy
-jcmsplugin.inforoute.pattern.shownhour: hh'h'MM
+jcmsplugin.inforoutes.pattern.jsondate: yyyy-MM-dd'T'hh:mm:ss Z
+jcmsplugin.inforoutes.pattern.showndate: dd/MM/yyyy
+jcmsplugin.inforoutes.pattern.shownhour: hh'h'MM
+jcmsplugin.inforoutes.api.filtre.encours: en cours
 
 jcmsplugin.inforoutes.api.params.tous: Tous
-jcmsplugin.inforoute.api.params.pt-st-nazaire: Pont%20de%20Saint-Nazaire
+jcmsplugin.inforoutes.api.params.pt-st-nazaire: Pont%20de%20Saint-Nazaire
+jcmsplugin.inforoutes.api.params.bac-loire-basse-indre: Bac%20de%20Loire%20Basse-Indre%20-%20Indret
+jcmsplugin.inforoutes.api.params.bac-loire-coueron: Bac%20de%20Loire%20Coueron%20-%20Le%20Pellerin
 
 # ----------------------------------------------------------------------
 # Propriétés éditables bacs de Loire
