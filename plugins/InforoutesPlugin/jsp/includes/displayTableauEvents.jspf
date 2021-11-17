@@ -1,8 +1,8 @@
 <%@page import="fr.cg44.plugin.inforoutes.InforoutesUtils"%>
 <%
-SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.jsondate"));
-SimpleDateFormat sdfShownDate = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.showndate"));
-SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoute.pattern.shownhour"));
+SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.jsondate"));
+SimpleDateFormat sdfShownDate = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.showndate"));
+SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.shownhour"));
 boolean isAVenir = Util.notEmpty(request.getAttribute("eventsAVenir")) ? (Boolean) request.getAttribute("eventsAVenir") : false;
 %>
 	<div class="grid-12-small-1">
@@ -45,7 +45,7 @@ boolean isAVenir = Util.notEmpty(request.getAttribute("eventsAVenir")) ? (Boolea
 			      </table>
 		      </jalios:if>
 		      <jalios:default>
-		       <p><%= glp("jcmsplugin.inforoute.rienasignaler") %></p>
+		       <p><%= glp("jcmsplugin.inforoutes.rienasignaler") %></p>
 		      </jalios:default>
           </jalios:select>
 	   </div>

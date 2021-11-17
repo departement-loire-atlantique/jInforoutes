@@ -12,43 +12,43 @@ String lblTimeBToA = "";
 // déterminer le label / l'image du premier -> de A à B
 if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteFluide())) {
     // fluide
-    lblInfoAToB = glp("jcmsplugin.inforoute.fluide");
-    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
+    lblInfoAToB = glp("jcmsplugin.inforoutes.fluide");
+    imgAToB = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.fluide");
 } else if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteDense())) {
     // dense
-    lblInfoAToB = glp("jcmsplugin.inforoute.dense");
-    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
+    lblInfoAToB = glp("jcmsplugin.inforoutes.dense");
+    imgAToB = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.dense");
 } else {
     // saturé
-    lblInfoAToB = glp("jcmsplugin.inforoute.sature");
-    imgAToB = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.sature");
+    lblInfoAToB = glp("jcmsplugin.inforoutes.sature");
+    imgAToB = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.sature");
 }
 
-lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugin.inforoute.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_certe() + " " + glp("msg.tag.duration.minutes");
+lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugin.inforoutes.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_certe() + " " + glp("msg.tag.duration.minutes");
 
 //déterminer le label / l'image du premier -> de B à A
 if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteFluide())) {
  // fluide
- lblBToA = glp("jcmsplugin.inforoute.fluide");
- imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.fluide");
+ lblBToA = glp("jcmsplugin.inforoutes.fluide");
+ imgBToA = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.fluide");
 } else if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteDense())) {
  // dense
- lblBToA = glp("jcmsplugin.inforoute.dense");
- imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.dense");
+ lblBToA = glp("jcmsplugin.inforoutes.dense");
+ imgBToA = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.dense");
 } else {
  // saturé
- lblBToA = glp("jcmsplugin.inforoute.sature");
- imgBToA = channel.getProperty("jcmsplugin.inforoute.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoute.designsystem.svg.icon.sature");
+ lblBToA = glp("jcmsplugin.inforoutes.sature");
+ imgBToA = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.sature");
 }
 
-lblTimeBToA = Integer.parseInt(psnStatut.getTime_st_brevin()) >= 20 ? glp("jcmsplugin.inforoute.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_st_brevin() + " " + glp("msg.tag.duration.minutes");
+lblTimeBToA = Integer.parseInt(psnStatut.getTime_st_brevin()) >= 20 ? glp("jcmsplugin.inforoutes.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_st_brevin() + " " + glp("msg.tag.duration.minutes");
 
 %>
 
-<h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoute.trafic") %></h2>
+<h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoutes.trafic") %></h2>
 
 <section class="ds44-mtb3">
-   <h3 class="h5-like ds44-mb1" role="heading"><%= lblCityA %><span aria-hidden="true"> &gt; <span class="visually-hidden"><%= glp("jcmsplugin.inforoute.vers") %></span></span><%= lblCityB %></h3>
+   <h3 class="h5-like ds44-mb1" role="heading"><%= lblCityA %><span aria-hidden="true"> &gt; <span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.vers") %></span></span><%= lblCityB %></h3>
    <section class="ds44-card ds44-card--horizontal--inforoutes">
       <div class="ds44-flex-container ds44-flex-valign-center">
          <div class="ds44-card__section--horizontal--img">

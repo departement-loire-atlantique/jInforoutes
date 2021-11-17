@@ -3,7 +3,7 @@
 <%@ include file='/jcore/doInitPage.jspf' %>
 <%
 
-String paramNameTableau = channel.getProperty("jcmsplugin.inforoute.api.params.pt-st-nazaire");
+String paramNameTableau = channel.getProperty("jcmsplugin.inforoutes.api.params.pt-st-nazaire");
 List<EvenementDTO> traficEvents = InforoutesApiRequestManager.getTraficEvents(paramNameTableau);
 %>
 
