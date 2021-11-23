@@ -1,0 +1,26 @@
+{
+  "psn_densite_limite_fluide": "7",
+  "psn_densite_limite_dense": "14",
+  "bacs_horaires": {
+    "liaison1": {
+      "from": "Basse-Indre",
+      "to": "Indret",
+      "from_first": "5h30",
+      "from_last": "22h30",
+      "from_period": "puis toutes les 15 minutes...",
+      "from_message": "",
+      "to_first": "5h35",
+      "to_last": "22h35"
+    },
+    "liaison2": {
+      "from": "Couëron",
+      "to": "Le Pellerin",
+      "from_first": "6h30",
+      "from_last": "20h30 ou 21h20*",
+      "from_period": "puis toutes les 20 minutes...",
+      "from_message": "* seulement les dimanches et jours fériés du 15 juin au 15 septembre.",
+      "to_first": "6h20",
+      "to_last": "20h20 ou 21h20*"
+    }
+  }
+}
