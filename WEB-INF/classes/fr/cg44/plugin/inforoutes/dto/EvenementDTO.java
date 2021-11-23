@@ -1,6 +1,7 @@
 package fr.cg44.plugin.inforoutes.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
@@ -132,10 +133,12 @@ public class EvenementDTO {
 		this.nature = nature;
 	}
 
+	@JsonProperty("informationcomplementaire")
 	public String getInformationComplementaire() {
 		return informationComplementaire;
 	}
 
+	@JsonProperty("informationcomplementaire")
 	public void setInformationComplementaire(String informationComplementaire) {
 		this.informationComplementaire = informationComplementaire;
 	}

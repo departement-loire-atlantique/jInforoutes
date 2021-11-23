@@ -103,6 +103,7 @@
     <directory path="docs" />
     <directory path="jsp" />
     <directory path="nad" />
+    <directory path="mock" />
   </public-files>
 </plugin>
 
