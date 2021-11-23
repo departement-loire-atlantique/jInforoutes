@@ -101,10 +101,11 @@ catch(Exception e){
 		                <p><%= glp("jcmsplugin.inforoutes.premier-depart-soustitre", from) %></p>
 						<p role="heading" class="h3-like"><%= from_last %></p>
 					</div>
-					<div
-						class="ds44-card__section--horizontal ds44-bacs-info ds44-center no-img">
-						<p class="p-light"><%= from_message %></p>
-					</div>
+					<jalios:if predicate='<%= Util.notEmpty(from_message) %>'>
+						<div class="ds44-card__section--horizontal ds44-bacs-info ds44-center no-img">
+							<p class="p-light"><%= from_message %></p>
+						</div>
+					</jalios:if>
 				</div>
 			</section>
 		    <section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
@@ -113,10 +114,11 @@ catch(Exception e){
 		                <p><%= glp("jcmsplugin.inforoutes.premier-depart-soustitre", to) %></p>
 		                <p role="heading" class="h3-like"><%= to_last %></p>
 		            </div>
-		            <div
-		                class="ds44-card__section--horizontal ds44-bacs-info ds44-center no-img">
-		                <p class="p-light"><%= from_message %></p>
-		            </div>
+		            <jalios:if predicate='<%= Util.notEmpty(from_message) %>'>
+			            <div class="ds44-card__section--horizontal ds44-bacs-info ds44-center no-img">
+			                <p class="p-light"><%= from_message %></p>
+			            </div>
+		            </jalios:if>
 		        </div>
 		    </section>	
 		</section>
