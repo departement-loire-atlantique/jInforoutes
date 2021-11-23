@@ -1,0 +1,72 @@
+[
+   {
+      "identifiant":"E163159973533555486_1pcroute163159973531155986",
+      "datePublication":"23-11-2021T07:57:10 +0100",
+      "ligne1":"Nettoyage de la chaussée",
+      "ligne2":"D213 - Guérande",
+      "ligne3":"La Baule-Escoublac vers Guérande",
+      "ligne4":"Du 03/11/2020 au 05/11/2020",
+      "rattachement":"Pont de Saint-Nazaire",
+      "nature":"Autre danger",
+      "type":"Obstacle sur la chaussée",
+      "statut":"à venir",
+      "longitude":"-1.632145142752971",
+      "latitude":"47.16343617800782"
+   },
+   {
+      "identifiant":"E163159973533555486_1pcroute163159973531155986",
+      "datePublication":"23-11-2021T07:57:10 +0100",
+      "ligne1":"Nettoyage de la chaussée",
+      "ligne2":"D213 - Guérande",
+      "ligne3":"La Baule-Escoublac vers Guérande",
+      "ligne4":"Du 03/11/2020 au 05/11/2020",
+      "rattachement":"Pont de Saint-Nazaire",
+      "nature":"Chantier",
+      "type":"Obstacle sur la chaussée",
+      "statut":"à venir",
+      "longitude":"-1.632145142752971",
+      "latitude":"47.16343617800782"
+   },
+   {
+      "identifiant":"E163159973533555486_1pcroute163159973531155986",
+      "datePublication":"23-11-2021T07:57:10 +0100",
+      "ligne1":"Nettoyage de la chaussée",
+      "ligne2":"D213 - Guérande",
+      "ligne3":"La Baule-Escoublac vers Guérande",
+      "ligne4":"Du 03/11/2020 au 05/11/2020",
+      "rattachement":"Pont de Saint-Nazaire",
+      "nature":"Déviation",
+      "type":"Obstacle sur la chaussée",
+      "statut":"à venir",
+      "longitude":"-1.632145142752971",
+      "latitude":"47.16343617800782"
+   },
+   {
+      "identifiant":"E163159973533555486_1pcroute163159973531155986",
+      "datePublication":"23-11-2021T07:57:10 +0100",
+      "ligne1":"Nettoyage de la chaussée",
+      "ligne2":"D213 - Guérande",
+      "ligne3":"La Baule-Escoublac vers Guérande",
+      "ligne4":"Du 03/11/2020 au 05/11/2020",
+      "rattachement":"Pont de Saint-Nazaire",
+      "nature":"Accident",
+      "type":"Obstacle sur la chaussée",
+      "statut":"à venir",
+      "longitude":"-1.632145142752971",
+      "latitude":"47.16343617800782"
+   },
+   {
+      "identifiant":"E163159973533555486_1pcroute163159973531155986",
+      "datePublication":"23-11-2021T07:57:10 +0100",
+      "ligne1":"Nettoyage de la chaussée",
+      "ligne2":"D213 - Guérande",
+      "ligne3":"La Baule-Escoublac vers Guérande",
+      "ligne4":"Du 03/11/2020 au 05/11/2020",
+      "rattachement":"Pont de Saint-Nazaire",
+      "nature":"Bouchon",
+      "type":"Obstacle sur la chaussée",
+      "statut":"à venir",
+      "longitude":"-1.632145142752971",
+      "latitude":"47.16343617800782"
+   }
+]

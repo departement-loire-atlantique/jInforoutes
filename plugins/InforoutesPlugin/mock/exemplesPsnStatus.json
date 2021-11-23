@@ -1,0 +1,18 @@
+{
+   "code_current_mode":"M122",
+   "lib_current_mode":"2 voies sens Saint-Brevin - Saint-Nazaire",
+   "next_mode":[
+      {
+         "code_mode":"M221",
+         "lib_mode":"2 voies sens St Brevin / St Nazaire",
+         "from":"2021-11-23T12:30:00 +0100"
+      },
+      {
+         "code_mode":"M012",
+         "lib_mode":"Voie Mer fermée – accès nord par Gron dévié",
+         "from":"2021-11-23T06:30:00 +0100"
+      }
+   ],
+   "TIME-STBREVIN-CERTE":"5",
+   "TIME-CERTE-STBREVIN":"35"
+}
