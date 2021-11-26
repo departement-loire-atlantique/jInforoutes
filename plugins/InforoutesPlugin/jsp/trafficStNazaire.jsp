@@ -9,9 +9,6 @@
 
 PsnStatutDTO psnStatut = InforoutesApiRequestManager.getPsnStatut();
 TraficParametersDTO traficParams = InforoutesApiRequestManager.getTraficParameters();
-
-System.out.println(traficParams);
-
 String lblCityA = glp("jcmsplugin.inforoutes.stnazaire");
 String lblCityB = glp("jcmsplugin.inforoutes.stbrevin");
 %>
