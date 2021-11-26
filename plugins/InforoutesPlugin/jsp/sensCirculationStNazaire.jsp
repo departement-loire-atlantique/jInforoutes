@@ -9,5 +9,11 @@
 PsnStatutDTO psnStatut = InforoutesApiRequestManager.getPsnStatut();
 
 %>
-
-<%@ include file="./includes/displaySensCirculation.jspf" %>
+<jalios:select>
+	<jalios:if predicate="<%= Util.isEmpty(psnStatut) %>">
+	   <p><%= glp("jcmsplugin.inforoutes.erreur.senscirculation") %></p>
+	</jalios:if>
+	<jalios:default>
+	   <%@ include file="./includes/displaySensCirculation.jspf" %>
+	</jalios:default>
+</jalios:select>
