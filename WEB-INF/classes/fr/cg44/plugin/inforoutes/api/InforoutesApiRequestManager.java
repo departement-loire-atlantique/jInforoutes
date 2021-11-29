@@ -15,6 +15,7 @@ import com.jalios.jcms.Channel;
 import com.jalios.jcms.Publication;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.inforoutes.InforoutesUtils;
 import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
 import fr.cg44.plugin.inforoutes.dto.TraficParametersDTO;
@@ -169,6 +170,7 @@ public class InforoutesApiRequestManager {
       // Cas particulier pour le type de contenu Contact
 
       jsonMetaObject.addProperty("type", event.getClass().getSimpleName());
+      jsonMetaObject.addProperty("icon_marker", InforoutesUtils.getNatureParam(""));
       jsonMetaObject.addProperty("lat", event.getLatitude());
       jsonMetaObject.addProperty("long", event.getLongitude());
       if(Util.notEmpty(pubListGabarit)) {
