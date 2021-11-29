@@ -45,11 +45,11 @@ public final class InforoutesUtils {
   }
   
   /**
-   * Renvoie le nom de la prop associée à une nature
+   * Renvoie le suffixe du nom de la prop associée à une nature
    * @param nature
    * @return
    */
-  private static String getNatureParam(String nature) {
+  public static String getNatureParam(String nature) {
       if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.nature.accident"))) {
           return "accident";
       } else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.nature.autres"))) {
@@ -71,12 +71,12 @@ public final class InforoutesUtils {
   }
   
   /**
-   * Renvoie la valeur d'une propriété liée à 
+   * Renvoie la valeur d'une propriété liée à une nature
    * @param type
    * @param nature
    * @return
    */
-  private static String getNatureValue(String type, String nature) {
+  public static String getNatureValue(String type, String nature) {
       return channel.getProperty("jcmsplugin.inforoutes.evenement.nature." + type + "." + nature);
   }
 
