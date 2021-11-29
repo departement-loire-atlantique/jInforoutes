@@ -12,6 +12,7 @@
 
   <types>
     <type name="ModeleNewsletter"></type>
+    <type name="PortletRechercheInforoutes" />
     
     <!-- Anciens types à reprendre pour V1 -->
     <type name="Alerte"></type>
@@ -22,6 +23,15 @@
     <type name="RouteEvenement" />
     <type name="RouteEvenementAlerte" />  
     <type name="PSNSens" />
+    
+    
+    <templates type="PortletRechercheInforoutes">
+      <template name="default" file="doPortletRechercheInforoutesBoxDisplay.jsp" usage='box'>
+        <label xml:lang="fr">DS44 : gabarit générique simple</label>
+      </template>
+    </templates>
+    
+    
     
     <!-- Anciens types à reprendre pour V1 -->
     <templates type="PortletQueryForeach">

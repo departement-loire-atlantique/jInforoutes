@@ -1,7 +1,7 @@
 <%@page import="fr.cg44.plugin.inforoutes.dto.EvenementDTO"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
-<%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
+%><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%
 
 EvenementDTO itEventDto = null;

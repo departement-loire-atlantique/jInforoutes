@@ -1,6 +1,8 @@
 package fr.cg44.plugin.inforoutes.api;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,13 +10,18 @@ import org.json.JSONArray;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.Publication;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
 import fr.cg44.plugin.inforoutes.dto.TraficParametersDTO;
 import fr.cg44.plugin.socle.ApiUtil;
+import generated.Canton;
+import generated.Contact;
+import generated.Lien;
 
 public class InforoutesApiRequestManager {
     
@@ -118,6 +125,7 @@ public class InforoutesApiRequestManager {
     public static TraficParametersDTO getTraficParameters() {
         return (TraficParametersDTO) getObjectFromJson(TraficParametersDTO.class, baseUrl + suffixTraficParameters);
     }
+
     
     /**
      * Renvoie une liste d'objets Evenement (inforoute) à partir du JSON fourni par l'API Inforoute
@@ -136,5 +144,42 @@ public class InforoutesApiRequestManager {
     public static List<EvenementDTO> getTraficEvents(String param) {       
         return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO.class, baseUrl + suffixTraficEventParameters + param);
     }
+    
+    
+    /**
+     * Transforme un objet event en json pour la recherche à facette
+     * @param event
+     * @param pubListGabarit
+     * @param pubMarkerGabarit
+     * @param pubFullGabarit
+     * @return
+     */
+    public static JsonObject eventToJsonObject(EvenementDTO event, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+      JsonObject jsonObject = new JsonObject();
+
+
+      jsonObject.addProperty("value", event.getLigne1());
+      if(Util.notEmpty(pubFullGabarit)) {
+        jsonObject.addProperty("content_html", pubFullGabarit);
+      }
+      JsonObject jsonMetaObject = new JsonObject();
+
+      jsonObject.addProperty("id", event.getIdentifiant());
+      //jsonMetaObject.addProperty("url", url);
+      // Cas particulier pour le type de contenu Contact
+
+      jsonMetaObject.addProperty("type", event.getClass().getSimpleName());
+      jsonMetaObject.addProperty("lat", event.getLatitude());
+      jsonMetaObject.addProperty("long", event.getLongitude());
+      if(Util.notEmpty(pubListGabarit)) {
+        jsonMetaObject.addProperty("html_list", pubListGabarit);
+      }
+      if(Util.notEmpty(pubMarkerGabarit)) {
+        jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
+      }   
+      jsonObject.add("metadata", jsonMetaObject);
+      return jsonObject;
+    }
+    
     
 }
