@@ -114,6 +114,7 @@
     <directory path="jsp" />
     <directory path="nad" />
     <directory path="mock" />
+    <file path="types/PortletRechercheInforoutes/displayResultInforoutes.jsp" />
   </public-files>
 </plugin>
 
