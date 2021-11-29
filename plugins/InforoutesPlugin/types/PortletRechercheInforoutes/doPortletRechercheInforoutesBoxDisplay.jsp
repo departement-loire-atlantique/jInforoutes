@@ -158,7 +158,7 @@ isInRechercheFacette = isInRechercheFacette || true;
    
    <div class="ds44-mapResults">
        <div class="ds44-mapResults-container">
-           <div class="ds44-js-map" 
+           <div class="ds44-js-map"
                  data-geojson-url='<%= channel.getProperty("jcmsplugin.socle.recherche.geojson.departement.url") %>'
                  data-geojson-mode='<%= "static" %>' 
                 ></div>
@@ -166,9 +166,29 @@ isInRechercheFacette = isInRechercheFacette || true;
 <%--            <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view"> --%>
 <%--                <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i> --%>
 <!--            </button> -->
+			    <button data-js="ds44-modal" data-target="#overlay-map" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("monitoring.chart.legend")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert">
+			         <i class="icon icon-help icon--large" aria-hidden="true"></i>
+			    </button>
            
        </div>
     </div>
    
 </div> 
 
+<section class="ds44-modal-container" id="overlay-map" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+    <div class="ds44-modal-box">
+        <h1 id="overlay-title" class="h2-like visually-hidden" aria-hidden="true"><%= glp("jcmsplugin.socle.mosaique.popin.title") %></h1>
+        <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" 
+                title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.socle.mosaique.popin.title")) %>'
+                data-js="ds44-modal-action-close">
+            <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span>
+        </button>
+        <div class="ds44-modal-gab ds44-mt3">
+            <p><img src=''> Accident</p>
+            <p><img src=''> Accident</p>
+            <p><img src=''> Accident</p>
+            <p><img src=''> Accident</p>
+            <p><img src=''> Accident</p>
+        </div>
+    </div>
+</section>
