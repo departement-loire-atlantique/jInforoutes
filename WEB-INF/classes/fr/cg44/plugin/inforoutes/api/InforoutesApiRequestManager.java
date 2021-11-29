@@ -92,7 +92,7 @@ public class InforoutesApiRequestManager {
           }
           JSONArray itJsonArray = new JSONArray(jsonStr);
           for (int counter = 0; counter < itJsonArray.length(); counter++) {
-              returnedList.add(mapper.readValue(itJsonArray.getString(counter), clazz));  
+              returnedList.add(mapper.readValue(itJsonArray.getJSONObject(counter).toString(), clazz));  
           }
           return returnedList;
         } catch (Exception e) {
