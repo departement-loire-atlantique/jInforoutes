@@ -21,7 +21,7 @@ response.setContentType("application/json");
 // PortletAgendaInfolocale boxTmp = (PortletAgendaInfolocale) (channel.getPublication(request.getParameter("boxId"))).clone();  
 // PortletAgendaInfolocale box = new PortletAgendaInfolocale(boxTmp);
 
-List<EvenementDTO> allEvents = InforoutesApiRequestManager.getEvenement();
+List<EvenementDTO> allEvents = InforoutesApiRequestManager.getTraficEvents();
 
 
 
@@ -89,7 +89,7 @@ session.setAttribute("isSearchFacetLink", true);
     
     %><jalios:buffer name="itPubMarkerGabarit"><%
         request.setAttribute("itEventDTO", itEvent);
-        %><jsp:include page="/plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteCard.jsp" /><%
+        %><jsp:include page="/plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteMarker.jsp" /><%
     %></jalios:buffer>
     <%
     %><%     
