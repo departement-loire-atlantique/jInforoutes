@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalios.jcms.Channel;
+import com.jalios.util.Util;
 
 import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
@@ -62,7 +63,12 @@ public class InforoutesApiRequestManager {
       ObjectMapper mapper = new ObjectMapper();
       mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
       try {
-        return mapper.readValue(getDtoJsonStringFromApi(url), clazz);
+        String jsonStr = getDtoJsonStringFromApi(url);
+        if (Util.isEmpty(jsonStr) || "{}".equals(jsonStr)) {
+            LOGGER.warn("Warn sur getObjectFromJson -> objet vide retourné depuis URL " + url + " pour la classe " + clazz.getName());
+            return null;
+        }
+        return mapper.readValue(jsonStr, clazz);
       } catch (Exception e) {
         LOGGER.warn("Erreur sur getObjectFromJson pour classe " + clazz.getName() + " -> " + e.getMessage());
         return null;
@@ -80,9 +86,13 @@ public class InforoutesApiRequestManager {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
         try {
-          JSONArray itJsonArray = new JSONArray(getDtoJsonArrayStringFromApi(url));
+          String jsonStr = getDtoJsonArrayStringFromApi(url);
+          if (Util.isEmpty(jsonStr) || "[]".equals(jsonStr)) {
+              LOGGER.warn("Warn sur getObjectsFromJsonList -> objet vide retourné depuis URL " + url + " pour la classe " + clazz.getName());
+          }
+          JSONArray itJsonArray = new JSONArray(jsonStr);
           for (int counter = 0; counter < itJsonArray.length(); counter++) {
-              returnedList.add(mapper.readValue(itJsonArray.getString(counter), clazz));  
+              returnedList.add(mapper.readValue(itJsonArray.getJSONObject(counter).toString(), clazz));  
           }
           return returnedList;
         } catch (Exception e) {
