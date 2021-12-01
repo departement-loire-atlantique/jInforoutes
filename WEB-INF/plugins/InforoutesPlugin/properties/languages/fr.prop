@@ -374,6 +374,8 @@ jcmsplugin.inforoutes.date-maj: Publication / Mise à jour
 jcmsplugin.inforoutes.date-maj.display: Le {0} à {1}
 
 # Messages d'erreur
+jcmsplugin.inforoutes.erreur.trafic : Les informations trafic sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.
+jcmsplugin.inforoutes.erreur.senscirculation : Les informations sur la circulation sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.
 jcmsplugin.inforoutes.erreur.bacs-horaires : Les horaires sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.
 jcmsplugin.inforoutes.erreur.bacs-webcams : Les webcams sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.
 jcmsplugin.inforoutes.erreur.psn-webcam : La webcam est momentanément indisponible. Merci de bien vouloir essayer ultérieurement.

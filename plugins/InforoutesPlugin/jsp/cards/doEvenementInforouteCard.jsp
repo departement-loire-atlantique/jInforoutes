@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.inforoutes.InforoutesUtils"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.EvenementDTO"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
@@ -37,7 +38,7 @@ tag -> Type d'événement
 <section class='ds44-card ds44-card--horizontal <%= cssCard %>'>
    <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle"><i class="icon icon-attention ds44-icoInfoRoutes orangeFlag" aria-hidden="true"></i><a href="#" class="ds44-card__globalLink"><%= itEventDto.getLigne1() %></a></p>
+            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle"><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEventDto.getNature()) %>" aria-hidden="true"></i><a href="#" class="ds44-card__globalLink"><%= itEventDto.getLigne1() %></a></p>
             <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden">Position :</span>
             <%= itEventDto.getLigne2() %><jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne3()) %>"><br><%= itEventDto.getLigne3() %></jalios:if>
             </p>
