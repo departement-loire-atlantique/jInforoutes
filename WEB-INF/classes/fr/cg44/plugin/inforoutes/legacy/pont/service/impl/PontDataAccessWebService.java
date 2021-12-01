@@ -280,7 +280,7 @@ public class PontDataAccessWebService implements IDataAccessService, IFusionDoub
 	}
 
 	public boolean isServeurActif() throws Exception {
-	  /*
+	  
 		if (logger.isTraceEnabled()) {
 			logger.trace("isServeurActif() - start");
 		}
@@ -294,8 +294,7 @@ public class PontDataAccessWebService implements IDataAccessService, IFusionDoub
 			logger.trace("isServeurActif() - end - return value=" + returnValue);
 		}
 		return returnValue;
-		*/
-	  return false;
+		
 
 	}
 
