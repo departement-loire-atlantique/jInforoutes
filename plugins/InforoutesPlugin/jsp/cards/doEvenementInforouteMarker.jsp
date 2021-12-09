@@ -1,8 +1,8 @@
-<%@page import="fr.cg44.plugin.inforoutes.InforoutesUtils"%>
+<%@ include file='/jcore/doInitPage.jspf' %>
 <%@page import="fr.cg44.plugin.inforoutes.dto.EvenementDTO"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
-%><%@ include file='/jcore/doInitPage.jspf' %><%
+<%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%>
+<%@ include file='/jcore/media/mediaTemplateInit.jspf' %><%
 %><%
 
 EvenementDTO itEventDto = null;
@@ -14,12 +14,9 @@ try {
 	  return;
 	}
 } catch (Exception e) {
-    logger.warn("Erreur sur card EvenementDTO Inforoutes -> le contenu " + request.getAttribute("itEventDTO") + " n'est pas un EvenementDTO.");
+    logger.warn("Erreur sur marker EvenementDTO Inforoutes -> le contenu " + request.getAttribute("itEventDTO") + " n'est pas un EvenementDTO.");
     return;
 }
-
-
-String cssCard = Util.notEmpty(request.getAttribute("cssCard")) ? request.getAttribute("cssCard").toString() : "";
 
 /* 
 TODO : sélection du CSS de l'icône selon la valeur de "Nature"
@@ -35,10 +32,9 @@ tag -> Ligne 6 (optionnel)
 
 %>
 
-<section class='ds44-card ds44-card--horizontal <%= cssCard %>'>
-   <div class="ds44-card__section">
-        <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle"><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEventDto.getNature()) %>" aria-hidden="true"></i><a href="#" class="ds44-card__globalLink"><%= itEventDto.getLigne1() %></a></p>
+   <div class="ds44-flex-container">
+        <div class="ds44-card__section--horizontal ds44-flex-valign-center ds44-flex-align-center">
+            <p role="heading" aria-level="2" class="ds44-card__title"><%= itEventDto.getLigne1() %></p>
             <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.position") %> :</span>
             <%= itEventDto.getLigne2() %><jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne3()) %>"><br><%= itEventDto.getLigne3() %></jalios:if>
             </p>
@@ -46,9 +42,7 @@ tag -> Ligne 6 (optionnel)
             <%= itEventDto.getLigne4() %><jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne5()) %>"><br><%= itEventDto.getLigne5() %></jalios:if>
             </p>
             <jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne6()) %>">
-            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.typeintervention") %> :</span> <%= itEventDto.getLigne6() %></p>
+            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.typeintervention") %> :</span> <%= itEventDto.getType() %></p>
             </jalios:if>
         </div>
-        <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
-</section>

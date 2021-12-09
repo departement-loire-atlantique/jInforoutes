@@ -257,6 +257,7 @@ jcmsplugin.inforoutes.designsystem.svg.folder: https://design.loire-atlantique.f
 jcmsplugin.inforoutes.designsystem.svg.icon.fluide: car.svg
 jcmsplugin.inforoutes.designsystem.svg.icon.dense: cars.svg
 jcmsplugin.inforoutes.designsystem.svg.icon.sature: cars.svg
+jcmsplugin.inforoutes.designsystem.png.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/
 
 # ----------------------------------------------------------------------
 # Propriétés éditables API
@@ -333,3 +334,12 @@ jcmsplugin.inforoutes.evenement.nature.css.chantier:        icon-travaux orangeF
 jcmsplugin.inforoutes.evenement.nature.css.deviation:       icon-deviation orangeFlag
 jcmsplugin.inforoutes.evenement.nature.css.vent:            icon-vent redFlag
 jcmsplugin.inforoutes.evenement.nature.css.verglasneige:    icon-glaces redFlag
+
+jcmsplugin.inforoutes.evenement.nature.png.accident:        iconAccident.png
+jcmsplugin.inforoutes.evenement.nature.png.autres:          iconAutres.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs:            iconBacs.png
+jcmsplugin.inforoutes.evenement.nature.png.bouchons:        iconBouchons.png
+jcmsplugin.inforoutes.evenement.nature.png.chantier:        iconTravaux.png
+jcmsplugin.inforoutes.evenement.nature.png.deviation:       iconDeviation.png
+jcmsplugin.inforoutes.evenement.nature.png.vent:            iconVent.png
+jcmsplugin.inforoutes.evenement.nature.png.verglasneige:    iconGlaces.png

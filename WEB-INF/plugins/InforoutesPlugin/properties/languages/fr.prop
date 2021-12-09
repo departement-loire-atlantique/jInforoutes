@@ -372,6 +372,9 @@ jcmsplugin.inforoutes.date: Date(s)
 jcmsplugin.inforoutes.conditions-circulation: Conditions de circulation
 jcmsplugin.inforoutes.date-maj: Publication / Mise à jour
 jcmsplugin.inforoutes.date-maj.display: Le {0} à {1}
+jcmsplugin.inforoutes.position: Position
+jcmsplugin.inforoutes.duree: Durée
+jcmsplugin.inforoutes.typeintervention: Type d'intervention
 
 # Messages d'erreur
 jcmsplugin.inforoutes.erreur.trafic : Les informations trafic sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.

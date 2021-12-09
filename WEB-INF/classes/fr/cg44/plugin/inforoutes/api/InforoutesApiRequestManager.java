@@ -1,19 +1,32 @@
 package fr.cg44.plugin.inforoutes.api;
 
+import java.awt.geom.Point2D;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.inforoutes.InforoutesUtils;
+import fr.cg44.plugin.inforoutes.convert.Lambert93;
+import fr.cg44.plugin.inforoutes.dto.CoordonneeDTO;
 import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
+import fr.cg44.plugin.inforoutes.dto.TraceEvtSpiralDTO;
 import fr.cg44.plugin.inforoutes.dto.TraficParametersDTO;
+import fr.cg44.plugin.inforoutes.legacy.alertemobilite.ws.UtilWS;
 import fr.cg44.plugin.socle.ApiUtil;
 
 public class InforoutesApiRequestManager {
@@ -95,11 +108,72 @@ public class InforoutesApiRequestManager {
               returnedList.add(mapper.readValue(itJsonArray.getJSONObject(counter).toString(), clazz));  
           }
           return returnedList;
+          
         } catch (Exception e) {
           LOGGER.warn("Erreur sur getObjectFromJson pour classe " + clazz.getName() + " -> " + e.getMessage());
           return returnedList;
         }
       }
+    
+    
+    
+    
+    /**
+     * Renvoie une liste d'objets Java de la classe indiquée depuis un JSON récupéré depuis l'API Inforoutes
+     * @param clazz
+     * @param url
+     * @return
+     */
+    public static List<TraceEvtSpiralDTO> getAllTrace() {
+        List<TraceEvtSpiralDTO> returnedList = new ArrayList<>();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);        
+               
+        try {
+          // TODO propriété pour l'url
+          URL jsonUrl = new URL("https://spiralpublication.loire-atlantique.fr/spiral-publication-servlet/servlet/Publication?methode=getCoordonneesEvenementsPublies");
+          returnedList = Arrays.asList(mapper.readValue(jsonUrl, TraceEvtSpiralDTO[].class));
+        } catch (JsonParseException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        } catch (JsonMappingException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        } catch (IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+        
+        return returnedList;            
+      }
+    
+    
+    public static List<EvenementDTO> getAllEvent() {
+      List<EvenementDTO> returnedList = new ArrayList<>();
+      ObjectMapper mapper = new ObjectMapper();
+      mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
+      
+      
+      try {
+        
+        URL jsonUrl = new URL("https://inforoutes.loire-atlantique.fr/plugins/InforoutesPlugin/jsp/api/events.jsp?filter=Tous");
+        returnedList = Arrays.asList(mapper.readValue(jsonUrl, EvenementDTO[].class));
+        
+      } catch (JsonParseException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (JsonMappingException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+      
+      return returnedList;
+      
+    }
+    
     
     /**
      * Renvoie un objet PsnStatut à partir du JSON fourni par l'API Inforoute
@@ -118,6 +192,7 @@ public class InforoutesApiRequestManager {
     public static TraficParametersDTO getTraficParameters() {
         return (TraficParametersDTO) getObjectFromJson(TraficParametersDTO.class, baseUrl + suffixTraficParameters);
     }
+
     
     /**
      * Renvoie une liste d'objets Evenement (inforoute) à partir du JSON fourni par l'API Inforoute
@@ -136,5 +211,92 @@ public class InforoutesApiRequestManager {
     public static List<EvenementDTO> getTraficEvents(String param) {       
         return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO.class, baseUrl + suffixTraficEventParameters + param);
     }
+    
+    
+    /**
+     * Renvoie une liste d'objets trace (inforoute) à partir du JSON fourni par l'API Inforoute
+     * En cas d'échec, renvoie une liste vide
+     * @return
+     */
+    public static List<TraceEvtSpiralDTO> getTraficEventsTrace() {       
+        return (List<TraceEvtSpiralDTO>) getObjectsFromJsonList(TraceEvtSpiralDTO.class, "https://spiralpublication.loire-atlantique.fr/spiral-publication-servlet/servlet/Publication?methode=getCoordonneesEvenementsPublies");
+    }
+    
+    /**
+     * Transforme un objet event en json pour la recherche à facette
+     * @param event
+     * @param pubListGabarit
+     * @param pubMarkerGabarit
+     * @param pubFullGabarit
+     * @return
+     */
+    public static JsonObject eventToJsonObject(EvenementDTO event, String pubListGabarit, String pubMarkerGabarit, String pubFullGabarit) {
+      JsonObject jsonObject = new JsonObject();
+
+
+      jsonObject.addProperty("value", event.getLigne1());
+      if(Util.notEmpty(pubFullGabarit)) {
+        jsonObject.addProperty("content_html", pubFullGabarit);
+      }
+      JsonObject jsonMetaObject = new JsonObject();
+
+      jsonObject.addProperty("id", event.getIdentifiant());
+      //jsonMetaObject.addProperty("url", url);
+      // Cas particulier pour le type de contenu Contact
+
+      jsonMetaObject.addProperty("type", event.getClass().getSimpleName());
+      jsonMetaObject.addProperty("click", false);
+      jsonMetaObject.addProperty("icon_marker", InforoutesUtils.getNatureParam(event.getNature()));
+      jsonMetaObject.addProperty("lat", event.getLatitude());
+      jsonMetaObject.addProperty("long", event.getLongitude());
+      if(Util.notEmpty(pubListGabarit)) {
+        jsonMetaObject.addProperty("html_list", pubListGabarit);
+      }
+      if(Util.notEmpty(pubMarkerGabarit)) {
+        jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
+      }   
+      jsonObject.add("metadata", jsonMetaObject);
+      return jsonObject;
+    }
+    
+    
+    /**
+     * Transforme un objet trace en json pour la recherche à facette
+     * @param event
+     * @param pubListGabarit
+     * @param pubMarkerGabarit
+     * @param pubFullGabarit
+     * @return
+     */
+    public static JsonObject traceToJsonObject(TraceEvtSpiralDTO trace, String pubMarkerGabarit) {
+      JsonObject jsonObject = new JsonObject();
+      JsonObject jsonMetaObject = new JsonObject();
+
+      jsonObject.addProperty("id", trace.getErf() + trace.getSnm());
+
+      jsonMetaObject.addProperty("type", trace.getClass().getSimpleName());
+      
+
+      JsonArray coordonnees = new JsonArray();
+      jsonMetaObject.add("coordinates", coordonnees);
+      for (CoordonneeDTO itCoord : trace.getCoordonnees()) {
+        //String[] coordGoogleMaps = UtilWS.convertLambert93CoordGoogleMaps(Double.toString(itCoord.getX()) , Double.toString(itCoord.getY()));
+        Point2D.Double out = new Point2D.Double();
+        Lambert93.toLatLon(itCoord.getX(), itCoord.getY(), out);        
+        JsonArray itCoordArrayJson = new JsonArray();
+        itCoordArrayJson.add(out.getX());
+        itCoordArrayJson.add(out.getY());
+        //itCoordArrayJson.add(itCoord.getX());
+        //itCoordArrayJson.add(itCoord.getY());        
+        coordonnees.add(itCoordArrayJson);
+      }
+
+      if(Util.notEmpty(pubMarkerGabarit)) {
+        jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
+      }   
+      jsonObject.add("metadata", jsonMetaObject);
+      return jsonObject;
+    }
+    
     
 }
