@@ -95,7 +95,6 @@ public class InforoutesApiRequestManager {
      * @return
      */
     private static <T> List<T> getObjectsFromJsonList(Class<T> clazz, String url) {
-      System.out.println("debut trace");
         List<T> returnedList = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
@@ -108,7 +107,6 @@ public class InforoutesApiRequestManager {
           for (int counter = 0; counter < itJsonArray.length(); counter++) {
               returnedList.add(mapper.readValue(itJsonArray.getJSONObject(counter).toString(), clazz));  
           }
-          System.out.println("debut fin");
           return returnedList;
           
         } catch (Exception e) {
