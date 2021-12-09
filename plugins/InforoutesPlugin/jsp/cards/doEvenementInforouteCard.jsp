@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.inforoutes.InforoutesUtils"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.EvenementDTO"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="ds" tagdir="/WEB-INF/tags"%><%
@@ -29,7 +30,7 @@ Lien entre les champs et les données affichées
 cardTitle -> Ligne 1
 marker -> Ligne 2 / Ligne 3 (optionnel)
 date -> Ligne 4 / Ligne 5 (optionnel)
-tag -> Type d'événement
+tag -> Ligne 6 (optionnel)
 */
 
 %>
@@ -37,14 +38,16 @@ tag -> Type d'événement
 <section class='ds44-card ds44-card--horizontal <%= cssCard %>'>
    <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle"><i class="icon icon-attention ds44-icoInfoRoutes orangeFlag" aria-hidden="true"></i><a href="#" class="ds44-card__globalLink"><%= itEventDto.getLigne1() %></a></p>
-            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden">Position :</span>
+            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle"><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEventDto.getNature()) %>" aria-hidden="true"></i><a href="#" class="ds44-card__globalLink"><%= itEventDto.getLigne1() %></a></p>
+            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-marker ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.position") %> :</span>
             <%= itEventDto.getLigne2() %><jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne3()) %>"><br><%= itEventDto.getLigne3() %></jalios:if>
             </p>
-            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-date ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden">Durée :</span>
+            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-date ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.duree") %> :</span>
             <%= itEventDto.getLigne4() %><jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne5()) %>"><br><%= itEventDto.getLigne5() %></jalios:if>
             </p>
-            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden">Type d'intervention :</span> <%= itEventDto.getType() %></p>
+            <jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne6()) %>">
+            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.typeintervention") %> :</span> <%= itEventDto.getLigne6() %></p>
+            </jalios:if>
         </div>
         <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
