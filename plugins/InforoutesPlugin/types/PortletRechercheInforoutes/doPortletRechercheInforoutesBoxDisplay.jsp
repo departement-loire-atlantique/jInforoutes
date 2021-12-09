@@ -1,3 +1,5 @@
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.JsonArray"%>
 <%@ page contentType="text/html; charset=UTF-8" %><%
 %><%@ include file='/jcore/doInitPage.jspf' %><%
 %><%@ include file='/jcore/portal/doPortletParams.jspf' %><%
@@ -156,11 +158,27 @@ isInRechercheFacette = isInRechercheFacette || true;
 <%--      <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i> --%>
 <!--    </button> -->
    
+   <%
+   // Gestion des marquers pour la carte infotrafic
+   JsonArray jsonArrayIcons = new JsonArray();
+   JsonObject jsonObjectIcons = new JsonObject();   
+   jsonArrayIcons.add(jsonObjectIcons);
+
+   Map<String, Object> natureMap = channel.getSubProperties("jcmsplugin.inforoutes.evenement.nature.");
+   JProperties natureProp = (JProperties) natureMap.get("png");
+   for(String itkey : natureProp.keySet()) {
+     jsonObjectIcons.addProperty(itkey, channel.getProperty("jcmsplugin.inforoutes.evenement.nature.png." + itkey));
+   }
+   %>
+   
+   
+   
    <div class="ds44-mapResults">
        <div class="ds44-mapResults-container">
            <div class="ds44-js-map"
-                 data-geojson-url='<%= channel.getProperty("jcmsplugin.socle.recherche.geojson.departement.url") %>'
-                 data-geojson-mode='<%= "static" %>' 
+                 data-geojson-url='https://dev-design.loire-atlantique.fr/json/geojson/departement_communes.geojson'
+                 data-geojson-refine='true' 
+                 data-icons-marker='<%= jsonArrayIcons %>'
                 ></div>
            
 <%--            <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view"> --%>

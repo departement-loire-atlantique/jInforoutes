@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.inforoutes.dto.TraceEvtSpiralDTO"%>
 <%@page import="fr.cg44.plugin.inforoutes.api.InforoutesApiRequestManager"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.EvenementDTO"%>
 <%@page import="fr.cg44.plugin.socle.infolocale.util.InfolocaleUtil"%>
@@ -21,7 +22,39 @@ response.setContentType("application/json");
 // PortletAgendaInfolocale boxTmp = (PortletAgendaInfolocale) (channel.getPublication(request.getParameter("boxId"))).clone();  
 // PortletAgendaInfolocale box = new PortletAgendaInfolocale(boxTmp);
 
-List<EvenementDTO> allEvents = InforoutesApiRequestManager.getTraficEvents();
+List<EvenementDTO> allEvents = InforoutesApiRequestManager.getAllEvent();
+List<TraceEvtSpiralDTO> allTraces = InforoutesApiRequestManager.getAllTrace();
+
+
+String etat[] = request.getParameterValues("evenement");
+List<String> etatParamsList = new ArrayList<String>();
+
+if(Util.notEmpty(etat)) {
+  etatParamsList = Arrays.asList(etat);
+}
+
+Map<String, EvenementDTO> eventsMap = new HashMap<String, EvenementDTO>();
+List<EvenementDTO> selectEtatEvent = new ArrayList<EvenementDTO>();
+
+//Filtre sur le status de l'événement poar rapport à la facette
+for(EvenementDTO itEvent : allEvents) {   
+  if( (Util.isEmpty(etatParamsList) && "en cours".equalsIgnoreCase(itEvent.getStatut())) ||
+     (etatParamsList.contains(itEvent.getStatut())))  {
+    selectEtatEvent.add(itEvent);
+    eventsMap.put(itEvent.getIdentifiant(), itEvent);
+  } 
+}
+allEvents = selectEtatEvent;
+
+
+//Affiche seulement les tracés reliés à un marqueur
+List<TraceEvtSpiralDTO> filtreTraces = new ArrayList<TraceEvtSpiralDTO>();
+for(TraceEvtSpiralDTO itTrace : allTraces) { 
+  if(  eventsMap.containsKey((itTrace.getErf() + itTrace.getSnm())) ) {
+    //System.out.println(itTrace.getErf() + itTrace.getSnm());
+    filtreTraces.add(itTrace);
+  }   
+}
 
 
 
@@ -38,6 +71,9 @@ String southEastLng = request.getParameter("map[se][long]");
 
 String southWestLat = request.getParameter("map[sw][lat]");
 String southWestLng = request.getParameter("map[sw][long]");
+
+String commune = request.getParameter("commune");
+
 
 if(Util.notEmpty(allEvents) && Util.notEmpty(northWestLat) && Util.notEmpty(northWestLng) && Util.notEmpty(southEastLat) && Util.notEmpty(southEastLng)) {
   List<EvenementDTO> selectEvent = new ArrayList<EvenementDTO>();
@@ -58,23 +94,26 @@ if(Util.notEmpty(allEvents) && Util.notEmpty(northWestLat) && Util.notEmpty(nort
 
 
 JsonArray jsonArray = new JsonArray();
+
 JsonObject jsonObject = new JsonObject();
 
 jsonObject.addProperty("nb-result", allEvents.size());
 
-//Limiter les résultats au nombre indiqué dans la portlet inforoutes
-// int limitResults = box.getNombreDeResultats();
-// if (allEvents.size() > limitResults) {
-// 	List<EvenementInfolocale> limitedListEvents = new ArrayList<>();
-// 	while (limitedListEvents.size() < limitResults) {
-// 	   limitedListEvents.add(allEvents.get(limitedListEvents.size()));
-// 	}
-// 	allEvents = new ArrayList<>(limitedListEvents);
-// }
 
 jsonObject.addProperty("nb-result-per-page", 500);
 jsonObject.addProperty("max-result", 500);
+
+
+// Permet le d'indiquer au JS que le filtre voulu est un zoom sur la commune indiquée
+City communeCity = SocleUtils.getCommuneFromInsee(commune);
+
+	jsonObject.addProperty("geojsonId", communeCity != null ? communeCity.getImportId() : "");
+
+
 jsonObject.add("result", jsonArray);
+
+
+
 
 session.setAttribute("isSearchFacetLink", true);
 
@@ -97,4 +136,18 @@ session.setAttribute("isSearchFacetLink", true);
     %><%
                                         
 %></jalios:foreach><%
+
+
+
+%><jalios:foreach collection="<%= filtreTraces %>" name="itTrace" type="TraceEvtSpiralDTO"> <%
+
+	%><jalios:buffer name="itPubMarkerGabarit"><%
+	    request.setAttribute("itEventDTO", eventsMap.get(itTrace.getErf() + itTrace.getSnm()));
+        %><jsp:include page="/plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteMarker.jsp" /><%
+	%></jalios:buffer>
+	<%
+     jsonArray.add(InforoutesApiRequestManager.traceToJsonObject(itTrace, itPubMarkerGabarit));
+%><%
+%></jalios:foreach><%
+
 %><%= jsonObject %>

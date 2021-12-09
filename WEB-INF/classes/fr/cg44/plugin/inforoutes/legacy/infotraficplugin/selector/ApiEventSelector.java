@@ -51,9 +51,9 @@ public class ApiEventSelector implements DataSelector{
 					// Si le filtre est le Pont de Saint Nazaire
 					if(FILTRE_TOUS.equals(filterUTF8)) {
 						//événement en cours
-						if (Util.notEmpty(event.getStatut()) && event.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours"))) {
+						//if (Util.notEmpty(event.getStatut()) && event.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours"))) {
 							return true;
-						}
+						//}
 					} else if (filter.equals(rattachementPSN) && Util.notEmpty(event.getRattachement()) &&event.getRattachement().equalsIgnoreCase(filter)) {
 						String statusEvent = event.getStatut();
 						// Si le statut de l'évènement est en cours
