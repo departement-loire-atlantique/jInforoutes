@@ -60,7 +60,7 @@ public class EventDTOByDateAndNatureComparator implements Comparator<EvenementDT
     // Si les deux Data sont des évènements
 
     // Comparaison des champs "nature" des deux évènements
-    if (Util.notEmpty(event1. getNature()) && Util.notEmpty(event2.getNature())
+    if (Util.notEmpty(event1.getNature()) && Util.notEmpty(event2.getNature())
         && !event1.getNature().equals(event2.getNature())) {
       // Les natures sont différentes on trie par nature
       // compareInt =
