@@ -1,7 +1,7 @@
-<%@ 	page contentType="application/json; charset=UTF-8" 			%><%
-%><%@ 	include file='/jcore/doInitPage.jsp' 						%><%
-%><%@ 	include file='corsFilter.jsp' 						%><%
-%><%@	page import="fr.cg44.plugin.alertemobilite.ws.Parameter"	%><%
+<%@ 	page contentType="application/json; charset=UTF-8"%><%
+%><%@ 	include file='/jcore/doInitPage.jsp'%><%
+%><%@ 	include file='corsFilter.jsp'%><%
+%><%@	page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.ws.Parameter"%><%
 %><%
 	String[] ids = request.getParameterValues("id");
 	Boolean isJson = "json".equalsIgnoreCase(request.getParameter("format"));

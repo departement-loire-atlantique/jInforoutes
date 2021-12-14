@@ -1,7 +1,7 @@
-<%@ 	page contentType="text/html; charset=UTF-8" 			%><%
-%><%@ 	include file='/jcore/doInitPage.jsp' 						%><%
-%><%@ 	include file='corsFilter.jsp' 						%><%
-%><%@	page import="fr.cg44.plugin.alertemobilite.ws.Events"		%><%
+<%@ 	page contentType="text/html; charset=UTF-8"%><%
+%><%@ 	include file='/jcore/doInitPage.jsp'%><%
+%><%@ 	include file='corsFilter.jsp'%><%
+%><%@	page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.ws.Events"%><%
 %><%
 
 	String[] filters = request.getParameterValues("filter");
