@@ -80,21 +80,21 @@ fr.cg44.plugin.alertemobilite.bac.rattachement.indret: Bac de Loire Basse-Indre 
 # ----------------------------------------------------------------------
 # WEBCAM bacs de Loire
 # ----------------------------------------------------------------------
-cg44.mobilityplugin.bdl.coueron.cat :   dev_5035
-cg44.mobilityplugin.bdl.indre.cat :     dev_5036
+#cg44.mobilityplugin.bdl.coueron.cat :   dev_5035
+#cg44.mobilityplugin.bdl.indre.cat :     dev_5036
 cg44.mobilityplugin.bdl.refresh:10
 
-cg44.mobilityplugin.bdl.indre2: Indret|mediaCache/indre/2.jpg
-cg44.mobilityplugin.bdl.indre1: Basse-Indre|mediaCache/indre/1.jpg
+#cg44.mobilityplugin.bdl.indre2: Indret|mediaCache/indre/2.jpg
+#cg44.mobilityplugin.bdl.indre1: Basse-Indre|mediaCache/indre/1.jpg
 
-cg44.mobilityplugin.bdl.coueron2: Le-Pellerin|mediaCache/coueron/2.jpg
-cg44.mobilityplugin.bdl.coueron1: Coueron|mediaCache/coueron/1.jpg
+#cg44.mobilityplugin.bdl.coueron2: Le-Pellerin|mediaCache/coueron/2.jpg
+#cg44.mobilityplugin.bdl.coueron1: Coueron|mediaCache/coueron/1.jpg
 
-cg44.mobilityplugin.webcam.bdl.coueron.1: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/coueron1.jpg upload/webcam/bdl/coueron1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/1.jpg
-cg44.mobilityplugin.webcam.bdl.coueron.2: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/coueron2.jpg upload/webcam/bdl/coueron2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/2.jpg
+#cg44.mobilityplugin.webcam.bdl.coueron.1: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/coueron1.jpg upload/webcam/bdl/coueron1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/1.jpg
+#cg44.mobilityplugin.webcam.bdl.coueron.2: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/coueron2.jpg upload/webcam/bdl/coueron2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/2.jpg
 
-cg44.mobilityplugin.webcam.bdl.indre.1: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/indre1.jpg upload/webcam/bdl/indre1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/1.jpg
-cg44.mobilityplugin.webcam.bdl.indre.2: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/indre2.jpg upload/webcam/bdl/indre2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/2.jpg
+#cg44.mobilityplugin.webcam.bdl.indre.1: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/indre1.jpg upload/webcam/bdl/indre1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/1.jpg
+#cg44.mobilityplugin.webcam.bdl.indre.2: http://inforoutes.loire-atlantique.fr/upload/webcam/bdl-ftp/indre2.jpg upload/webcam/bdl/indre2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/2.jpg
 
 # ----------------------------------------------------------------------
 # HORAIRES bacs de Loire
@@ -343,3 +343,17 @@ jcmsplugin.inforoutes.evenement.nature.png.chantier:        iconTravaux.png
 jcmsplugin.inforoutes.evenement.nature.png.deviation:       iconDeviation.png
 jcmsplugin.inforoutes.evenement.nature.png.vent:            iconVent.png
 jcmsplugin.inforoutes.evenement.nature.png.verglasneige:    iconGlaces.png
+
+# ----------------------------------------------------------------------
+# Webcams
+# ---------------------------------------------------------------------- 
+jcmsplugin.inforoutes.webcam.basse-indre:   @|Basse-Indre|mediaCache/indre/1.jpg
+jcmsplugin.inforoutes.webcam.indret:        @|Indret|mediaCache/indre/2.jpg
+jcmsplugin.inforoutes.webcam.coueron:       @|Couëron|mediaCache/coueron/1.jpg
+jcmsplugin.inforoutes.webcam.le-pellerin:   @|Le Pellerin|mediaCache/coueron/2.jpg
+
+cg44.mobilityplugin.webcam.bdl.coueron.1: upload/webcam/bdl-ftp/coueron1.jpg upload/webcam/bdl/coueron1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/1.jpg
+cg44.mobilityplugin.webcam.bdl.coueron.2: upload/webcam/bdl-ftp/coueron2.jpg upload/webcam/bdl/coueron2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/2.jpg
+cg44.mobilityplugin.webcam.bdl.indre.1: upload/webcam/bdl-ftp/indre1.jpg upload/webcam/bdl/indre1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/1.jpg
+cg44.mobilityplugin.webcam.bdl.indre.2: upload/webcam/bdl-ftp/indre2.jpg upload/webcam/bdl/indre2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/2.jpg
+
