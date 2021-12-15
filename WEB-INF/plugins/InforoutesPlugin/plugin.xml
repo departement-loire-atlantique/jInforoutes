@@ -92,12 +92,12 @@
   
   <plugincomponents>
         <!-- Inforoutes -->
-        <channellistener class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.InfoTraficTempsReelChannelListener" />  
+        <!--<channellistener class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.InfoTraficTempsReelChannelListener" />-->  
         <!-- Pont Saint-Nazaire -->
-        <channellistener class="fr.cg44.plugin.inforoutes.legacy.pont.PontChannelListener" />
+        <!--<channellistener class="fr.cg44.plugin.inforoutes.legacy.pont.PontChannelListener" />-->
         <!-- <channellistener class="fr.cg44.plugin.inforoutes.legacy.webcam.WebCamManager" /> -->
         <!-- Evenements -->
-        <datacontroller class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.datacontroller.RouteEvenementDataController" types="RouteEvenement" />
+        <!--<datacontroller class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.datacontroller.RouteEvenementDataController" types="RouteEvenement" />-->
         <!--<datacontroller class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.dataController.ContactDataController" types="ContactForm" />-->
         <!--<alarmlistener class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.alarm.RouteEvenementAlerteAlarmListener" frequency="1" manager="PluginAlarmManager" />-->
         <!-- purges des contenus tous les dimanche à 00:05 -->
