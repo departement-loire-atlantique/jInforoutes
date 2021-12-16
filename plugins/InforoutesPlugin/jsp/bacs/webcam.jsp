@@ -13,8 +13,8 @@ String[] propsWebcam = channel.getStringArrayProperty("jcmsplugin.inforoutes.web
 		<img id="imageWebcam<%= nomWebcam %>" src="<%= propsWebcam[1] %>" data-webcam-src="<%= propsWebcam[1] %>" alt="">
 	</div>
 	<p class="p-light ds44-mt1">
-		<span class="visually-hidden">La webcam : <%= nomWebcam %>.</span>
-		Rafraîchie toutes les 10 s (Mise à jour auto : 
-		<button data-webcam-name="<%= nomWebcam %>" type="button" class="ds44-linkUnderline" title="Activer la webcam : <%= nomWebcam %>">activer</button>)
+		<span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.webcam.titre", nomWebcam) %></span>
+		<%= glp("jcmsplugin.inforoutes.webcam.rafraichissement") %>
+		<button data-webcam-name="<%= nomWebcam %>" type="button" class="ds44-linkUnderline" title="<%= glp("jcmsplugin.inforoutes.webcam.activer-webcam", nomWebcam) %>"><%= glp("jcmsplugin.inforoutes.webcam.activer") %></button>
 	</p>
 </section>
