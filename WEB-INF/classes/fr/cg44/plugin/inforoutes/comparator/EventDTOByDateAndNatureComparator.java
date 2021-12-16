@@ -1,6 +1,10 @@
 package fr.cg44.plugin.inforoutes.comparator;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
@@ -56,9 +60,31 @@ public class EventDTOByDateAndNatureComparator implements Comparator<EvenementDT
   public int compare(EvenementDTO event1, EvenementDTO event2) {
 
     // Initilisation : data1 est inférieure à data2
-    int compareInt = 1;
+    int compareInt = 0;
     // Si les deux Data sont des évènements
 
+    if(Util.notEmpty(event1.getStatut()) && Util.notEmpty(event1.getStatut())) {
+      
+      // Les en cours sont prioritaires
+      if(event1.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours")) &&  
+          !event2.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours"))) {
+        return -1;
+      } else if (event2.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours")) &&  
+          !event1.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours"))) {
+        return 1;
+      }
+      
+      // Les terminés ont la priorité la plus faible
+      if(event1.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.termine")) &&  
+          !event2.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.termine"))) {
+        return 1;
+      } else if (event2.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.termine")) &&  
+          !event1.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.termine"))) {
+        return -1;
+      }
+      
+    }
+    
     // Comparaison des champs "nature" des deux évènements
     if (Util.notEmpty(event1.getNature()) && Util.notEmpty(event2.getNature())
         && !event1.getNature().equals(event2.getNature())) {
@@ -80,19 +106,24 @@ public class EventDTOByDateAndNatureComparator implements Comparator<EvenementDT
 
       // 1- Par date de début de l'évènement
       logger.debug("compare: trie par date de publication");
-//      if (event2.getDateDePublicationModification() != null && event1.getDateDePublicationModification() != null) {
-//        compareInt = event2.getDateDePublicationModification().compareTo(event1.getDateDePublicationModification());
-//      } else {
-//        compareInt = 0;
-//        logger
-//            .warn("La date de publication/modification de l'évènement <" + event2 + "> ou de l'évènement <" + event1 + "> est null et ne devrait pas l'être.");
-//      }
+      
+      SimpleDateFormat sdfJson = new SimpleDateFormat(Channel.getChannel().getProperty("jcmsplugin.inforoutes.pattern.jsondate"));
+           
+      if (event2.getDatePublication() != null && event1.getDatePublication()  != null) {       
+        try {
+          Date event1Date = sdfJson.parse(event1.getDatePublication());
+          Date event2Date = sdfJson.parse(event2.getDatePublication());          
+          compareInt = event2Date.compareTo(event1Date);          
+        } catch (ParseException e) {
+          logger.warn("La date de publication/modification de l'évènement <" + event2 + "> ou de l'évènement <" + event1 + "> est null et ne devrait pas l'être.", e);
+        }
+      }  
+      
       if (compareInt == 0) {
         // 2- Par ordre d'id si c'est une égalité
         compareInt = event1.getIdentifiant().compareTo(event2.getIdentifiant());
       }
     }
-    // else ne sont pas 2 évènements
 
     return compareInt;
   }

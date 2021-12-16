@@ -264,6 +264,7 @@ jcmsplugin.inforoutes.designsystem.png.folder: https://design.loire-atlantique.f
 # ----------------------------------------------------------------------
 
 jcmsplugin.inforoutes.api.root: https://rec-api.loire-atlantique.fr/opendata/1.0/
+jcmsplugin.inforoutes.api.spiral: https://spiralpublication.loire-atlantique.fr/spiral-publication-servlet/servlet/Publication?methode=getCoordonneesEvenementsPublies
 
 # ----------------------------------------------------------------------
 # Propriétés non éditables API
@@ -272,7 +273,7 @@ jcmsplugin.inforoutes.api.root: https://rec-api.loire-atlantique.fr/opendata/1.0
 jcmsplugin.inforoutes.api.psnstatus: psnstatus
 jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fluide&id=psn_densite_limite_dense&id=bacs_horaires
 jcmsplugin.inforoutes.api.traficEventParams: traficevents?filter=
-jcmsplugin.inforoutes.pattern.jsondate: yyyy-MM-dd'T'hh:mm:ss Z
+jcmsplugin.inforoutes.pattern.jsondate: dd-MM-yyyy'T'HH:mm:ss Z
 jcmsplugin.inforoutes.pattern.showndate: dd/MM/yyyy
 jcmsplugin.inforoutes.pattern.shownhour: hh'h'MM
 jcmsplugin.inforoutes.api.filtre.encours: en cours
@@ -335,14 +336,14 @@ jcmsplugin.inforoutes.evenement.nature.css.deviation:       icon-deviation orang
 jcmsplugin.inforoutes.evenement.nature.css.vent:            icon-vent redFlag
 jcmsplugin.inforoutes.evenement.nature.css.verglasneige:    icon-glaces redFlag
 
-jcmsplugin.inforoutes.evenement.nature.png.accident:        iconAccident.png
-jcmsplugin.inforoutes.evenement.nature.png.autres:          iconAutres.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs:            iconBacs.png
-jcmsplugin.inforoutes.evenement.nature.png.bouchons:        iconBouchons.png
-jcmsplugin.inforoutes.evenement.nature.png.chantier:        iconTravaux.png
-jcmsplugin.inforoutes.evenement.nature.png.deviation:       iconDeviation.png
-jcmsplugin.inforoutes.evenement.nature.png.vent:            iconVent.png
-jcmsplugin.inforoutes.evenement.nature.png.verglasneige:    iconGlaces.png
+jcmsplugin.inforoutes.evenement.nature.png.accident:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconAccident.png
+jcmsplugin.inforoutes.evenement.nature.png.autres:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconAutres.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs:            https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconBacs.png
+jcmsplugin.inforoutes.evenement.nature.png.bouchons:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconBouchons.png
+jcmsplugin.inforoutes.evenement.nature.png.chantier:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconTravaux.png
+jcmsplugin.inforoutes.evenement.nature.png.deviation:       https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconDeviation.png
+jcmsplugin.inforoutes.evenement.nature.png.vent:            https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconVent.png
+jcmsplugin.inforoutes.evenement.nature.png.verglasneige:    https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconGlaces.png
 
 # ----------------------------------------------------------------------
 # Webcams

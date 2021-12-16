@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.inforoutes.comparator.EventDTOByDateAndNatureComparator"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.TraceEvtSpiralDTO"%>
 <%@page import="fr.cg44.plugin.inforoutes.api.InforoutesApiRequestManager"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.EvenementDTO"%>
@@ -22,8 +23,9 @@ response.setContentType("application/json");
 // PortletAgendaInfolocale boxTmp = (PortletAgendaInfolocale) (channel.getPublication(request.getParameter("boxId"))).clone();  
 // PortletAgendaInfolocale box = new PortletAgendaInfolocale(boxTmp);
 
-List<EvenementDTO> allEvents = InforoutesApiRequestManager.getAllEvent();
-List<TraceEvtSpiralDTO> allTraces = InforoutesApiRequestManager.getAllTrace();
+List<EvenementDTO> allEvents = InforoutesApiRequestManager.getTraficEvents();
+Set<EvenementDTO> filterEvents = new TreeSet<EvenementDTO>(new EventDTOByDateAndNatureComparator());
+List<TraceEvtSpiralDTO> allTraces = InforoutesApiRequestManager.getTraficEventsTrace();
 
 
 String etat[] = request.getParameterValues("evenement");
@@ -40,18 +42,17 @@ List<EvenementDTO> selectEtatEvent = new ArrayList<EvenementDTO>();
 for(EvenementDTO itEvent : allEvents) {   
   if( (Util.isEmpty(etatParamsList) && "en cours".equalsIgnoreCase(itEvent.getStatut())) ||
      (etatParamsList.contains(itEvent.getStatut())))  {
-    selectEtatEvent.add(itEvent);
+    filterEvents.add(itEvent);
     eventsMap.put(itEvent.getIdentifiant(), itEvent);
   } 
 }
-allEvents = selectEtatEvent;
+
 
 
 //Affiche seulement les tracés reliés à un marqueur
 List<TraceEvtSpiralDTO> filtreTraces = new ArrayList<TraceEvtSpiralDTO>();
 for(TraceEvtSpiralDTO itTrace : allTraces) { 
-  if(  eventsMap.containsKey((itTrace.getErf() + itTrace.getSnm())) ) {
-    //System.out.println(itTrace.getErf() + itTrace.getSnm());
+  if(eventsMap.containsKey((itTrace.getErf() + itTrace.getSnm()))) {
     filtreTraces.add(itTrace);
   }   
 }
@@ -75,16 +76,67 @@ String southWestLng = request.getParameter("map[sw][long]");
 String commune = request.getParameter("commune");
 
 
-if(Util.notEmpty(allEvents) && Util.notEmpty(northWestLat) && Util.notEmpty(northWestLng) && Util.notEmpty(southEastLat) && Util.notEmpty(southEastLng)) {
-  List<EvenementDTO> selectEvent = new ArrayList<EvenementDTO>();
-  for(EvenementDTO itEvent : allEvents) {
+if(Util.notEmpty(filterEvents) && Util.notEmpty(northWestLat) && Util.notEmpty(northWestLng) && Util.notEmpty(southEastLat) && Util.notEmpty(southEastLng)) {
+  Set<EvenementDTO> selectEvent = new HashSet<EvenementDTO>();
+  for(EvenementDTO itEvent : filterEvents) {
     if( Double.parseDouble(itEvent.getLatitude()) < Double.parseDouble(northWestLat) && Double.parseDouble(itEvent.getLatitude()) > Double.parseDouble(southEastLat) &&
         Double.parseDouble(itEvent.getLongitude()) < Double.parseDouble(northEastLng) && Double.parseDouble(itEvent.getLongitude()) > Double.parseDouble(southWestLng)) {
       selectEvent.add(itEvent);
     }
   }   
-  allEvents = selectEvent;  
+  filterEvents = Util.interSet(filterEvents, selectEvent);  
 }
+
+
+
+//*************************************************************************
+//Groupe les déviations ratachées à un chantier en gardant l'odre de trie
+//*************************************************************************
+
+// Créer une map de chantier (clé) et déviations associées (valeurs)
+HashMap<String, List<EvenementDTO>> chantierDeviation = new HashMap<String, List<EvenementDTO>>();
+for(EvenementDTO event : filterEvents){
+    if("Chantier".equals(event.getNature()) && Util.notEmpty(event.getSnm())){
+        chantierDeviation.put(event.getSnm(), new ArrayList<EvenementDTO>());
+    }   
+}
+
+
+//Associer les déviations à leur chantier
+Collection<EvenementDTO> collectionChantier = new ArrayList<EvenementDTO>();
+for(EvenementDTO event : filterEvents){
+  if("Déviation".equals(event.getNature())){
+    // Si un chanter éxiste pour cette déviation l'associer au chatier
+    if(chantierDeviation.get(event.getSnm()) != null ){
+      List<EvenementDTO> deviations = chantierDeviation.get(event.getSnm());
+      deviations.add(event);
+    } else {
+      collectionChantier.add(event);
+    } 
+  } else {
+      collectionChantier.add(event);
+  }
+}
+
+
+//Liste final avec chantiers et déviations associées et triés
+Collection<EvenementDTO> collectionBis = new ArrayList<EvenementDTO>();
+for(EvenementDTO event : collectionChantier){
+  collectionBis.add(event);
+  if("Chantier".equals(event.getNature()) && Util.notEmpty(chantierDeviation)){
+    for(EvenementDTO deviation : chantierDeviation.get(event.getSnm())){
+      if(deviation != null){
+        collectionBis.add(deviation);
+      }
+    }
+  }
+}
+
+//*********************************************************
+//Fin de Groupement des déviations ratachées à un chantier
+//*********************************************************
+
+
 
 
 
@@ -97,7 +149,7 @@ JsonArray jsonArray = new JsonArray();
 
 JsonObject jsonObject = new JsonObject();
 
-jsonObject.addProperty("nb-result", allEvents.size());
+jsonObject.addProperty("nb-result", collectionBis.size());
 
 
 jsonObject.addProperty("nb-result-per-page", 500);
@@ -106,8 +158,7 @@ jsonObject.addProperty("max-result", 500);
 
 // Permet le d'indiquer au JS que le filtre voulu est un zoom sur la commune indiquée
 City communeCity = SocleUtils.getCommuneFromInsee(commune);
-
-	jsonObject.addProperty("geojsonId", communeCity != null ? communeCity.getImportId() : "");
+jsonObject.addProperty("geojsonId", communeCity != null ? communeCity.getImportId() : "");
 
 
 jsonObject.add("result", jsonArray);
@@ -119,7 +170,7 @@ session.setAttribute("isSearchFacetLink", true);
 
 %><%
 
-%><jalios:foreach collection="<%= allEvents %>" name="itEvent" type="EvenementDTO"> <%
+%><jalios:foreach collection="<%= collectionBis %>" name="itEvent" type="EvenementDTO"> <%
 
     %><jalios:buffer name="itPubListGabarit"><%
             request.setAttribute("itEventDTO", itEvent);
