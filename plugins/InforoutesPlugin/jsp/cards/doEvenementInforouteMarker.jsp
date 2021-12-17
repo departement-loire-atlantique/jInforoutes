@@ -42,7 +42,7 @@ tag -> Ligne 6 (optionnel)
             <%= itEventDto.getLigne4() %><jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne5()) %>"><br><%= itEventDto.getLigne5() %></jalios:if>
             </p>
             <jalios:if predicate="<%= Util.notEmpty(itEventDto.getLigne6()) %>">
-            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.typeintervention") %> :</span> <%= itEventDto.getType() %></p>
+            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-tag ds44-docListIco" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.typeintervention") %> :</span> <%= itEventDto.getLigne6() %></p>
             </jalios:if>
         </div>
     </div>

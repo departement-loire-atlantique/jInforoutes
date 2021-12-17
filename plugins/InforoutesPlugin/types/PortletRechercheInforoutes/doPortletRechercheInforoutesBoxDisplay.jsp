@@ -195,8 +195,8 @@ isInRechercheFacette = isInRechercheFacette || true;
 
 <section class="ds44-modal-container" id="overlay-legendMap" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="overlay-legendMap">
     <div class="ds44-modal-box">      
-       <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="Fermer la boite de dialogue : legende de la carte" data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
-       <h1 id="overlay-faire-demande-title" class="h2-like">Légende</h1>
+       <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title='<%= glp("jcmsplugin.socle.ficheaide.fermerboitedialogue.label", glp("jcmsplugin.inforoutes.evenement.nature.legende.lbl")) %>' data-js="ds44-modal-action-close"><i class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"><%= glp("jcmsplugin.socle.fermer") %></span></button>
+       <h1 id="overlay-faire-demande-title" class="h2-like"><%= glp("jcmsplugin.inforoutes.evenement.nature.legende.lbl") %></h1>
         
         
        <div class="ds44-modal-gab">
@@ -204,24 +204,24 @@ isInRechercheFacette = isInRechercheFacette || true;
             <div class="col-6">
               <ul class="ds44-list">
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-accident ds44-icoInfoRoutes redFlag" aria-hidden="true"></i>
-                          <span>Accident</span>
+                          <i class='icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.accident") %>' aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.accident.lbl") %></span>
                   </li>
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-bouchons ds44-icoInfoRoutes redFlag" aria-hidden="true"></i>
-                          <span>Bouchon</span>
+                          <i class='icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.bouchons") %>' aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.bouchons.lbl") %></span>
                   </li>
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-glaces ds44-icoInfoRoutes redFlag" aria-hidden="true"></i>
-                          <span>Verglas et neige</span>
+                          <i class='icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.verglasneige") %>' aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.verglasneige.lbl") %></span>
                   </li>
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-vent ds44-icoInfoRoutes redFlag" aria-hidden="true"></i>
-                          <span>Vent</span>
+                          <i class="icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.vent") %>" aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.vent.lbl") %></span>
                   </li>
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-travaux ds44-icoInfoRoutes orangeFlag" aria-hidden="true"></i>
-                          <span>Chantier</span>
+                          <i class='icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.chantier") %>' aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.chantier.lbl") %></span>
                   </li>
               </ul>
           </div>
@@ -229,20 +229,20 @@ isInRechercheFacette = isInRechercheFacette || true;
           <div class="col-6">
               <ul class="ds44-list">
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-deviation ds44-icoInfoRoutes orangeFlag" aria-hidden="true"></i>
-                          <span>Déviation</span>
+                          <i class='icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.deviation") %>' aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.deviation.lbl") %></span>
                   </li>
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-bacs ds44-icoInfoRoutes orangeFlag" aria-hidden="true"></i>
-                          <span>Bacs de Loire</span>
+                          <i class='icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.bacs") %>' aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.bacs.lbl") %></span>
                   </li>
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <i class="icon icon-attention ds44-icoInfoRoutes orangeFlag" aria-hidden="true"></i>
-                          <span>Autre danger</span>
+                          <i class='icon ds44-icoInfoRoutes <%= channel.getProperty("jcmsplugin.inforoutes.evenement.nature.css.autres") %>' aria-hidden="true"></i>
+                          <span><%= glp("jcmsplugin.inforoutes.evenement.nature.autres.lbl") %></span>
                   </li>
                   <li class="mts ds44-flex ds44-flex-valign-center">
-                          <img src="https://dev-design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/longueur-concernee.svg" alt="">
-                          <span class="ds44-ml2">Longueur concernée</span>
+                          <img src="https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/longueur-concernee.svg" alt="">
+                          <span class="ds44-ml2"><%= glp("jcmsplugin.inforoutes.evenement.nature.longueur.lbl") %></span>
                   </li>
               </ul>
           </div>

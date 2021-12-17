@@ -7,6 +7,8 @@ import generated.RouteEvenement;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
@@ -53,39 +55,47 @@ public class Events {
    * @return String: JSON
    */
   private static String generateJsonEvent(RouteEvenement event) {
-    StringBuffer json = new StringBuffer();
-    json.append("{");
-    json.append("\"identifiant\":\"" + event.getIdentifiantEvenement() + "\"");
-    json.append(",\"datePublication\":\"" + UtilWS.sdfTimeZone.format(event.getDateDePublicationModification()) + "\"");
-    json.append(",\"ligne1\":\"" + event.getLigne1() + "\"");
-    json.append(",\"ligne2\":\"" + event.getLigne2() + "\"");
-    json.append(",\"ligne3\":\"" + event.getLigne3() + "\"");
-    String ligne4 = "";
-    if (Util.notEmpty(event.getLigne4())) {
-      ligne4 = event.getLigne4().equalsIgnoreCase("null") ? "" : event.getLigne4();
-    }
-    json.append(",\"ligne4\":\"" + ligne4 + "\"");
-    // Les lignes 5 et 6 sont facultatives
-    if (Util.notEmpty(event.getLigne5())) {
-      json.append(",\"ligne5\":\"" + event.getLigne5() + "\"");
-      if (Util.notEmpty(event.getLigne6())) {
-        json.append(",\"ligne6\":\"" + event.getLigne6() + "\"");
+    
+    JSONObject jsonObject = new JSONObject();
+   
+    try {
+      jsonObject.put("identifiant", event.getIdentifiantEvenement());
+      jsonObject.put("snm", event.getSnm());
+      jsonObject.put("datePublication", UtilWS.sdfTimeZone.format(event.getDateDePublicationModification()));
+      jsonObject.put("ligne1", event.getLigne1());
+      jsonObject.put("ligne2", event.getLigne2());
+      jsonObject.put("ligne3", event.getLigne3());
+      
+      if (Util.notEmpty(event.getLigne4())) {
+        jsonObject.put("ligne4", event.getLigne4().equalsIgnoreCase("null") ? "" : event.getLigne4());
       }
+      
+      // Les lignes 5 et 6 sont facultatives
+      if (Util.notEmpty(event.getLigne5())) {
+        jsonObject.put("ligne5", event.getLigne5());
+        if (Util.notEmpty(event.getLigne6())) {
+          jsonObject.put("ligne6", event.getLigne6());
+        }
+      }
+      
+      jsonObject.put("informationcomplementaire", event.getInformationComplementaire());
+      jsonObject.put("rattachement", event.getRattachement());
+      jsonObject.put("nature", event.getNature());
+      jsonObject.put("type", event.getTypeEvenement());
+      jsonObject.put("statut", event.getStatut());
+      jsonObject.put("informationcomplementaire", event.getInformationComplementaire());
+
+      // Si des coordonnées existe, on les convertit au format Google Maps
+      if (Util.notEmpty(event.getLongitude()) && Util.notEmpty(event.getLatitude())) {
+        String[] coordGoogleMaps = UtilWS.convertLambert93CoordGoogleMaps(event.getLongitude(), event.getLatitude());        
+        jsonObject.put("longitude", coordGoogleMaps[0]);
+        jsonObject.put("latitude", coordGoogleMaps[1]);       
+      }
+           
+    } catch (JSONException e) {
+      logger.warn("Erreur lors de la création du json d'un événement routier : " + event.getId(), e);
     }
-    if (Util.notEmpty(event.getInformationComplementaire())) {
-      json.append(",\"informationcomplementaire\":\"" + event.getInformationComplementaire() + "\"");
-    }
-    json.append(",\"rattachement\":\"" + event.getRattachement() + "\"");
-    json.append(",\"nature\":\"" + event.getNature() + "\"");
-    json.append(",\"type\":\"" + event.getTypeEvenement() + "\"");
-    json.append(",\"statut\":\"" + event.getStatut() + "\"");
-    // Si des coordonnées existe, on les convertit au format Google Maps
-    if (Util.notEmpty(event.getLongitude()) && Util.notEmpty(event.getLatitude())) {
-      String[] coordGoogleMaps = UtilWS.convertLambert93CoordGoogleMaps(event.getLongitude(), event.getLatitude());
-      json.append(",\"longitude\":\"" + coordGoogleMaps[0] + "\"");
-      json.append(",\"latitude\":\"" + coordGoogleMaps[1] + "\"");
-    }
-    json.append("}");
-    return json.toString();
+    
+    return jsonObject.toString();
   }
 }

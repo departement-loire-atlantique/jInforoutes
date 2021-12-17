@@ -329,6 +329,9 @@ jcmsplugin.inforoutes.bacs.horaire.liaison2.from_period:   [Bacs] Liaison 2 Inte
 jcmsplugin.inforoutes.bacs.horaire.liaison2.from_message:  [Bacs] Liaison 2 Message
 jcmsplugin.inforoutes.bacs.horaire.liaison2.to_first:      [Bacs] Liaison 2 Heure de la première arrivée 
 jcmsplugin.inforoutes.bacs.horaire.liaison2.to_last:       [Bacs] Liaison 2 Heure de la dernière arrivée
+
+jcmsplugin.inforoutes.api.spiral: Url du service Spiral pour les tracés de la carte
+
 # ----------------------------------------------------------------------
 # Fin propriétés éditables
 # ----------------------------------------------------------------------
@@ -359,6 +362,19 @@ jcmsplugin.inforoutes.stnazaire: Saint-Nazaire
 jcmsplugin.inforoutes.stbrevin: Saint-Brevin
 jcmsplugin.inforoutes.morethantime: + de {0}
 jcmsplugin.inforoutes.minimum.trafic.dense: Temps en minutes min. pour considérer un trafic dense
+
+# Labels Info trafic
+jcmsplugin.inforoutes.evenement.nature.legende.lbl:             Légende
+jcmsplugin.inforoutes.evenement.nature.accident.lbl:            Accident
+jcmsplugin.inforoutes.evenement.nature.autres.lbl:              Autre danger
+jcmsplugin.inforoutes.evenement.nature.inondation.lbl:          Inondation
+jcmsplugin.inforoutes.evenement.nature.bacs.lbl:                Bacs de Loire
+jcmsplugin.inforoutes.evenement.nature.bouchons.lbl:            Bouchon
+jcmsplugin.inforoutes.evenement.nature.chantier.lbl:            Chantier
+jcmsplugin.inforoutes.evenement.nature.deviation.lbl:           Déviation
+jcmsplugin.inforoutes.evenement.nature.vent.lbl:                Vent
+jcmsplugin.inforoutes.evenement.nature.verglasneige.lbl:        Verglas et neige
+jcmsplugin.inforoutes.evenement.nature.longueur.lbl:            Longueur concernée
 
 # Labels communs
 jcmsplugin.inforoutes.evenements-en-cours: Les événements en cours

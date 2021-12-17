@@ -24,9 +24,11 @@ public class ApiEventSelector implements DataSelector{
 	private String[] typesPSN = {"Vent", "Accident", "VL en panne"};
 	private String statut = "en cours";
 	private String natureBacsDeLoire = "Bacs de loire";
+  private int eventTermine;
 	private static final String FILTRE_TOUS = "Tous";
 	
 	public ApiEventSelector(String[] filters) {
+	  this.eventTermine = 0;
 		this.filters = filters;
 	}
 
@@ -52,7 +54,23 @@ public class ApiEventSelector implements DataSelector{
 					if(FILTRE_TOUS.equals(filterUTF8)) {
 						//événement en cours
 						//if (Util.notEmpty(event.getStatut()) && event.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours"))) {
-							return true;
+							
+					    // limite le nombre d'évenement terminés à 50.
+					    // TODO déplacer ce control pour avoir les 50 derniers et non 50 aléatoires.
+					    if(Util.notEmpty(event.getStatut())) {
+					      
+					      if(event.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.termine"))) {
+					        if(eventTermine >= 50) {
+					          return false;
+					        } else {
+					          eventTermine++;
+					          return true;
+					        }
+					      } else {
+					        return true;
+					      }					      
+					    }
+					    
 						//}
 					} else if (filter.equals(rattachementPSN) && Util.notEmpty(event.getRattachement()) &&event.getRattachement().equalsIgnoreCase(filter)) {
 						String statusEvent = event.getStatut();

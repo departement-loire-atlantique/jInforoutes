@@ -13,6 +13,8 @@ public class EvenementDTO {
 
 	private String identifiant;
 
+	private String snm;
+	
 	private String ligne1;
 
 	private String ligne2;
@@ -60,8 +62,16 @@ public class EvenementDTO {
 	public void setIdentifiant(String identifiant) {
 		this.identifiant = identifiant;
 	}
+	
+	public String getSnm() {
+    return snm;
+  }
 
-	public String getLigne1() {
+  public void setSnm(String snm) {
+    this.snm = snm;
+  }
+
+  public String getLigne1() {
 		return ligne1;
 	}
 

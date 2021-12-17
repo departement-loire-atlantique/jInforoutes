@@ -26,7 +26,6 @@ import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
 import fr.cg44.plugin.inforoutes.dto.TraceEvtSpiralDTO;
 import fr.cg44.plugin.inforoutes.dto.TraficParametersDTO;
-import fr.cg44.plugin.inforoutes.legacy.alertemobilite.ws.UtilWS;
 import fr.cg44.plugin.socle.ApiUtil;
 
 public class InforoutesApiRequestManager {
@@ -114,66 +113,7 @@ public class InforoutesApiRequestManager {
           return returnedList;
         }
       }
-    
-    
-    
-    
-    /**
-     * Renvoie une liste d'objets Java de la classe indiquée depuis un JSON récupéré depuis l'API Inforoutes
-     * @param clazz
-     * @param url
-     * @return
-     */
-    public static List<TraceEvtSpiralDTO> getAllTrace() {
-        List<TraceEvtSpiralDTO> returnedList = new ArrayList<>();
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);        
-               
-        try {
-          // TODO propriété pour l'url
-          URL jsonUrl = new URL("https://spiralpublication.loire-atlantique.fr/spiral-publication-servlet/servlet/Publication?methode=getCoordonneesEvenementsPublies");
-          returnedList = Arrays.asList(mapper.readValue(jsonUrl, TraceEvtSpiralDTO[].class));
-        } catch (JsonParseException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        } catch (JsonMappingException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        } catch (IOException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
-        
-        return returnedList;            
-      }
-    
-    
-    public static List<EvenementDTO> getAllEvent() {
-      List<EvenementDTO> returnedList = new ArrayList<>();
-      ObjectMapper mapper = new ObjectMapper();
-      mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
-      
-      
-      try {
-        
-        URL jsonUrl = new URL("https://inforoutes.loire-atlantique.fr/plugins/InforoutesPlugin/jsp/api/events.jsp?filter=Tous");
-        returnedList = Arrays.asList(mapper.readValue(jsonUrl, EvenementDTO[].class));
-        
-      } catch (JsonParseException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (JsonMappingException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      
-      return returnedList;
-      
-    }
-    
+       
     
     /**
      * Renvoie un objet PsnStatut à partir du JSON fourni par l'API Inforoute
@@ -219,7 +159,7 @@ public class InforoutesApiRequestManager {
      * @return
      */
     public static List<TraceEvtSpiralDTO> getTraficEventsTrace() {       
-        return (List<TraceEvtSpiralDTO>) getObjectsFromJsonList(TraceEvtSpiralDTO.class, "https://spiralpublication.loire-atlantique.fr/spiral-publication-servlet/servlet/Publication?methode=getCoordonneesEvenementsPublies");
+        return (List<TraceEvtSpiralDTO>) getObjectsFromJsonList(TraceEvtSpiralDTO.class, channel.getProperty("jcmsplugin.inforoutes.api.spiral"));
     }
     
     /**
@@ -241,6 +181,7 @@ public class InforoutesApiRequestManager {
       JsonObject jsonMetaObject = new JsonObject();
 
       jsonObject.addProperty("id", event.getIdentifiant());
+      jsonObject.addProperty("snm", event.getSnm());
       //jsonMetaObject.addProperty("url", url);
       // Cas particulier pour le type de contenu Contact
 
