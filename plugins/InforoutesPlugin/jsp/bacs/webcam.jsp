@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/jcore/doInitPage.jspf" %>
-<% jcmsContext.addJavaScript("plugins/InforoutesPlugin/js/webcams.js"); %> 
 
 <%
 String nomWebcam = (String)request.getAttribute("lieuWebcam");
