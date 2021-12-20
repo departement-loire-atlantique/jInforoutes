@@ -81,6 +81,10 @@ public class InfoTraficTempsReelChannelListener extends ChannelListener implemen
 		String workspaceId = channel.getProperty(WORKSPACE_ID);
 		if (Util.notEmpty(workspaceId) && Util.notEmpty(channel.getWorkspace(workspaceId)))
 			workspace = channel.getWorkspace(workspaceId);
+		if (Util.isEmpty(workspace)) {
+		    logger.warn("InfoTraficTempsReelListener.initAfterStoreLoad() -> pas de WS associé à la propriété " + WORKSPACE_ID);
+		    return;
+		}
 		logger.debug("InfoTraficTempsReelListener.initAfterStoreLoad() - Workspace name : " + workspace.getTitle());
 		boolean infoTrafficActif = Channel.getChannel().getBooleanProperty("cg44.infotrafic.entempsreel.param.activate", true);
 		logger.debug("infoTrafficActif:" + infoTrafficActif);
