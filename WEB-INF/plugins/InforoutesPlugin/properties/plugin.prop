@@ -352,6 +352,7 @@ jcmsplugin.inforoutes.webcam.basse-indre:   @|Basse-Indre|mediaCache/indre/1.jpg
 jcmsplugin.inforoutes.webcam.indret:        @|Indret|mediaCache/indre/2.jpg
 jcmsplugin.inforoutes.webcam.coueron:       @|Couëron|mediaCache/coueron/1.jpg
 jcmsplugin.inforoutes.webcam.le-pellerin:   @|Le Pellerin|mediaCache/coueron/2.jpg
+jcmsplugin.inforoutes.webcam.psn:           @|Pont de Saint-Nazaire|plugins/InforoutesPlugin/jsp/legacy/api/webcams_original.jsp?id=psn
 
 cg44.mobilityplugin.webcam.bdl.coueron.1: upload/webcam/bdl-ftp/coueron1.jpg upload/webcam/bdl/coueron1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/1.jpg
 cg44.mobilityplugin.webcam.bdl.coueron.2: upload/webcam/bdl-ftp/coueron2.jpg upload/webcam/bdl/coueron2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 coueron/2.jpg

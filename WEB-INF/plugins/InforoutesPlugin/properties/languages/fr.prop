@@ -394,11 +394,11 @@ jcmsplugin.inforoutes.typeintervention: Type d'intervention
 
 # Webcams
 jcmsplugin.inforoutes.webcam.activer: activer
-jcmsplugin.inforoutes.webcam.activer-webcam: Activer la webcam : {0}
+jcmsplugin.inforoutes.webcam.activer-webcam: Activer la webcam
 jcmsplugin.inforoutes.webcam.desactiver: désactiver
-jcmsplugin.inforoutes.webcam.desactiver-webcam: Désactiver la webcam : {0}
+jcmsplugin.inforoutes.webcam.desactiver-webcam: Désactiver la webcam
 jcmsplugin.inforoutes.webcam.titre: La webcam : {0}
-jcmsplugin.inforoutes.webcam.rafraichissement: Rafraîchie toutes les 10 s (mise à jour auto) : 
+jcmsplugin.inforoutes.webcam.rafraichissement: Rafraîchie toutes les 10 s (mise à jour auto).
 
 
 # Messages d'erreur
