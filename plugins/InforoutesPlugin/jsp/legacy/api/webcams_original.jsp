@@ -1,12 +1,12 @@
 <%@ 	page contentType="application/json; charset=UTF-8" 				%><%
 %><%@ 	include file='/jcore/doInitPage.jsp' 						%><%
 %><%@ 	include file='corsFilter.jsp' 						%><%
-%><%@	page import="fr.cg44.plugin.alertemobilite.ws.Webcams"		%><%
+%><%@   page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.ws.Webcams"      %><%
 %><%@	page import="java.io.InputStream"							%><%
 %><%@	page import="java.io.FileInputStream"						%><%
 %><%@	page import="java.io.BufferedOutputStream"					%><%
 %><%@	page import="java.net.URL"									%><%
-%><%@	page import="fr.cg44.plugin.webcam.WebCamManager"			%><%
+%><%@   page import="fr.cg44.plugin.inforoutes.legacy.webcam.WebCamManager"           %><%
 %><%@	page import="org.apache.commons.io.IOUtils"					%><%
 %><%
 	String id = request.getParameter("id");

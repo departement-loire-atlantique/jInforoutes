@@ -1,4 +1,4 @@
-<%@page import="fr.cg44.plugin.webcam.WebCamManager"%>
+<%@page import="fr.cg44.plugin.inforoutes.legacy.webcam.WebCamManager"%>
 <%@ include file='/jcore/doInitPage.jsp'%>
 <%@ include file='/jcore/portal/doPortletParams.jsp'%>
 
@@ -24,23 +24,17 @@
 			<div class="images-webcam cycle-slideshow" data-cycle-timeout=0
 								data-cycle-slides="> div.main" data-cycle-pager=".thumbs"
 				data-cycle-allow-wrap="false">
-				<jalios:if
-					predicate="<%=webcamManager == null ||!webcamManager.isWebCamActivated() || !webcamManager.isValidImage()%>">
-					<div id="image_courante" class="main"
-						data-cycle-pager-template="<a href=#>Direct</a>">
-						<div class="webcam-time">Le flux de webcam est momentanément
-							indisponible</div>
-						<div class="webcam-image"><img id="img_fixe"
-							src="plugins/InforoutesPlugin/images/psn/flux_indispo.png" height="<%=imgWebcamHeight%>"
-							width="<%=imgWebcamWidth%>" />
-							</div>
+				<jalios:if predicate="<%=webcamManager == null ||!webcamManager.isWebCamActivated() || !webcamManager.isValidImage()%>">
+					<div id="image_courante" class="main" data-cycle-pager-template="<a href=#>Direct</a>">
+						<div class="webcam-time">Le flux de webcam est momentanément indisponible</div>
+						<div class="webcam-image">
+						  <img id="img_fixe" src="plugins/InforoutesPlugin/images/psn/flux_indispo.png" height="<%=imgWebcamHeight%>" width="<%=imgWebcamWidth%>" />
+                        </div>
 					</div>
 				</jalios:if>
 
-				<jalios:if
-					predicate="<%=webcamManager !=null && webcamManager.isWebCamActivated() && webcamManager.isValidImage()%>">
-					<div id="image_courante" class="main"
-						data-cycle-pager-template="<a href='#' alt='Image en direct de la circulation sur le pont de saint nazaire'  title='Image en direct de la circulation sur le pont de saint nazaire'>Direct</a>">
+				<jalios:if predicate="<%=webcamManager !=null && webcamManager.isWebCamActivated() && webcamManager.isValidImage()%>">
+					<div id="image_courante" class="main" data-cycle-pager-template="<a href='#' alt='Image en direct de la circulation sur le pont de saint nazaire'  title='Image en direct de la circulation sur le pont de saint nazaire'>Direct</a>">
 						<%
 							String imageWebcamCourant = String.valueOf(WebCamManager.getInstance().getLastCapture());
 						%>
