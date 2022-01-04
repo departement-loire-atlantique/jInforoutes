@@ -80,15 +80,6 @@ catch(Exception e){
 					<div class="ds44-card__section--horizontal ds44-center">
 						<p role="heading" class="h3-like"><%= from_period %></p>
 					</div>
-					<div class="ds44-card__section--horizontal ds44-bacs-info ds44-center">
-						<p class="p-light">Votre temps d’attente dépend de votre emplacement dans la file d’attente :</p>
-						<ol class="ds44-list">
-							<li>60 min</li>
-							<li>40 min</li>
-							<li>20 min</li>
-							<li>Départ</li>
-						</ol>
-					</div>
 				</div>
 			</section>
 		</section>
