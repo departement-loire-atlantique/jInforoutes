@@ -101,23 +101,23 @@ cg44.mobilityplugin.bdl.refresh:10
 # ----------------------------------------------------------------------
 
 ## Liaison 1
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from:          Basse-Indre
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to:            Indret
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_first:    5h30
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_last:     22h30
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_period:   puis toutes les 15 minutes …
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_message:  Message manuel dans JCMS
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_first:      5h35
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_last:       22h35
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from:          Basse-Indre
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to:            Indret
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_first:    5h30
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_last:     22h30
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_period:   puis toutes les 15 minutes …
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.from_message:  Message manuel dans JCMS
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_first:      5h35
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison1.to_last:       22h35
 ## Liaison 2
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from:          Couëron
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to:            Le Pellerin
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_first:    6h30
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_last:     20h30 ou 21h20
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_period:   puis toutes les 15 minutes …
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_message:  horaire du XX au YY
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_first:      6h20
-fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_last:       20h20 ou 21h20
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from:          Couëron
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to:            Le Pellerin
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_first:    6h30
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_last:     20h30 ou 21h20
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_period:   puis toutes les 15 minutes …
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.from_message:  horaire du XX au YY
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_first:      6h20
+#fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_last:       20h20 ou 21h20
 
 # ----------------------------------------------------------------------
 # INFO TRAFIC
@@ -126,7 +126,7 @@ fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison2.to_last:       
 plugin.corporateidentity.breadcrumb.showHome: false
 
 # Routes
-plugin.routes.general.ws.direction.id: dev_5153
+#plugin.routes.general.ws.direction.id: dev_5153
 
 # Nom des balises retournées dans le wsdl
 cg44.infotrafic.entempsreel.event.ws.evenement.tagname:         evenement
@@ -226,7 +226,7 @@ fr.cg44.plugin.alertemobilite.firebase.bac.apikey: AAAAaJM8IAk:APA91bFJK__gn7FTV
 fr.cg44.plugin.alertemobilite.firebase.psn.apikey: AAAAJmh5Vv0:APA91bF2eSw2A_6OFi_sB3Swzi_69LXN2_DB5NLhFikWYjgQsIKX4-UHGnTmulfSyG44hXlXT7XiAe95eefdMIVRIgjeTHVPXxtheZ3wGB2NezdQatcohgXBm_zSVZDW4oiSxdYjfHAq
 
 # Id espace technique
-fr.cg44.plugin.alertemobilite.workspace.infotrafic.id: dev_5154
+# fr.cg44.plugin.alertemobilite.workspace.infotrafic.id: dev_5154
 
 # identifiant des groupes recevant l'alerte bdl et psn
 fr.cg44.plugin.alertemobilite.alert.bdlpsn.group.id:
@@ -258,6 +258,10 @@ jcmsplugin.inforoutes.designsystem.svg.icon.fluide: car.svg
 jcmsplugin.inforoutes.designsystem.svg.icon.dense: cars.svg
 jcmsplugin.inforoutes.designsystem.svg.icon.sature: cars.svg
 jcmsplugin.inforoutes.designsystem.png.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/
+
+$id.jcmsplugin.inforoutes.workspace.technique: dev_5154
+$id.jcmsplugin.inforoutes.workspace.pcroutes: dev_5153
+
 
 # ----------------------------------------------------------------------
 # Propriétés éditables API

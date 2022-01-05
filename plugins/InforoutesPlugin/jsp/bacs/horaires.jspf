@@ -52,6 +52,7 @@ catch(Exception e){
 
     <jalios:if predicate='<%= apiOK %>'>
 
+		<%-- Premiers départs --%>
 		<section class="ds44-mtb3">
 			<h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.premier-depart-titre") %></h3>
 			<section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
@@ -73,17 +74,20 @@ catch(Exception e){
 			</section>
 		</section>
 		
+		<%-- Ensuite --%>
 		<section class="ds44-mtb3">
 			<h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.ensuite-titre") %></h3>
 			<section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
 				<div class="">
 					<div class="ds44-card__section--horizontal ds44-center">
+                        <p class="">Toutes les</p>
 						<p role="heading" class="h3-like"><%= from_period %></p>
 					</div>
 				</div>
 			</section>
 		</section>
 		
+		<%-- Dernier départ --%>
 		<section class="ds44-mtb3">
 			<h3 class="h5-like ds44-mb1" role="heading"><%= glp("jcmsplugin.inforoutes.dernier-depart-titre") %></h3>
 			<section class="ds44-card ds44-card--horizontal--inforoutes ds44-card--horizontal--inforoutes--bacs">
