@@ -71,7 +71,7 @@ public class Parameter {
 						if (countParam > 1) {
 							json.append(",");
 						}
-						String prop = channel.getProperty("fr.cg44.plugin.alertemobilite.ws.parameter.bacs.horaire.liaison" + numLiaison + "." + idBac);
+						String prop = channel.getProperty("jcmsplugin.inforoutes.bacs.horaire.liaison" + numLiaison + "." + idBac);
 						json.append("\"" + idBac + "\"");
 						json.append(":");
 						json.append("\"" + prop + "\"");
