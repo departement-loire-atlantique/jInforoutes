@@ -1,5 +1,7 @@
 package fr.cg44.plugin.inforoutes;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -110,4 +112,16 @@ public final class InforoutesUtils {
       return listEvents;
   }
   
+  /**
+   * Détermine si une date correspond au lendemain
+   * @param itDate
+   * @return
+   */
+  public static boolean dateIsTomorrow(Date itDate) {
+      Calendar calTomorrow = Calendar.getInstance();
+      calTomorrow.add(Calendar.DAY_OF_YEAR, 1);
+      Calendar calItDate = Calendar.getInstance();
+      calItDate.setTime(itDate);
+      return calTomorrow.get(Calendar.DAY_OF_YEAR) == calItDate.get(Calendar.DAY_OF_YEAR);
+  }
 }

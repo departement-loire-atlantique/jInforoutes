@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.inforoutes.InforoutesUtils"%>
 <h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoutes.senscirculation") %></h2>
 
 <section class="ds44-mtb3">
@@ -38,7 +39,7 @@
 			                SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.shownhour"));
 			                Date itDate = sdfJson.parse(itPsnCalendrier.getFrom());
 			                
-			                %><p role="heading" "aria-level="4 " class="h4-like "><%= sdfShownHour.format(itDate) %></p>
+			                %><p role="heading" "aria-level="4 " class="h4-like "><%= InforoutesUtils.dateIsTomorrow(itDate) ? glp("jcmsplugin.inforoutes.tomorrow", sdfShownHour.format(itDate)) : sdfShownHour.format(itDate) %></p>
 			                <p class=" "><%= itPsnCalendrier.getLib_mode() %></p>
 			            </div>
 			        </div>
