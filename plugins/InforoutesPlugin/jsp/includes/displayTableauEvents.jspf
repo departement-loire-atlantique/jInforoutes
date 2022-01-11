@@ -45,7 +45,7 @@ boolean isAVenir = Util.notEmpty(request.getAttribute("eventsAVenir")) ? (Boolea
 			      </table>
 		      </jalios:if>
 		      <jalios:default>
-		       <p><%= glp("jcmsplugin.inforoutes.rienasignaler") %></p>
+		       <p><%= glp("jcmsplugin.inforoutes.pasdeperturbation") %></p>
 		      </jalios:default>
           </jalios:select>
 	   </div>

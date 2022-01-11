@@ -279,7 +279,7 @@ jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fl
 jcmsplugin.inforoutes.api.traficEventParams: traficevents?filter=
 jcmsplugin.inforoutes.pattern.jsondate: dd-MM-yyyy'T'HH:mm:ss Z
 jcmsplugin.inforoutes.pattern.showndate: dd/MM/yyyy
-jcmsplugin.inforoutes.pattern.shownhour: hh'h'MM
+jcmsplugin.inforoutes.pattern.shownhour: h'h'MM
 jcmsplugin.inforoutes.api.filtre.encours: en cours
 
 jcmsplugin.inforoutes.api.params.tous: Tous

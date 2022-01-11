@@ -391,6 +391,9 @@ jcmsplugin.inforoutes.date-maj.display: Le {0} à {1}
 jcmsplugin.inforoutes.position: Position
 jcmsplugin.inforoutes.duree: Durée
 jcmsplugin.inforoutes.typeintervention: Type d'intervention
+jcmsplugin.inforoutes.minutes: min
+jcmsplugin.inforoutes.tomorrow: Demain {0}
+jcmsplugin.inforoutes.pasdeperturbation: Pas de perturbation actuellement
 
 # Webcams
 jcmsplugin.inforoutes.webcam.activer: activer

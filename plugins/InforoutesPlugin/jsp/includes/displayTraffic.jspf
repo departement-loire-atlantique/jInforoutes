@@ -24,7 +24,7 @@ if (Integer.parseInt(psnStatut.getTime_certe()) <= Integer.parseInt(traficParams
     imgAToB = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.sature");
 }
 
-lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugin.inforoutes.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_certe() + " " + glp("msg.tag.duration.minutes");
+lblTimeAToB = Integer.parseInt(psnStatut.getTime_certe()) >= 20 ? glp("jcmsplugin.inforoutes.morethantime", "20") + " " + glp("jcmsplugin.inforoutes.minutes") : psnStatut.getTime_certe() + " " + glp("jcmsplugin.inforoutes.minutes");
 
 //déterminer le label / l'image du premier -> de B à A
 if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficParams.getPsnDensiteLimiteFluide())) {
@@ -41,7 +41,7 @@ if (Integer.parseInt(psnStatut.getTime_st_brevin()) <= Integer.parseInt(traficPa
  imgBToA = channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") + channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.icon.sature");
 }
 
-lblTimeBToA = Integer.parseInt(psnStatut.getTime_st_brevin()) >= 20 ? glp("jcmsplugin.inforoutes.morethantime", "20") + " " + glp("msg.tag.duration.minutes") : psnStatut.getTime_st_brevin() + " " + glp("msg.tag.duration.minutes");
+lblTimeBToA = Integer.parseInt(psnStatut.getTime_st_brevin()) >= 20 ? glp("jcmsplugin.inforoutes.morethantime", "20") + " " + glp("jcmsplugin.inforoutes.minutes") : psnStatut.getTime_st_brevin() + " " + glp("jcmsplugin.inforoutes.minutes");
 
 %>
 
