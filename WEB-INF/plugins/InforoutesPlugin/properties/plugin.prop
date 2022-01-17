@@ -277,7 +277,8 @@ jcmsplugin.inforoutes.api.spiral: https://spiralpublication.loire-atlantique.fr/
 jcmsplugin.inforoutes.api.psnstatus: psnstatus
 jcmsplugin.inforoutes.api.traficParams: traficparameter?id=psn_densite_limite_fluide&id=psn_densite_limite_dense&id=bacs_horaires
 jcmsplugin.inforoutes.api.traficEventParams: traficevents?filter=
-jcmsplugin.inforoutes.pattern.jsondate: yyyy-MM-dd'T'HH:mm:ss Z
+jcmsplugin.inforoutes.pattern.psn.jsondate: yyyy-MM-dd'T'HH:mm:ss Z
+jcmsplugin.inforoutes.pattern.jsondate: dd-MM-yyyy'T'HH:mm:ss Z
 jcmsplugin.inforoutes.pattern.showndate: dd/MM/yyyy
 jcmsplugin.inforoutes.pattern.shownhour: H'h'mm
 jcmsplugin.inforoutes.api.filtre.encours: en cours
