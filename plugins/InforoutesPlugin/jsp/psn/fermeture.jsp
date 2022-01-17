@@ -17,18 +17,16 @@ PSNSens itFermeture = PontHtmlHelper.getProchaineFermeture();
 				        <span class="ds44-iconInnerText">
                             <jalios:select>
                                 <%
-                                String dateDebut = SocleUtils.formatDate("dd/MM/yyyy", itFermeture.getDateDeDebut());
-                                String dateFin = SocleUtils.formatDate("dd/MM/yyyy", itFermeture.getEdate());
-                                String heureDebut = SocleUtils.formatDate("HH:mm", itFermeture.getDateDeDebut());
-                                String heureFin = SocleUtils.formatDate("HH:mm", itFermeture.getEdate());
+                                SimpleDateFormat sdfShownDate = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.showndate"));
+                                SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.shownhour"));
 			                     %>
 			                     
 			                    <jalios:if predicate='<%= PontHtmlHelper.isOuvertureEtFermetureLeMemeJour(itFermeture) %>'>
-                                    <%= glp("jcmsplugin.inforoutes.fermeture-date", dateDebut, heureDebut, heureFin) %>
+                                    <%= glp("jcmsplugin.inforoutes.fermeture-date", sdfShownDate.format(itFermeture.getDateDeDebut()), sdfShownHour.format(itFermeture.getDateDeDebut()), sdfShownHour.format(itFermeture.getEdate())) %>
 			                    </jalios:if>
 			                    
 			                    <jalios:default>
-                                    <%= glp("jcmsplugin.inforoutes.fermeture-periode", dateDebut, heureDebut, dateFin, heureFin) %>
+                                    <%= glp("jcmsplugin.inforoutes.fermeture-periode", sdfShownDate.format(itFermeture.getDateDeDebut()), sdfShownHour.format(itFermeture.getDateDeDebut()), sdfShownDate.format(itFermeture.getEdate()), sdfShownHour.format(itFermeture.getEdate())) %>
 			                    </jalios:default>
 			                    
 			                </jalios:select>
