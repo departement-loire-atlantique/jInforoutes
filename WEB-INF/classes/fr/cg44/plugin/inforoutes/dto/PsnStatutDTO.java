@@ -20,8 +20,15 @@ public class PsnStatutDTO {
 
 	@JsonProperty("TIME-STBREVIN-CERTE")
 	private String time_st_brevin;
+	
+	private String closed_from;
+	
+	private String closed_to;
+	
+	private String error;
 
-	public String getCode_current_mode() {
+
+  public String getCode_current_mode() {
 		return code_current_mode;
 	}
 
@@ -60,5 +67,29 @@ public class PsnStatutDTO {
 	public void setTime_st_brevin(String time_st_brevin) {
 		this.time_st_brevin = time_st_brevin;
 	}
+	
+  public String getClosed_to() {
+    return closed_to;
+  }
+
+  public void setClosed_to(String closed_to) {
+    this.closed_to = closed_to;
+  }
+  
+  public String getClosed_from() {
+    return closed_from;
+  }
+
+  public void setClosed_from(String closed_from) {
+    this.closed_from = closed_from;
+  }
+
+  public String getError() {
+    return error;
+  }
+
+  public void setError(String error) {
+    this.error = error;
+  }  
 
 }
