@@ -34,10 +34,8 @@
 			                <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre"> <img src='<%= channel.getProperty("jcmsplugin.inforoutes.designsystem.svg.folder") %><%= itPsnCalendrier.getCode_mode().toLowerCase() %>.svg' alt="" class="ds44-imgRatio"> </picture>
 			            </div>
 			            <div class="ds44-card__section--horizontal"><%
-			            
-			                String sdfFormat = Util.notEmpty(request.getAttribute("enforcedDateFormat")) ? (String) request.getAttribute("enforcedDateFormat") : channel.getProperty("jcmsplugin.inforoutes.pattern.jsondate");
 			                
-			                SimpleDateFormat sdfJson = new SimpleDateFormat(sdfFormat);
+			                SimpleDateFormat sdfJson = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.psn.jsondate"));
 			                SimpleDateFormat sdfShownHour = new SimpleDateFormat(channel.getProperty("jcmsplugin.inforoutes.pattern.shownhour"));
 			                Date itDate = sdfJson.parse(itPsnCalendrier.getFrom());
 			                

@@ -7,7 +7,6 @@
 <%
 
 PsnStatutDTO psnStatut = InforoutesApiRequestManager.getPsnStatut();
-request.setAttribute("enforcedDateFormat", channel.getProperty("jcmsplugin.inforoutes.pattern.psn.jsondate"));
 
 %>
 <jalios:select>
@@ -18,9 +17,3 @@ request.setAttribute("enforcedDateFormat", channel.getProperty("jcmsplugin.infor
 	   <%@ include file="./includes/displaySensCirculation.jspf" %>
 	</jalios:default>
 </jalios:select>
-
-<%
-
-request.removeAttribute("enforcedDateFormat");
-
-%>
