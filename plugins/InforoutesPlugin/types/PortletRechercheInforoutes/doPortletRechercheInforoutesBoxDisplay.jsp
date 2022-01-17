@@ -16,6 +16,10 @@ isInRechercheFacette = isInRechercheFacette || true;
 
 %>
 
+<main role="main" id="mainResults_info-trafic" class="ds44-mainResults ds44-noPdg ">
+
+<section class="ds44-container-large">
+
 <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite"></div>
 <div class="ds44-loader hidden">
     <div class="ds44-loader-body">
@@ -24,7 +28,6 @@ isInRechercheFacette = isInRechercheFacette || true;
         </svg>
     </div>
 </div>
-
 
 
 <div class="ds44-facette">
@@ -62,10 +65,10 @@ isInRechercheFacette = isInRechercheFacette || true;
            
         <div class="ds44-form__container">
            <div class="ds44-select__shape ds44-inpStd">
-              <p class="ds44-selectLabel" aria-hidden="true">Événements</p>
+              <p class="ds44-selectLabel" aria-hidden="true"><%= glp("jcmsplugin.inforoutes.evenements.lbl") %></p>
               <div id="form-element-84573" data-name='evenement<%= glp("jcmsplugin.socle.facette.form-element") %>' class="ds44-js-select-checkbox ds44-selectDisplay"  data-required="false"></div>
-              <button type="button" id="button-form-element-84573" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title="Select multiple - obligatoire"  ><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-form-element-84573" class="visually-hidden">Select multiple</span></button>
-              <button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden">Effacer le contenu saisi dans le champ : Select multiple</span></button>
+              <button type="button" id="button-form-element-84573" class="ds44-btnIco ds44-posAbs ds44-posRi ds44-btnOpen" aria-expanded="false" title="<%= glp("jcmsplugin.inforoutes.evenements.lbl") %>"  ><i class="icon icon-down icon--sizeL" aria-hidden="true"></i><span id="button-message-form-element-84573" class="visually-hidden"><%= glp("jcmsplugin.inforoutes.evenements.lbl") %></span></button>
+              <button class="ds44-reset" type="button"><i class="icon icon-cross icon--sizeL" aria-hidden="true"></i><span class="visually-hidden"><%= glp("jcmsplugin.socle.facette.effacer-contenu-champ", glp("jcmsplugin.inforoutes.evenements.lbl")) %></span></button>
            </div>
            <div class="ds44-select-container hidden">
               <div class="ds44-flex-container ds44--m-padding">
@@ -76,12 +79,12 @@ isInRechercheFacette = isInRechercheFacette || true;
                  <ul class="ds44-list" id="listbox-form-element-84573">
                     <li class="ds44-select-list_elem">
                        <div class="ds44-form__container ds44-checkBox-radio_list ">
-                          <input type="checkbox" id="name-check-form-element-18793-1" name='evenement<%= glp("jcmsplugin.socle.facette.form-element") %>' value="en cours" class="ds44-checkbox"   data-technical-field    /><label for="name-check-form-element-18793-1" class="ds44-boxLabel" id="name-check-label-form-element-18793-1">En cours</label>
+                          <input type="checkbox" id="name-check-form-element-18793-1" name='evenement<%= glp("jcmsplugin.socle.facette.form-element") %>' value="en cours" class="ds44-checkbox" checked="checked"  data-technical-field    /><label for="name-check-form-element-18793-1" class="ds44-boxLabel" id="name-check-label-form-element-18793-1">En cours</label>
                        </div>
                     </li>
                     <li class="ds44-select-list_elem">
                        <div class="ds44-form__container ds44-checkBox-radio_list ">
-                          <input type="checkbox" id="name-check-form-element-82894-2" name='evenement<%= glp("jcmsplugin.socle.facette.form-element") %>' value="prévisionnel" class="ds44-checkbox"   data-technical-field    /><label for="name-check-form-element-82894-2" class="ds44-boxLabel" id="name-check-label-form-element-82894-2">À venir</label>
+                          <input type="checkbox" id="name-check-form-element-82894-2" name='evenement<%= glp("jcmsplugin.socle.facette.form-element") %>' value="prévisionnel" class="ds44-checkbox" checked="checked"  data-technical-field    /><label for="name-check-form-element-82894-2" class="ds44-boxLabel" id="name-check-label-form-element-82894-2">À venir</label>
                        </div>
                     </li>
                     <li class="ds44-select-list_elem">
@@ -91,7 +94,7 @@ isInRechercheFacette = isInRechercheFacette || true;
                     </li>
                  </ul>
               </div>
-              <button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" title="Valider la sélection de : Select multiple"><span class="ds44-btnInnerText">Valider</span><i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i></button>
+              <button type="button" class="ds44-fullWBtn ds44-btnSelect ds44-theme" title="Valider la sélection de : Select multiple"><span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.valider") %></span><i class="icon icon-long-arrow-right ds44-noLineH" aria-hidden="true"></i></button>
            </div>
         </div>
    
@@ -123,20 +126,23 @@ isInRechercheFacette = isInRechercheFacette || true;
 </div>
 
 
-<!-- <div class="ds44-facette-mobile-button ds44-bgDark ds44--l-padding ds44-show-tiny-to-medium ds44-hide-medium"> -->
-<!--     <button class="ds44-btnStd ds44-btn--contextual ds44-w100 ds44-js-toggle-search-view"> -->
-<%--         <span class="ds44-btnInnerText ds44-facette-mobile-button-collapse"><%= glp("jcmsplugin.socle.recherche.affiner") %></span> --%>
-<%--         <span class="ds44-btnInnerText ds44-facette-mobile-button-expand"><%= glp("jcmsplugin.socle.recherche.masquer") %></span> --%>
-<!--     </button> -->
-<!-- </div> -->
-
-
+    <div class="ds44-facette-mobile-button ds44-bgDark ds44--l-padding ds44-show-tiny-to-medium ds44-hide-medium">
+        <button class="ds44-btnStd ds44-btn--contextual ds44-w100 ds44-js-toggle-search-view">
+            <span class="ds44-btnInnerText ds44-facette-mobile-button-collapse"><%= glp("jcmsplugin.socle.recherche.affiner") %></span>
+            <span class="ds44-btnInnerText ds44-facette-mobile-button-expand"><%= glp("jcmsplugin.socle.recherche.masquer") %></span>
+        </button>
+    </div>
 
 
 
 </div>
 
+</section>
 
+
+
+
+<section class="ds44-container-large">
 
 <div class='ds44-flex-container ds44-results ds44-results--mapVisible ds44-results--empty'>
  
@@ -154,9 +160,9 @@ isInRechercheFacette = isInRechercheFacette || true;
    
    
    
-<%--    <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view"> --%>
-<%--      <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i> --%>
-<!--    </button> -->
+   <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view">
+     <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
+   </button>
    
    <%
    // Gestion des marquers pour la carte infotrafic
@@ -175,23 +181,28 @@ isInRechercheFacette = isInRechercheFacette || true;
    
    <div class="ds44-mapResults">
        <div class="ds44-mapResults-container">
-           <div class="ds44-js-map"
-                 data-geojson-url='https://dev-design.loire-atlantique.fr/json/geojson/departement_communes.geojson'
+           <div class="ds44-js-map info-traffic"
+                 data-geojson-url='<%= channel.getProperty("jcmsplugin.socle.recherche.geojson.communes-contour.url") %>'
                  data-geojson-refine='true' 
                  data-icons-marker='<%= jsonArrayIcons %>'
                 ></div>
            
-<%--            <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view"> --%>
-<%--                <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i> --%>
-<!--            </button> -->
-                <button data-js="ds44-modal" data-target="#overlay-legendMap" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("monitoring.chart.legend")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert">
+	           <button type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("jcmsplugin.socle.recherche.carte.masquer")) %>' class="ds44-btnStd-showMap ds44-btnStd ds44-btn--invert ds44-js-toggle-map-view ds44-show-tiny-to-medium ds44-hide-medium">
+	               <span class="ds44-btnInnerText"><%= glp("jcmsplugin.socle.recherche.carte.masquer") %></span><i class="icon icon-map" aria-hidden="true"></i>
+	           </button>
+           
+                <button data-js="ds44-modal" data-target="#overlay-legendMap" type="button" title='<%= HttpUtil.encodeForHTMLAttribute(glp("monitoring.chart.legend")) %>' class="ds44-btnStd-showLegend ds44-btnStd ds44-btn--invert">
                      <i class="icon icon-help icon--large" aria-hidden="true"></i>
                 </button>
            
        </div>
     </div>
    
-</div> 
+</div>  
+
+</section>
+
+</main>
 
 <section class="ds44-modal-container" id="overlay-legendMap" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="overlay-legendMap">
     <div class="ds44-modal-box">      

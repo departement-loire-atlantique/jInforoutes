@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -43,6 +44,7 @@ public class InforoutesApiRequestManager {
     private static String suffixTraficEventParameters = channel.getProperty("jcmsplugin.inforoutes.api.traficEventParams");
     
     private static String paramTraficTous = channel.getProperty("jcmsplugin.inforoutes.api.params.tous");
+
     
     /**
      * Récupérer le JSON renvoyé par une URL sous la forme d'un InputStream, utilisé plus tard pour un ObjectMapper
@@ -93,7 +95,7 @@ public class InforoutesApiRequestManager {
      * @param url
      * @return
      */
-    private static <T> List<T> getObjectsFromJsonList(Class<T> clazz, String url) {
+    private static <T> List<T> getObjectsFromJsonList(Class<T[]> clazz, String url) {
         List<T> returnedList = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
@@ -102,16 +104,12 @@ public class InforoutesApiRequestManager {
           if (Util.isEmpty(jsonStr) || "[]".equals(jsonStr)) {
               LOGGER.warn("Warn sur getObjectsFromJsonList -> objet vide retourné depuis URL " + url + " pour la classe " + clazz.getName());
           }
-          JSONArray itJsonArray = new JSONArray(jsonStr);
-          for (int counter = 0; counter < itJsonArray.length(); counter++) {
-              returnedList.add(mapper.readValue(itJsonArray.getJSONObject(counter).toString(), clazz));  
-          }
-          return returnedList;
-          
+          return (List<T>) Arrays.asList(mapper.readValue(jsonStr, clazz));
+        
         } catch (Exception e) {
           LOGGER.warn("Erreur sur getObjectFromJson pour classe " + clazz.getName() + " -> " + e.getMessage());
           return returnedList;
-        }
+        }        
       }
        
     
@@ -140,7 +138,7 @@ public class InforoutesApiRequestManager {
      * @return
      */
     public static List<EvenementDTO> getTraficEvents() {       
-        return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO.class, baseUrl + suffixTraficEventParameters + paramTraficTous);
+        return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO[].class, baseUrl + suffixTraficEventParameters + paramTraficTous);
     }
     
     /**
@@ -149,7 +147,7 @@ public class InforoutesApiRequestManager {
      * @return
      */
     public static List<EvenementDTO> getTraficEvents(String param) {       
-        return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO.class, baseUrl + suffixTraficEventParameters + param);
+        return (List<EvenementDTO>) getObjectsFromJsonList(EvenementDTO[].class, baseUrl + suffixTraficEventParameters + param);
     }
     
     
@@ -159,7 +157,7 @@ public class InforoutesApiRequestManager {
      * @return
      */
     public static List<TraceEvtSpiralDTO> getTraficEventsTrace() {       
-        return (List<TraceEvtSpiralDTO>) getObjectsFromJsonList(TraceEvtSpiralDTO.class, channel.getProperty("jcmsplugin.inforoutes.api.spiral"));
+        return (List<TraceEvtSpiralDTO>) getObjectsFromJsonList(TraceEvtSpiralDTO[].class, channel.getProperty("jcmsplugin.inforoutes.api.spiral"));
     }
     
     /**
@@ -174,10 +172,7 @@ public class InforoutesApiRequestManager {
       JsonObject jsonObject = new JsonObject();
 
 
-      jsonObject.addProperty("value", event.getLigne1());
-      if(Util.notEmpty(pubFullGabarit)) {
-        jsonObject.addProperty("content_html", pubFullGabarit);
-      }
+      jsonObject.addProperty("value", event.getLigne1());     
       JsonObject jsonMetaObject = new JsonObject();
 
       jsonObject.addProperty("id", event.getIdentifiant());
@@ -186,7 +181,7 @@ public class InforoutesApiRequestManager {
       // Cas particulier pour le type de contenu Contact
 
       jsonMetaObject.addProperty("type", event.getClass().getSimpleName());
-      jsonMetaObject.addProperty("click", false);
+      jsonMetaObject.addProperty("click", true);
       jsonMetaObject.addProperty("icon_marker", InforoutesUtils.getNatureParam(event.getNature()));
       jsonMetaObject.addProperty("lat", event.getLatitude());
       jsonMetaObject.addProperty("long", event.getLongitude());
@@ -195,7 +190,10 @@ public class InforoutesApiRequestManager {
       }
       if(Util.notEmpty(pubMarkerGabarit)) {
         jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
-      }   
+      }  
+      if(Util.notEmpty(pubFullGabarit)) {
+        jsonMetaObject.addProperty("content_html", pubFullGabarit);
+      }
       jsonObject.add("metadata", jsonMetaObject);
       return jsonObject;
     }
@@ -210,11 +208,12 @@ public class InforoutesApiRequestManager {
      * @return
      */
     public static JsonObject traceToJsonObject(TraceEvtSpiralDTO trace, String pubMarkerGabarit) {
+      
       JsonObject jsonObject = new JsonObject();
       JsonObject jsonMetaObject = new JsonObject();
 
       jsonObject.addProperty("id", trace.getErf() + trace.getSnm());
-
+      jsonObject.addProperty("snm", trace.getSnm());
       jsonMetaObject.addProperty("type", trace.getClass().getSimpleName());
       
 
@@ -236,6 +235,7 @@ public class InforoutesApiRequestManager {
         jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
       }   
       jsonObject.add("metadata", jsonMetaObject);
+      
       return jsonObject;
     }
     

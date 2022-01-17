@@ -1,6 +1,8 @@
 package fr.cg44.plugin.inforoutes.legacy.infotraficplugin.selector;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
+import java.util.Date;
 
 import generated.RouteEvenement;
 
@@ -8,6 +10,8 @@ import com.jalios.jcms.Channel;
 import com.jalios.jcms.Data;
 import com.jalios.jcms.DataSelector;
 import com.jalios.util.Util;
+
+import fr.cg44.plugin.inforoutes.legacy.alertemobilite.ws.UtilWS;
 
 /**
  * Retourne l'évènement seulement si son rattachement est Pont de Saint Nazaire 
@@ -28,7 +32,6 @@ public class ApiEventSelector implements DataSelector{
 	private static final String FILTRE_TOUS = "Tous";
 	
 	public ApiEventSelector(String[] filters) {
-	  this.eventTermine = 0;
 		this.filters = filters;
 	}
 
@@ -55,17 +58,14 @@ public class ApiEventSelector implements DataSelector{
 						//événement en cours
 						//if (Util.notEmpty(event.getStatut()) && event.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours"))) {
 							
-					    // limite le nombre d'évenement terminés à 50.
-					    // TODO déplacer ce control pour avoir les 50 derniers et non 50 aléatoires.
+					    // limite le nombre d'évenement terminés aux evenements terminés il y a de 3 jours ou moins					    
 					    if(Util.notEmpty(event.getStatut())) {
 					      
 					      if(event.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.termine"))) {
-					        if(eventTermine >= 50) {
-					          return false;
-					        } else {
-					          eventTermine++;
-					          return true;
-					        }
+					        Date dateFin = UtilWS.extractDateFin(event.getLigne4());	
+					        Calendar calendar = Calendar.getInstance();
+					        calendar.add(Calendar.DATE, -4);
+					        return (Util.notEmpty(dateFin) && dateFin.after(calendar.getTime()));					       
 					      } else {
 					        return true;
 					      }					      

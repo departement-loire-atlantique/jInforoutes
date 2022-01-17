@@ -87,5 +87,38 @@ public class UtilWS {
     return dateDebut;
 
   }
+ 
+  
+  /**
+   * Extrait la date de fin de l'évènement de la ligne 4
+   * 
+   * @param ligne4
+   * @return
+   */
+  public static Date extractDateFin(String ligne4) {
+
+    Date dateFin = null;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+    Pattern pJourMoisAnnee = Pattern.compile("\\d\\d/\\d\\d/\\d\\d\\d\\d");
+
+    String strParsedDate = "";
+    if (Util.notEmpty(ligne4)) {
+      Matcher m = pJourMoisAnnee.matcher(ligne4);
+
+      while (m.find()) {
+        strParsedDate = ligne4.substring(m.start(), m.end());
+      }
+
+      if(Util.notEmpty(strParsedDate)) {
+        try {
+          dateFin = sdf.parse(strParsedDate);
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+    return dateFin;
+  }
+  
 
 }
