@@ -362,6 +362,9 @@ jcmsplugin.inforoutes.stnazaire: Saint-Nazaire
 jcmsplugin.inforoutes.stbrevin: Saint-Brevin
 jcmsplugin.inforoutes.morethantime: + de {0}
 jcmsplugin.inforoutes.minimum.trafic.dense: Temps en minutes min. pour considérer un trafic dense
+jcmsplugin.inforoutes.fermeture-date: Fermeture le {0} de {1} à {2}
+jcmsplugin.inforoutes.fermeture-periode: Fermeture du {0} - {1} au {2} - {3}
+
 
 # Labels Info trafic
 jcmsplugin.inforoutes.evenement.nature.legende.lbl:             Légende
