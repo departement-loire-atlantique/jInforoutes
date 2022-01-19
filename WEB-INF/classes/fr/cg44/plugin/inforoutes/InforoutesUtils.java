@@ -1,5 +1,6 @@
 package fr.cg44.plugin.inforoutes;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -22,12 +23,26 @@ public final class InforoutesUtils {
 	}
 	
 	/**
+	 * Renvoie la nature d'un événement, ou son type si sa nature est "Bacs de Loire" pour sélectionner plus tard
+	 * une icône depuis un autre pool
+	 * @param itEvent
+	 * @return
+	 */
+	public static String getNatureOrTypeEvent(EvenementDTO itEvent) {
+	    if (itEvent.getNature().equals(channel.getProperty("jcmsplugin.inforoutes.evenement.nature.bacs"))) {
+	        return itEvent.getType();
+	    }
+	    return itEvent.getNature();
+	}
+	
+	/**
    * Retourne la classe CSS correspondant à la nature de l'évènement
    * 
    * @param nature nature de l'évènement
    * @return La classe CSS correspondante
    */
-  public static String getClasseCssNatureEvt(String nature) {
+  public static String getClasseCssNatureEvt(EvenementDTO itEvent) {
+    String nature = getNatureOrTypeEvent(itEvent);
     String classeCss = getNatureValue("css", getNatureParam(nature));
     LOGGER.debug("getclasseCssEvt - Nature = " + nature + " / classe CSS = " + classeCss);
     return classeCss;
@@ -39,7 +54,8 @@ public final class InforoutesUtils {
    * @param nature nature de l'évènement
    * @return L'URL du picto correspondant
    */
-  public static String getPictoNatureEvt(String nature) {
+  public static String getPictoNatureEvt(EvenementDTO itEvent) {
+    String nature = getNatureOrTypeEvent(itEvent);
     String srcPicto = getNatureValue("png", getNatureParam(nature));
     String rootPng = channel.getProperty("jcmsplugin.inforoutes.designsystem.png.folder");
     LOGGER.debug("getPictoNatureEvt - Nature = " + nature + " / src picto = " + rootPng + srcPicto);
@@ -69,6 +85,37 @@ public final class InforoutesUtils {
       } else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.nature.verglasneige"))) {
           return "verglasneige";
       }
+      // Bacs de loire
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.brume"))) {
+          return "bacs.brume";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.mareebasse"))) {
+          return "bacs.mareebasse";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.mareehaute"))) {
+          return "bacs.mareehaute";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.panne"))) {
+          return "bacs.panne";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.ventfort"))) {
+          return "bacs.ventfort";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.houle"))) {
+          return "bacs.houle";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.glaces"))) {
+          return "bacs.glace";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.ravitaillement"))) {
+          return "bacs.ravitaillement";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.incident"))) {
+          return "bacs.incident";
+      }
+      else if (nature.equals(channel.getProperty("jcmsplugin.inforoutes.evenement.bacs.type.autre"))) {
+          return "bacs.autre";
+      }
       return "";
   }
   
@@ -88,7 +135,8 @@ public final class InforoutesUtils {
    * @return
    */
   public static List<EvenementDTO> filterEvenementDtoEnCours(List<EvenementDTO> listEvents) {
-      for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
+      ArrayList<EvenementDTO> itArrayList = new ArrayList<>(listEvents);
+      for (Iterator<EvenementDTO> iter = itArrayList.iterator(); iter.hasNext();) {
           EvenementDTO itEvent = iter.next();
           if (!channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
               iter.remove();
@@ -103,7 +151,8 @@ public final class InforoutesUtils {
    * @return
    */
   public static List<EvenementDTO> filterEvenementDtoAVenir(List<EvenementDTO> listEvents) {
-      for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
+      ArrayList<EvenementDTO> itArrayList = new ArrayList<>(listEvents);
+      for (Iterator<EvenementDTO> iter = itArrayList.iterator(); iter.hasNext();) {
           EvenementDTO itEvent = iter.next();
           if (channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
               iter.remove();
