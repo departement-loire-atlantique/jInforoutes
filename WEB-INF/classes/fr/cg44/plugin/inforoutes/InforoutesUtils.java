@@ -1,5 +1,6 @@
 package fr.cg44.plugin.inforoutes;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -88,7 +89,8 @@ public final class InforoutesUtils {
    * @return
    */
   public static List<EvenementDTO> filterEvenementDtoEnCours(List<EvenementDTO> listEvents) {
-      for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
+      ArrayList<EvenementDTO> itArrayList = new ArrayList<>(listEvents);
+      for (Iterator<EvenementDTO> iter = itArrayList.iterator(); iter.hasNext();) {
           EvenementDTO itEvent = iter.next();
           if (!channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
               iter.remove();
@@ -103,7 +105,8 @@ public final class InforoutesUtils {
    * @return
    */
   public static List<EvenementDTO> filterEvenementDtoAVenir(List<EvenementDTO> listEvents) {
-      for (Iterator<EvenementDTO> iter = listEvents.iterator(); iter.hasNext();) {
+      ArrayList<EvenementDTO> itArrayList = new ArrayList<>(listEvents);
+      for (Iterator<EvenementDTO> iter = itArrayList.iterator(); iter.hasNext();) {
           EvenementDTO itEvent = iter.next();
           if (channel.getProperty("jcmsplugin.inforoutes.api.filtre.encours").equals(itEvent.getStatut())) {
               iter.remove();
