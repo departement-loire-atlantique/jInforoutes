@@ -142,7 +142,7 @@ public final class InforoutesUtils {
               iter.remove();
           }
       }
-      return listEvents;
+      return itArrayList;
   }
   
   /**
@@ -158,7 +158,7 @@ public final class InforoutesUtils {
               iter.remove();
           }
       }
-      return listEvents;
+      return itArrayList;
   }
   
   /**
