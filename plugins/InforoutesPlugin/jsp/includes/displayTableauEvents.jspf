@@ -27,7 +27,7 @@ boolean isAVenir = Util.notEmpty(request.getAttribute("eventsAVenir")) ? (Boolea
 				            Date itDate = sdfJson.parse(itEvent.getDatePublication());
 				            %>
 				            <tr>
-				               <td><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEvent.getNature()) %>" aria-hidden="true"></i></td>
+				               <td><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEvent) %>" aria-hidden="true"></i></td>
 				               <td><span><%= itEvent.getType() %></span></td>
 				               <td>
 				                  <p><%= itEvent.getLigne2() %></p>
