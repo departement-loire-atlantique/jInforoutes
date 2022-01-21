@@ -222,8 +222,8 @@ cg44.infotrafic.entempsreel.workspace.id: dev_5154
 # ALERTE mobilite
 # ----------------------------------------------------------------------
 
-fr.cg44.plugin.alertemobilite.firebase.bac.apikey: AAAAaJM8IAk:APA91bFJK__gn7FTV2YrG6CNZm9tF07CWq4-941rwEw17GVdV9uwUIHUU_XV0c96duvh6zqmr4x52A3U70Yi91CDcld5SNm3zSydCtmbRA6jlgBZMhu1fa19SnEJzsaTZBJOJgUD_wFk
-fr.cg44.plugin.alertemobilite.firebase.psn.apikey: AAAAJmh5Vv0:APA91bF2eSw2A_6OFi_sB3Swzi_69LXN2_DB5NLhFikWYjgQsIKX4-UHGnTmulfSyG44hXlXT7XiAe95eefdMIVRIgjeTHVPXxtheZ3wGB2NezdQatcohgXBm_zSVZDW4oiSxdYjfHAq
+fr.cg44.plugin.alertemobilite.firebase.bac.apikey:
+fr.cg44.plugin.alertemobilite.firebase.psn.apikey:
 
 # Id espace technique
 # fr.cg44.plugin.alertemobilite.workspace.infotrafic.id: dev_5154
@@ -254,9 +254,9 @@ fr.cg44.plugin.newsletter.groupe.pointroutes.name: 1 - Point routes
 
 
 jcmsplugin.inforoutes.designsystem.svg.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/
-jcmsplugin.inforoutes.designsystem.svg.icon.fluide: car.svg
-jcmsplugin.inforoutes.designsystem.svg.icon.dense: cars.svg
-jcmsplugin.inforoutes.designsystem.svg.icon.sature: cars.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.fluide: trafic-fluide.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.dense: trafic-dense.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.sature: trafic-sature.svg
 jcmsplugin.inforoutes.designsystem.png.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/
 
 $id.jcmsplugin.inforoutes.workspace.technique: dev_5154
