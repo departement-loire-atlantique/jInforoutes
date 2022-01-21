@@ -22,15 +22,20 @@ HashMap<String, HashMap<String, List<EvenementDTO>>> eventLies = (HashMap<String
 HashMap<String, List<EvenementDTO>> eventNature = eventLies.get(itEventDto.getSnm());
 
 
-int nbEventLie = 0;
+String eventLiesText = ""; 
+int cpt = 0;
 for(String itNature : eventNature.keySet()) { 
   // Retire l'évènement courant des evenements liés
   List<EvenementDTO> itEventList = new ArrayList<EvenementDTO>();
   itEventList.addAll(eventNature.get(itNature));  
   itEventList.remove(itEventDto);
-  // Calcul du nombre d'evenement lies
+  // Création du libellé
   if(itEventList.size() > 0) {    
-    nbEventLie += itEventList.size();
+    if(cpt>0) {
+      eventLiesText += ", ";
+    }    
+    eventLiesText += itEventList.size() + " " + itNature.toLowerCase() + (itEventList.size() > 1 ? "s" : "");
+    cpt++;
   }
 }
 
@@ -54,8 +59,8 @@ tag -> Ligne 6 (optionnel)
         <div class="ds44-card__section--horizontal ds44-flex-valign-center ds44-flex-align-center">
             <p role="heading" aria-level="2" class="ds44-card__title"><%= itEventDto.getLigne1() %></p>
             <jsp:include page="/plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteInner.jsp" />
-            <jalios:if predicate="<%= nbEventLie > 0 %>">
-            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-plus ds44-docListIco" aria-hidden="true"></i><span><%= glp("jcmsplugin.inforoutes.evenement-lies") %> :</span> <%= nbEventLie %></p>
+            <jalios:if predicate="<%= Util.notEmpty(eventLiesText) %>">
+            <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-plus ds44-docListIco" aria-hidden="true"></i><span><%= glp("jcmsplugin.inforoutes.evenement-lies") %> :</span> <%= eventLiesText %></p>
             </jalios:if>   
         </div>
     </div>
