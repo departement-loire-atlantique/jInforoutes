@@ -2,13 +2,17 @@
 
 <%= getPortlet(bufferMap,"fermeture") %>
 
+<%
+// En cas de pont fermé on affiche juste la portlet qui indique le sens de circulation
+boolean pontFerme = (boolean)request.getAttribute("pontFerme");
+%>
 <div class="ds44-inner-container ds44-mtb3">
 	<div class="grid-12-small-1">
-		<div class="col-3"><%= getPortlet(bufferMap,"trafic") %></div>
+		<div class="col-3"><jalios:if predicate='<%= ! pontFerme %>'><%= getPortlet(bufferMap,"trafic") %></jalios:if></div>
         <div class="col-1 grid-offset ds44-hide-tiny-to-medium"></div>
         <div class="col-3"><%= getPortlet(bufferMap,"sensCirculation") %></div>
         <div class="col-1 grid-offset ds44-hide-tiny-to-medium"></div>
-        <div class="col-4"><%= getPortlet(bufferMap,"webcam") %></div>
+        <div class="col-4"><jalios:if predicate='<%= ! pontFerme %>'><%= getPortlet(bufferMap,"webcam") %></jalios:if></div>
 	</div>
 </div>
 
