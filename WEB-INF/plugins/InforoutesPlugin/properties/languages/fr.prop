@@ -365,6 +365,11 @@ jcmsplugin.inforoutes.minimum.trafic.dense: Temps en minutes min. pour considér
 jcmsplugin.inforoutes.fermeture-date: Fermeture le {0} de {1} à {2}
 jcmsplugin.inforoutes.fermeture-periode: Fermeture du {0} - {1} au {2} - {3}
 
+# Labels API
+jcmsplugin.inforoutes.api.params.tous.label: Tous
+jcmsplugin.inforoutes.api.params.pt-st-nazaire.label: Pont de Saint-Nazaire
+jcmsplugin.inforoutes.api.params.bac-loire-basse-indre.label: Bac de Loire Basse-Indre - Indret
+jcmsplugin.inforoutes.api.params.bac-loire-coueron.label: Bac de Loire Coueron - Le Pellerin
 
 # Labels Info trafic
 jcmsplugin.inforoutes.evenement.nature.legende.lbl:             Légende
@@ -389,6 +394,7 @@ jcmsplugin.inforoutes.evenements-aucun: Aucun événement
 jcmsplugin.inforoutes.type: Type
 jcmsplugin.inforoutes.lieu: Lieu
 jcmsplugin.inforoutes.date: Date(s)
+jcmsplugin.inforoutes.significatif: Significatif
 jcmsplugin.inforoutes.conditions-circulation: Conditions de circulation
 jcmsplugin.inforoutes.date-maj: Publication / Mise à jour
 jcmsplugin.inforoutes.date-maj.display: Le {0} à {1}
