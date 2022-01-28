@@ -222,11 +222,11 @@ cg44.infotrafic.entempsreel.workspace.id: dev_5154
 # ALERTE mobilite
 # ----------------------------------------------------------------------
 
-fr.cg44.plugin.alertemobilite.firebase.bac.apikey:
-fr.cg44.plugin.alertemobilite.firebase.psn.apikey:
+fr.cg44.plugin.alertemobilite.firebase.bac.apikey: 
+fr.cg44.plugin.alertemobilite.firebase.psn.apikey: 
 
 # Id espace technique
-# fr.cg44.plugin.alertemobilite.workspace.infotrafic.id: dev_5154
+fr.cg44.plugin.alertemobilite.workspace.infotrafic.id: dev_5154
 
 # identifiant des groupes recevant l'alerte bdl et psn
 fr.cg44.plugin.alertemobilite.alert.bdlpsn.group.id:
