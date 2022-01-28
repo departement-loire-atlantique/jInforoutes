@@ -254,9 +254,9 @@ fr.cg44.plugin.newsletter.groupe.pointroutes.name: 1 - Point routes
 
 
 jcmsplugin.inforoutes.designsystem.svg.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/svg/
-jcmsplugin.inforoutes.designsystem.svg.icon.fluide: car.svg
-jcmsplugin.inforoutes.designsystem.svg.icon.dense: cars.svg
-jcmsplugin.inforoutes.designsystem.svg.icon.sature: cars.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.fluide: trafic-fluide.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.dense: trafic-dense.svg
+jcmsplugin.inforoutes.designsystem.svg.icon.sature: trafic-sature.svg
 jcmsplugin.inforoutes.designsystem.png.folder: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/
 
 $id.jcmsplugin.inforoutes.workspace.technique: dev_5154
