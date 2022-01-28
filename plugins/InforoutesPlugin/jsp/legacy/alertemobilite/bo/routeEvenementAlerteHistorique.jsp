@@ -1,19 +1,19 @@
 <%@	page contentType="text/html; charset=UTF-8" 								%><%
 %><%@ include file="/jcore/doInitPage.jsp" 											%><%
 	// Selectionne le menu
-	request.setAttribute("historiqueAlertes", "true");
+	request.setAttribute("editHistoriqueAlertesWAMenu", "true");
 
 	// Chargement du CSS et du Javascript
-	jcmsContext.addCSSHeader("plugins/InforoutesPlugin/css/plugin.css");
+	//jcmsContext.addCSSHeader("plugins/InforoutesPlugin/css/plugin.css");
 
-%><%@ include file="/work/doWorkHeader.jsp"										%><%
+%><%@ include file="/work/doWorkHeader.jspf"										%><%
 %><%@ include file='/jcore/portal/doPortletParams.jsp' 								%><%
-%><%@ page import="fr.cg44.plugin.alertemobilite.selector.CurrentAlerteSelector"	%><%
-%><%@ page import="fr.cg44.plugin.alertemobilite.selector.EnErreurAlerteSelector"	%><%
-%><%@ page import="fr.cg44.plugin.alertemobilite.selector.FutureAlerteSelector"		%><%
-%><%@ page import="fr.cg44.plugin.alertemobilite.selector.PastAlerteSelector"		%><%
-%><%@ page import="fr.cg44.plugin.alertemobilite.comparator.RouteEvenementAlerteAlarmComparator"	%><%
-%><%@ page import="fr.cg44.plugin.alertemobilite.EventUtil"							%><%
+%><%@ page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.selector.CurrentAlerteSelector"	%><%
+%><%@ page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.selector.EnErreurAlerteSelector"	%><%
+%><%@ page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.selector.FutureAlerteSelector"		%><%
+%><%@ page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.selector.PastAlerteSelector"		%><%
+%><%@ page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.comparator.RouteEvenementAlerteAlarmComparator"	%><%
+%><%@ page import="fr.cg44.plugin.inforoutes.legacy.alertemobilite.EventUtil"							%><%
 
 	// Récupère les alertes en cours par dates de publication
 	Set<RouteEvenementAlerte> alertesAVenir = channel.select(channel.getPublicationSet(RouteEvenementAlerte.class, channel.getDefaultAdmin(), false), new FutureAlerteSelector(), new RouteEvenementAlerteAlarmComparator());
@@ -24,7 +24,84 @@
 	// Récupère les alertes en cours par dates de publication
 	Set<RouteEvenementAlerte> alertesEnvoyees = channel.select(channel.getPublicationSet(RouteEvenementAlerte.class, channel.getDefaultAdmin(), false), new PastAlerteSelector(), new RouteEvenementAlerteAlarmComparator());
 %>
-<div class="AlerteMobiliteHistorique AdminArea">
+
+<style>
+
+.borderBottom {
+ border-bottom: 1px dotted #000000;
+}
+.AlerteMobiliteHistorique {
+ font-size: 60px;
+}
+.AlerteMobiliteHistorique .formLabel {
+ font-size: 11pt;
+ font-weight: bold;
+}
+.AlerteMobiliteHistorique table {
+ width: 100%;
+ margin-bottom: 20px;
+ table-layout: fixed;
+}
+.AlerteMobiliteHistorique table .date_exp_prevue,
+.AlerteMobiliteHistorique table .date_exp_reelle {
+ width: 100px;
+}
+.AlerteMobiliteHistorique table tr {
+ background-color: #fafafa;
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 10pt;
+ word-wrap: break-word;
+}
+.AlerteMobiliteHistorique table .rattachement {
+ width: 170px;
+}
+.AlerteMobiliteHistorique table .message {
+ width: 400px;
+}
+.AlerteMobiliteHistorique table .statut {
+ width: 120px;
+}
+.AlerteMobiliteHistorique .request {
+ background-color: #428bca;
+ max-width: 100px;
+ height: 10px;
+ margin: 0 auto 4px auto;
+ padding: 0.2em 0.6em 0.3em;
+ font-size: 75%;
+ font-weight: bold;
+ line-height: 1;
+ color: #ffffff;
+ text-align: left;
+ vertical-align: baseline;
+ border-radius: 0.25em;
+ margin-bottom: 4px;
+ word-wrap: break-word;
+ overflow: hidden;
+}
+.AlerteMobiliteHistorique .request a {
+ color: white;
+ text-decoration: none;
+}
+.AlerteMobiliteHistorique .request div {
+ text-align: center;
+ margin-bottom: 4px;
+}
+.AlerteMobiliteHistorique .request:hover {
+ height: auto;
+}
+.AlerteMobiliteHistorique .status {
+ max-height: 36px;
+ overflow: hidden;
+}
+.AlerteMobiliteHistorique .status:hover {
+ max-height: none;
+}
+
+
+</style>
+
+
+<div class="AlerteMobiliteHistorique">
 	<h1 class="boTitle"><%= glp("jcmsplugin.alertemobiliteplugin.administration.titre") %></h1>
 	
 	<div class="formLabel"><%= glp("jcmsplugin.alertemobiliteplugin.administration.config") %></div>
@@ -175,3 +252,5 @@
 		</jalios:select>
 	</table>
 </div>
+
+<%@ include file='/work/doWorkFooter.jspf' %>

@@ -116,6 +116,8 @@
     <directory path="nad" />
     <directory path="mock" />
     <directory path="types" />
+    
+    <file path="jsp/legacy/alertemobilite/bo/menu.jsp" include="WORK_HEADER_MENU" />
   </public-files>
 </plugin>
 
