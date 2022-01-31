@@ -1,7 +1,8 @@
 package fr.cg44.plugin.inforoutes.newsletter;
 
 import org.json.JSONException;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
+
 
 public class NewsletterBean {
 	

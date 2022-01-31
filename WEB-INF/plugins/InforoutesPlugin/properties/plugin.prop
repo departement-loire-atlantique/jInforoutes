@@ -333,56 +333,67 @@ jcmsplugin.inforoutes.evenement.nature.vent:                Vent
 jcmsplugin.inforoutes.evenement.nature.verglasneige:        Verglas et neige
 jcmsplugin.inforoutes.evenement.nature.bacs:                Bacs de Loire
 
-jcmsplugin.inforoutes.evenement.bacs.type.brume: Brume
-jcmsplugin.inforoutes.evenement.bacs.type.mareebasse: Marée basse
-jcmsplugin.inforoutes.evenement.bacs.type.mareehaute: Marée haute
-jcmsplugin.inforoutes.evenement.bacs.type.panne: Panne
-jcmsplugin.inforoutes.evenement.bacs.type.ventfort: Vent fort
-jcmsplugin.inforoutes.evenement.bacs.type.houle: Houle
-jcmsplugin.inforoutes.evenement.bacs.type.glaces: Glaces
-jcmsplugin.inforoutes.evenement.bacs.type.ravitaillement: Ravitaillement
-jcmsplugin.inforoutes.evenement.bacs.type.incident: Incident
-jcmsplugin.inforoutes.evenement.bacs.type.autre: Autre
+jcmsplugin.inforoutes.evenement.bacs.type.brume:            Brume
+jcmsplugin.inforoutes.evenement.bacs.type.mareebasse:       Marée basse
+jcmsplugin.inforoutes.evenement.bacs.type.mareehaute:       Marée haute
+jcmsplugin.inforoutes.evenement.bacs.type.panne:            Panne
+jcmsplugin.inforoutes.evenement.bacs.type.ventfort:         Vent fort
+jcmsplugin.inforoutes.evenement.bacs.type.houle:            Houle
+jcmsplugin.inforoutes.evenement.bacs.type.glaces:           Glaces
+jcmsplugin.inforoutes.evenement.bacs.type.ravitaillement:   Ravitaillement
+jcmsplugin.inforoutes.evenement.bacs.type.incident:         Incident
+jcmsplugin.inforoutes.evenement.bacs.type.autre:            Autre
 
-jcmsplugin.inforoutes.evenement.nature.css.accident:        icon-accident redFlag
-jcmsplugin.inforoutes.evenement.nature.css.autres:          icon-attention orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs:            icon-bacs orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.bouchons:        icon-bouchons redFlag
-jcmsplugin.inforoutes.evenement.nature.css.chantier:        icon-travaux orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.deviation:       icon-deviation orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.vent:            icon-vent redFlag
-jcmsplugin.inforoutes.evenement.nature.css.verglasneige:    icon-glaces redFlag
+jcmsplugin.inforoutes.evenement.nature.css.accident:            icon-accident redFlag
+jcmsplugin.inforoutes.evenement.nature.css.autres:              icon-attention orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs:                icon-bacs orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bouchons:            icon-bouchons redFlag
+jcmsplugin.inforoutes.evenement.nature.css.chantier:            icon-travaux orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.deviation:           icon-deviation orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.vent:                icon-vent redFlag
+jcmsplugin.inforoutes.evenement.nature.css.verglasneige:        icon-glaces redFlag
 
-jcmsplugin.inforoutes.evenement.nature.css.bacs.brume: icon-brume orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.mareebasse: icon-maree-basse redFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.mareehaute: icon-maree-haute redFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.panne: icon-panne orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.ventfort: icon-vent-fort redFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.houle: icon-houle orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.glaces: icon-glaces orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.brume:          icon-brume orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.mareebasse:     icon-maree-basse redFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.mareehaute:     icon-maree-haute redFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.panne:          icon-panne orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.ventfort:       icon-vent redFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.houle:          icon-houle orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.glaces:         icon-glaces orangeFlag
 jcmsplugin.inforoutes.evenement.nature.css.bacs.ravitaillement: icon-ravitaillement redFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.incident: icon-attention orangeFlag
-jcmsplugin.inforoutes.evenement.nature.css.bacs.autre: icon-attention orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.incident:       icon-attention orangeFlag
+jcmsplugin.inforoutes.evenement.nature.css.bacs.autre:          icon-attention orangeFlag
 
-jcmsplugin.inforoutes.evenement.nature.png.accident:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconAccident.png
-jcmsplugin.inforoutes.evenement.nature.png.autres:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconAutres.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs:            https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconBacs.png
-jcmsplugin.inforoutes.evenement.nature.png.bouchons:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconBouchons.png
-jcmsplugin.inforoutes.evenement.nature.png.chantier:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconTravaux.png
-jcmsplugin.inforoutes.evenement.nature.png.deviation:       https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconDeviation.png
-jcmsplugin.inforoutes.evenement.nature.png.vent:            https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconVent.png
-jcmsplugin.inforoutes.evenement.nature.png.verglasneige:    https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconGlaces.png
+# PNG pour pictos affichés sur carte Infotrafic
+jcmsplugin.inforoutes.evenement.nature.png-icone.accident:      https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconAccident.png
+jcmsplugin.inforoutes.evenement.nature.png-icone.autres:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconAutres.png
+jcmsplugin.inforoutes.evenement.nature.png-icone.bacs:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconBacs.png
+jcmsplugin.inforoutes.evenement.nature.png-icone.bouchons:      https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconBouchons.png
+jcmsplugin.inforoutes.evenement.nature.png-icone.chantier:      https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconTravaux.png
+jcmsplugin.inforoutes.evenement.nature.png-icone.deviation:     https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconDeviation.png
+jcmsplugin.inforoutes.evenement.nature.png-icone.vent:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconVent.png
+jcmsplugin.inforoutes.evenement.nature.png-icone.verglasneige:  https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconGlaces.png
 
-jcmsplugin.inforoutes.evenement.nature.png.bacs.brume: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/brume.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.mareebasse: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/maree-basse.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.mareehaute: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/maree-haute.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.panne: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/panne.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.ventfort: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/vent-fort.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.houle: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/houle.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.glaces: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/glaces.png
+#PNG pour tableaux d'événements (affichage dans mailing essentiellement)
+jcmsplugin.inforoutes.evenement.nature.png.accident:            https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/accident.png
+jcmsplugin.inforoutes.evenement.nature.png.autres:              https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/incident.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs:                https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/bacs.png
+jcmsplugin.inforoutes.evenement.nature.png.bouchons:            https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/trafic-sature.png
+jcmsplugin.inforoutes.evenement.nature.png.chantier:            https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/travaux.png
+jcmsplugin.inforoutes.evenement.nature.png.deviation:           https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/deviation.png
+jcmsplugin.inforoutes.evenement.nature.png.vent:                https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/vent-fort.png
+jcmsplugin.inforoutes.evenement.nature.png.verglasneige:        https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/glaces.png
+
+jcmsplugin.inforoutes.evenement.nature.png.bacs.brume:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/brume.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.mareebasse:     https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/maree-basse.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.mareehaute:     https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/maree-haute.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.panne:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/panne.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.ventfort:       https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/vent-fort.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.houle:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/houle.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.glaces:         https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/glaces.png
 jcmsplugin.inforoutes.evenement.nature.png.bacs.ravitaillement: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/ravitaillement.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.incident: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/mu102s.png
-jcmsplugin.inforoutes.evenement.nature.png.bacs.autre: https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/iconAutres.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.incident:       https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/incident.png
+jcmsplugin.inforoutes.evenement.nature.png.bacs.autre:          https://design.loire-atlantique.fr/assets/images/apps/ponts/icones/png/incident.png
 
 # ----------------------------------------------------------------------
 # Webcams
@@ -398,3 +409,9 @@ cg44.mobilityplugin.webcam.bdl.coueron.2: upload/webcam/bdl-ftp/coueron2.jpg upl
 cg44.mobilityplugin.webcam.bdl.indre.1: upload/webcam/bdl-ftp/indre1.jpg upload/webcam/bdl/indre1.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/1.jpg
 cg44.mobilityplugin.webcam.bdl.indre.2: upload/webcam/bdl-ftp/indre2.jpg upload/webcam/bdl/indre2.jpg plugins/InforoutesPlugin/images/bdl/bdl_indispo.jpg 10 30 indre/2.jpg
 
+# ----------------------------------------------------------------------
+# Mailjet
+# ----------------------------------------------------------------------
+jcmsplugin.socle.mailjet.apiKey: 
+jcmsplugin.socle.mailjet.apiSecretKey: 
+jcmsplugin.inforoutes.newsletter.contact.supportjcms.id: 4287267964
