@@ -171,7 +171,7 @@ isInRechercheFacette = isInRechercheFacette || true;
    jsonArrayIcons.add(jsonObjectIcons);
 
    Map<String, Object> natureMap = channel.getSubProperties("jcmsplugin.inforoutes.evenement.nature.");
-   JProperties natureProp = (JProperties) natureMap.get("png");
+   JProperties natureProp = (JProperties) natureMap.get("png-icone");
    for(String itkey : natureProp.keySet()) {
      jsonObjectIcons.addProperty(itkey, channel.getProperty("jcmsplugin.inforoutes.evenement.nature.png-icone." + itkey));
    }
