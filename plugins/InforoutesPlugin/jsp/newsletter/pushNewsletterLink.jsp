@@ -9,7 +9,7 @@
 
     <div class="app-sidebar-section" id="newsletterAdminMenu">
         <div class='app-sidebar-section-title <%= newsletterAdminMenu ? "active" : "" %> '>
-            <a href="plugins/InforoutesPlugin/jsp/newsletter/pushNewsletter.jsp" class="">Push par courriel</a>
+            <a href="plugins/InforoutesPlugin/jsp/newsletter/pushNewsletter.jsp" class=""><%= glp("jcmsplugin.inforoutes.newsletter.titre-page")%></a>
         </div>
     </div>
 
