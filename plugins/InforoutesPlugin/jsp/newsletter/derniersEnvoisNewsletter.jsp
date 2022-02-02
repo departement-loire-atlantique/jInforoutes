@@ -17,20 +17,20 @@ Collection dernierEnvoi = NewsletterManager.getNewsletterList(from, limit, sort)
 %>
  
 <form action="plugins/InforoutesPlugin/jsp/newsletter/derniersEnvoisNewsletter.jsp" method="POST" class="form-horizontal">	  
-    <input type="submit" name="opSubmit" value="Rafraichir les derniers envois" class="btn btn-primary ajax-refresh"/>  	  
+    <input type="submit" name="opSubmit" value="<%= glp("jcmsplugin.inforoutes.newsletter.refresh")%>" class="btn btn-primary ajax-refresh"/>  	  
 </form>
  
  
  <jalios:if predicate='<%= Util.isEmpty(dernierEnvoi) %>'>
- 	<p> Aucun envoi récent </p>
+ 	<p><%= glp("jcmsplugin.inforoutes.newsletter.message-aucun-envoi")%></p>
  </jalios:if>
  
  <jalios:if predicate='<%= Util.notEmpty(dernierEnvoi) %>'>
 	 <table class="table table-striped">     
       	<tr>
-      		<th>Expéditeur / sujet</th>
-      		<th>Date d'envoi</th>
-      		<th>Revoir la newsletter</th>
+      		<th><%= glp("jcmsplugin.inforoutes.newsletter.expediteur")%></th>
+      		<th><%= glp("jcmsplugin.inforoutes.newsletter.date-envoi")%></th>
+      		<th><%= glp("jcmsplugin.inforoutes.newsletter.revoir")%></th>
       	</tr>
       	
 		<jalios:foreach name="itNewsletter" type="NewsletterBean" collection="<%= NewsletterManager.getNewsletterList(from, limit, sort) %>">     

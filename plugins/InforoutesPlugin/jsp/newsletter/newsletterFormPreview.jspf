@@ -1,0 +1,58 @@
+<%@ page contentType="text/plain; charset=UTF-8"%>
+
+<div style="display: inline-block; width: 620px;"> 
+
+<% if (loggedMember.belongsToGroup(channel.getGroup("j_1"))) { %>
+    <jalios:if predicate="<%= Util.notEmpty(newsletter.getIdDuGroupeDeContactsDansMailjet()) %>">
+        <p style="background-color:#F0F0F0">
+            <span style="vertical-align: top; margin:5px 10px 5px 10px; font-weight:bold; display:inline-block; width:80px">
+                À... (mailjet) :
+            </span>
+            <span style="margin-bottom: 4px; margin-top: 4px; background-color:#F5F5F5; display:inline-block; width:505px; border: 1px solid #F9F9F9">
+                <%= StringUtils.join(MailjetManager.getEmailsFromGroup(newsletter.getIdDuGroupeDeContactsDansMailjet()), "; ") %>
+            </span>
+        </p>
+    </jalios:if>
+<% } %>
+
+<% if (loggedMember.belongsToGroup(channel.getGroup("j_1"))) { %>
+<jalios:if predicate="<%= Util.notEmpty(newsletter.getGroupeJCMS()) %>">
+	<p style="background-color:#F0F0F0">
+		<span style="vertical-align: top; margin:5px 10px 5px 10px; font-weight:bold; display:inline-block; width:80px">
+			À... (jcms) :
+		</span>
+		<span style="margin-bottom: 4px; margin-top: 4px; background-color:#F5F5F5; display:inline-block; width:505px; border: 1px solid #F9F9F9">
+			<jalios:foreach name="itContact" type="Member" collection="<%= newsletter.getGroupeJCMS().getMemberSet() %>">
+				<jalios:if predicate="<%= Util.notEmpty(itContact.getEmail()) %>">
+					<%= itContact.getEmail() + " ; " %>
+				</jalios:if>
+			</jalios:foreach>
+		</span>
+	</p>
+</jalios:if>
+<% } %>
+
+<p style="background-color:#F0F0F0">
+	<span style="vertical-align: top; margin:5px 10px 5px 10px; font-weight:bold; display:inline-block; width:80px">
+		Objet :
+	</span>
+	<span style="margin-bottom: 4px; margin-top: 4px; background-color:#F5F5F5; display:inline-block; width:505px; border: 1px solid #F9F9F9">
+<% 
+   	try { 
+   		out.print(NewsletterManager.buildSubject(newsletter)); 
+   	} catch (Exception e) {
+   		out.print(e.getMessage()); 
+    } 
+  	%>
+	</span>
+</p>
+
+<% 
+try { 
+  out.print(NewsletterManager.buildMessage(newsletter)); 
+} catch (Exception e) {
+  out.print(e.getMessage()); 
+} 
+%>
+	
+</div>

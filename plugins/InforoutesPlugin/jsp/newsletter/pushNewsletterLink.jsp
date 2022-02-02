@@ -7,10 +7,10 @@
     Boolean newsletterAdminMenu  = request.getAttribute("newsletterAdminMenu") != null;
     %>
 
-	<li id="newsletterAdminMenu" class="<% if (newsletterAdminMenu){%> active<%}%>"> 
-	    <a href="plugins/InforoutesPlugin/jsp/newsletter/pushNewsletter.jsp">
-	   		<img class="icon" src="images/jalios/icons/mail_open.gif" alt=""/>
-	    	Push par courriel
-	    </a>
-	</li>
+    <div class="app-sidebar-section" id="newsletterAdminMenu">
+        <div class='app-sidebar-section-title <%= newsletterAdminMenu ? "active" : "" %> '>
+            <a href="plugins/InforoutesPlugin/jsp/newsletter/pushNewsletter.jsp" class="">Push par courriel</a>
+        </div>
+    </div>
+
 </jalios:if>

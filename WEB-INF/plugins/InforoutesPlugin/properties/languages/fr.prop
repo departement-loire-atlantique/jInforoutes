@@ -414,6 +414,14 @@ jcmsplugin.inforoutes.webcam.desactiver-webcam: Désactiver la webcam
 jcmsplugin.inforoutes.webcam.titre: La webcam : {0}
 jcmsplugin.inforoutes.webcam.rafraichissement: Rafraîchie toutes les 10 s (mise à jour auto).
 
+# Push Newsletters
+jcmsplugin.inforoutes.newsletter.titre-page: Push par courriel
+jcmsplugin.inforoutes.newsletter.derniers-envois: Voir les derniers envois
+jcmsplugin.inforoutes.newsletter.refresh: Rafraichir les derniers envois
+jcmsplugin.inforoutes.newsletter.message-aucun-envoi: Aucun envoi récent
+jcmsplugin.inforoutes.newsletter.expediteur: Expediteur / sujet
+jcmsplugin.inforoutes.newsletter.date-envoi: Date d'envoi
+jcmsplugin.inforoutes.newsletter.revoir: Revoir la newsletter
 
 # Messages d'erreur
 jcmsplugin.inforoutes.erreur.trafic : Les informations trafic sont momentanément indisponibles. Merci de bien vouloir essayer ultérieurement.

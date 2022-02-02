@@ -1,3 +1,5 @@
+channel.less.plugins/InforoutesPlugin/css/plugin.css:    plugins/InforoutesPlugin/css/plugin.less
+
 # -------------------------------------------------------------------------------------------------
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #
@@ -415,3 +417,5 @@ cg44.mobilityplugin.webcam.bdl.indre.2: upload/webcam/bdl-ftp/indre2.jpg upload/
 jcmsplugin.socle.mailjet.apiKey: 
 jcmsplugin.socle.mailjet.apiSecretKey: 
 jcmsplugin.inforoutes.newsletter.contact.supportjcms.id: 4287267964
+jcmsplugin.inforoutes.newsletter.groupe.id: p2_7247
+$jcmsplugin.inforoutes.newsletter.evenements-significatifs.cat.id: p2_7075

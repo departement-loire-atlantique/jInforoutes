@@ -1,0 +1,74 @@
+<%@ page contentType="text/plain; charset=UTF-8"%>
+
+<form action="plugins/InforoutesPlugin/jsp/newsletter/newsletterForm.jsp" method="POST" class="form-horizontal">
+<fieldset style="margin-right: 5px;">
+<legend>Edition :<%= newsletterModel.getGroupeDuModele() %></legend>
+    <% for (int i = 0; i < newsletterModel.getLibelle().length ;i++){ %>
+    <%
+    String defautText =  newsletter.getValeurParDefaut().length > i && Util.notEmpty(newsletter.getValeurParDefaut()[i])?newsletter.getValeurParDefaut()[i]:"";
+    %>
+
+        <jalios:select>
+
+			<jalios:if predicate='<%= "area".equals(newsletterModel.getType1()[i]) %>'>
+				<%-- Textarea --%>
+				
+				<div class="control-group">
+					<label class="control-label" for="<%=NewsletterManager.getNomTechnique(newsletter, i) %>">
+				        <%= newsletterModel.getLibelle()[i] %>
+                    </label>
+				    <div class="controls">
+                        <textarea id="<%=NewsletterManager.getNomTechnique(newsletter, i) %>" name="val" style="width: 100%">
+                            <%= defautText %>
+                        </textarea>
+                    </div>
+				</div>
+            </jalios:if>
+
+			<jalios:if predicate='<%= "select".equals(newsletterModel.getType1()[i]) %>'>
+				<% String choix[] = newsletterModel.getListeDeValeurs()[i].split(";"); %>
+				
+				<%-- Select Basic --%>
+				<div class="control-group">
+					<label class="control-label" for="<%=NewsletterManager.getNomTechnique(newsletter, i) %>">
+					   <%= newsletterModel.getLibelle()[i] %>
+                    </label>
+					<div class="controls">
+						<select id="<%=NewsletterManager.getNomTechnique(newsletter, i) %>" name="val" class="input-xlarge">
+                            <option></option>
+							<jalios:foreach name="itChoix" type="String" array="<%= choix %>">
+								<option <%= itChoix.trim().equals(defautText)?"selected='selected'":"non"%>><%= itChoix.trim() %></option>
+							</jalios:foreach>
+						</select>
+					</div>
+				</div>
+			</jalios:if>
+
+			<jalios:default>
+				<%-- Text input --%>
+				<div class="control-group">
+					<label class="control-label" for="<%=NewsletterManager.getNomTechnique(newsletter, i) %>">
+					   <%= newsletterModel.getLibelle()[i] %>
+                    </label>
+					<div class="controls">
+						<input id="<%=NewsletterManager.getNomTechnique(newsletter, i) %>"
+							name="val" style="width: 100%" value="<%= defautText %>"
+							class="input-xlarge" type="text"/>
+					</div>
+				</div>
+			</jalios:default>
+
+		</jalios:select>
+
+		<%}%>
+
+		<hr/>
+		<div style="text-align: right">
+			<input type="hidden" name="newsletterId" value="<%= newsletterModel.getId() %>" />
+			<input type="submit" name="opSubmit" value="Mise à jour de l'aperçu" class="btn" />
+			<input type="submit" name="opSubmit" value="Envoyer" class="btn btn-primary confirm modal" />
+		</div>
+
+	</fieldset>
+	
+</form>
