@@ -99,7 +99,7 @@
         <!-- Evenements -->
         <datacontroller class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.datacontroller.RouteEvenementDataController" types="RouteEvenement" />
         <!--<datacontroller class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.dataController.ContactDataController" types="ContactForm" />-->
-        <!--<alarmlistener class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.alarm.RouteEvenementAlerteAlarmListener" frequency="1" manager="PluginAlarmManager" />-->
+        <alarmlistener class="fr.cg44.plugin.inforoutes.legacy.alertemobilite.alarm.RouteEvenementAlerteAlarmListener" frequency="1" manager="PluginAlarmManager" />
         <!-- purges des contenus tous les dimanche à 00:05 -->
         <!--<alarmlistener class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.alarm.DeleteContentsAlarm" schedule="00 05 * * 1 *" />-->
   </plugincomponents>  
@@ -117,7 +117,7 @@
     <directory path="mock" />
     <directory path="types" />
     
-    <!--<file path="jsp/alertemobilite/routeEvenementAlerteHistoriqueLink.jsp" include="WORK_HEADER_MENU" />-->
+    <file path="jsp/legacy/alertemobilite/bo/menu.jsp" include="WORK_HEADER_MENU" />
     <file path="jsp/newsletter/pushNewsletterLink.jsp" include="WORK_HEADER_MENU" />
     
   </public-files>
