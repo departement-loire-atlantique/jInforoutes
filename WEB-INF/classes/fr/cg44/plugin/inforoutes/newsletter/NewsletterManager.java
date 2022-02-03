@@ -58,42 +58,11 @@ public class NewsletterManager{
   private static final int FORBIDDEN_CODE = 403;
   private static final int ERROR_CODE = 500;
   
-  private static final String AUTHORIZED_GROUP_ID = "fr.cg44.plugin.newsletter.groupe.id";
+  private static final String AUTHORIZED_GROUP_ID = "jcmsplugin.inforoutes.newsletter.groupe.id";
   
-  private static String alertSignificatifCat = "p2_7075";
+  private static String alertSignificatifCat = "$jcmsplugin.inforoutes.newsletter.evenements-significatifs.cat.id";
   
-  
-  /**
-   * Retoune un Authenticator avec le user et mdp du proxy JCMS
-   * @return
-   */
-  /*
-  public static Authenticator getAuthenticator(){ 
-     Authenticator authenticator = new Authenticator() {
-          public PasswordAuthentication getPasswordAuthentication() {
-            String user = Util.notEmpty(getChannel().getProperty("http.proxy.login"))?getChannel().getProperty("http.proxy.login"):"";
-            String password = Util.notEmpty(getChannel().getProperty("http.proxy.password"))?getChannel().getProperty("http.proxy.password"):"";
-              return (new PasswordAuthentication(user,
-                      password.toCharArray()));
-          }
-      };
-    return authenticator;
-  }
-  */
-  
-  /**
-   * Retourne une instance du proxy JCMS
-   * @return
-   */
-  /*
-  public static Proxy getProxy() {
-    Integer proxyPort = getChannel().getIntegerProperty("http.proxyPort",3128);
-    String proxyHost= getChannel().getProperty("http.proxyHost");
-    Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
-    return proxy;
-  }
-  */
-  
+ 
   /**
    * Retourne la liste des derniere newsletters envoyées
    * @return
@@ -102,7 +71,6 @@ public class NewsletterManager{
     List<NewsletterBean> list = new ArrayList<NewsletterBean>();
 
     try {
-      //JSONArray jsonArray = (JSONArray) MailjetClient.getCampaignsArray();      
       JSONArray jsonArray = (JSONArray) MailjetManager.getCampaigns(from, limit, sort);
       
       // Seulement les newsletters Mailjet dont le groupe appartient à un des groupes des modèle de newsletter de JCMS
@@ -324,7 +292,7 @@ public class NewsletterManager{
   }
   
   /**
-   * Retoune le nom du technique du i ene champs de la newsletter
+   * Retoune le nom du technique du i ème champs de la newsletter
    * @return
    */
   public static String getNomTechnique(ModeleNewsletter newsletter, int i){

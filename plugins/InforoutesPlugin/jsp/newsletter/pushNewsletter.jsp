@@ -27,7 +27,7 @@ jcmsContext.addCSSHeader("plugins/InforoutesPlugin/css/plugin.css");
 
 <div class="row push-courriel">
   
-    <h1 class="boTitle icon">Push par courriel</h1>
+    <h1 class="boTitle icon"><%= glp("jcmsplugin.inforoutes.newsletter.titre-page") %></h1>
 
     <%
     Map<String, Set<ModeleNewsletter>> newsletterMap = new HashMap<String, Set<ModeleNewsletter>>();        
@@ -79,7 +79,7 @@ jcmsContext.addCSSHeader("plugins/InforoutesPlugin/css/plugin.css");
         
         <div class="ajax-refresh-div">
             <form action="plugins/InforoutesPlugin/jsp/newsletter/derniersEnvoisNewsletter.jsp" method="POST" class="form-horizontal">
-                <input type="submit" name="opSubmit" value="Voir les derniers envois" class="btn btn-primary ajax-refresh" />
+                <input type="submit" name="opSubmit" value="<%= glp("jcmsplugin.inforoutes.newsletter.derniers-envois") %>" class="btn btn-primary ajax-refresh" />
             </form>
         </div>
 
