@@ -59,7 +59,7 @@ tag -> Ligne 6 (optionnel)
 <section class='ds44-card ds44-card--horizontal <%= cssCard %>'>
    <div class="ds44-card__section">
         <div class="ds44-innerBoxContainer">
-            <p role="heading" aria-level="2" class="h4-like ds44-cardTitle"><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEventDto) %>" aria-hidden="true"></i><a href="#" class="ds44-card__globalLink"><%= itEventDto.getLigne1() %></a></p>
+            <p class="h4-like ds44-cardTitle"><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEventDto) %>" aria-hidden="true"></i><a href="#" class="ds44-card__globalLink"><%= itEventDto.getLigne1() %></a></p>
             <jsp:include page="/plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteInner.jsp" />
             <jalios:if predicate="<%= Util.notEmpty(eventLiesText) %>">
             <p class="ds44-docListElem ds44-mt-std"><i class="icon icon-plus ds44-docListIco" aria-hidden="true"></i><span><%= glp("jcmsplugin.inforoutes.evenement-lies") %> :</span> <%= eventLiesText %></p>
