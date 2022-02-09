@@ -35,7 +35,6 @@ import com.jalios.jcms.mail.MailMessage;
 import com.jalios.util.Util;
 
 import fr.cg44.plugin.inforoutes.legacy.pont.PontHtmlHelper;
-import fr.cg44.plugin.inforoutes.legacy.tools.mailjet.MailjetClient;
 import fr.cg44.plugin.inforoutes.legacy.webcam.WebCamManager;
 import fr.cg44.plugin.socle.mailjet.MailjetManager;
 import freemarker.template.Configuration;
@@ -62,7 +61,7 @@ public class NewsletterManager{
   
   private static String alertSignificatifCat = "$jcmsplugin.inforoutes.newsletter.evenements-significatifs.cat.id";
   
- 
+
   /**
    * Retourne la liste des derniere newsletters envoyées
    * @return
@@ -72,7 +71,7 @@ public class NewsletterManager{
 
     try {
       JSONArray jsonArray = (JSONArray) MailjetManager.getCampaigns(from, limit, sort);
-      
+
       // Seulement les newsletters Mailjet dont le groupe appartient à un des groupes des modèle de newsletter de JCMS
       List<String> newsletterGroupes = new ArrayList<String>();
       Set<ModeleNewsletter> ModeleNewsletterSet =  getChannel().getPublicationSet(ModeleNewsletter.class , getChannel().getDefaultAdmin());
@@ -82,13 +81,18 @@ public class NewsletterManager{
         }
       }     
       for(int i=0; i < jsonArray.length() ; i++ ){
-        if (Util.notEmpty(((JSONObject) jsonArray.get(i)).get("ListID"))) {
-          String listId = ((JSONObject) jsonArray.get(i)).get("ListID").toString();
-          if(newsletterGroupes.contains(listId)){         
-            list.add(new NewsletterBean((JSONObject) jsonArray.get(i)));
-          }
+        String listId = null;
+        if (jsonArray.getJSONObject(i).has("ListID") && Util.notEmpty(((JSONObject) jsonArray.get(i)).get("ListID"))) {
+          listId = ((JSONObject) jsonArray.get(i)).get("ListID").toString();
+        } else if((jsonArray.getJSONObject(i).has("ContactsListID"))){
+          listId = jsonArray.getJSONObject(i).getString("ContactsListID");
         }
-      }       
+
+        if(Util.notEmpty(listId) && newsletterGroupes.contains(listId)){         
+          list.add(new NewsletterBean((JSONObject) jsonArray.get(i)));
+        }
+      }
+
     } catch (JSONException e) {
       logger.warn("Impossible de récupérer la liste des newsletters envoyée depuis l'API de mail (erreur json)",e);
     }   
@@ -130,7 +134,7 @@ public class NewsletterManager{
     } 
     // TODO remplacer expéditeur en dur par contenu des champs de la newsletter
     // Nécessite un appel à l'API Mailjet
-    return MailjetClient.sendNewsletter(newsletter.getIdDuGroupeDeContactsDansMailjet(), "support.jcms@loire-atlantique.fr", "Département de Loire-Atlantique", subject, msg, isTest);
+    return MailjetManager.sendNewsletter(newsletter.getIdDuGroupeDeContactsDansMailjet(), "support.jcms@loire-atlantique.fr", "Département de Loire-Atlantique", subject, msg, isTest);
   }
   
   /**
