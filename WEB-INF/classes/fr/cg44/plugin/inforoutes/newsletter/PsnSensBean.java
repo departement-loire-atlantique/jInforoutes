@@ -11,7 +11,7 @@ import generated.PSNSens;
 
 public class PsnSensBean {
 	
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd|MM|yyyy");
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	private SimpleDateFormat heureFormat = new SimpleDateFormat("HH:mm");
 	private Channel channel = Channel.getChannel();
 	
@@ -28,7 +28,6 @@ public class PsnSensBean {
 			this.mentionHTMLHaut =  Util.notEmpty(picto.getMentionHTMLHaut()) ? picto.getMentionHTMLHaut() : "";
 			this.mentionHTMLBas =  Util.notEmpty(picto.getMentionHTMLHaut()) ? picto.getMentionHTMLBas() : "";
 			this.texteAlternatif = picto.getTexteAlternatif();
-			//this.picto = "https://inforoutes.loire-atlantique.fr/" + picto.getPictogramme();
 			this.picto = channel.getProperty("jcmsplugin.inforoutes.designsystem.png.folder") + picto.getTitle().toLowerCase() + ".png";
 		
 			if(Util.notEmpty(sens.getDateDeDebut() ) && now.after(sens.getDateDeDebut())){

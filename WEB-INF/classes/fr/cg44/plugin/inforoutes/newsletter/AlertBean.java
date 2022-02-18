@@ -2,6 +2,7 @@ package fr.cg44.plugin.inforoutes.newsletter;
 
 import com.jalios.jcms.WikiRenderer;
 import com.jalios.jcms.mail.MailManager;
+import com.jalios.jcms.wysiwyg.WysiwygRenderer;
 
 import generated.AlertCG;
 
@@ -13,8 +14,7 @@ public class AlertBean {
 	
 	public AlertBean(AlertCG alert){
 		this.titre = alert.getTitle();
-		this.chapo =  MailManager.replaceRelativeUrlsWithAbsoluteUrls(WikiRenderer.wiki2html(alert.getAbstract(), null, null));
-		//this.description =  MailManager.replaceRelativeUrlsWithAbsoluteUrls(WikiRenderer.wiki2html(alert.getDescription(), null, null));
+		this.chapo =  MailManager.replaceRelativeUrlsWithAbsoluteUrls(alert.getAbstract());
 		this.description =  "";
 	}
 	
