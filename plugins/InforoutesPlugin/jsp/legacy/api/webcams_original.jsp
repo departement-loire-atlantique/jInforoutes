@@ -8,7 +8,11 @@
 %><%@	page import="java.net.URL"									%><%
 %><%@   page import="fr.cg44.plugin.inforoutes.legacy.webcam.WebCamManager"           %><%
 %><%@	page import="org.apache.commons.io.IOUtils"					%><%
-%><%
+%>
+
+<%-- 21/02/2022 SGU. Ne pas pointer directement sur ce fichier. Appeler plutôt webcams.jsp --%>
+
+<%
 	String id = request.getParameter("id");
 	response.setContentType("application/json");
 	// Si un ID est passé en paramètre de la requête	
@@ -66,4 +70,4 @@
 		String json = "{\"error\":\"Veuillez renseigner au moins un ID.\"}";
 		out.print(json);
 	}
-%>
+--%>
