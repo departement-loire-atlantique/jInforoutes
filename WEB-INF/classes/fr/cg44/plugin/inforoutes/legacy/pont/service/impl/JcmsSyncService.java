@@ -63,7 +63,7 @@ public class JcmsSyncService implements IJcmsSyncService {
    */
   private static HashMap<String, String> pictoIdCache = new HashMap<String, String>();
 
-  private long nbMillisModeParticulier = 30 * 60000l;
+  private long nbMillisModeParticulier = 10 * 60000l;
 
   /*
    * cache des id de PSNSens
