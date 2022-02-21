@@ -5,17 +5,18 @@ import java.lang.reflect.Method;
 
 import org.apache.log4j.Logger;
 
+import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.inforoutes.InforoutesUtils;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.InfoTraficTempsReelContentFactory;
-import fr.cg44.plugin.inforoutes.newsletter.NewsletterManager;
 import generated.RouteEvenement;
 
 public class EventBean {
 	
 	private static final Logger logger = Logger.getLogger(EventBean.class);
 	
-	private static final String pictoURL ="https://inforoutes.loire-atlantique.fr/plugins/InforoutesPlugin/images/infoRoutes/";
+	private static final String pictoURL = Channel.getChannel().getProperty("jcmsplugin.inforoutes.designsystem.png.folder");
 	
 	private String nature;	
 	private String ligne1;
@@ -54,7 +55,7 @@ public class EventBean {
 	 * @return
 	 */
 	private static String buildNature(RouteEvenement event) {
-		String nature = pictoURL + "picto_" + InfoTraficTempsReelContentFactory.getClassNature(event.getNature()) + ".png";
+		String nature = InforoutesUtils.getPictoNatureEvt(event);
 		return nature;
 	}
 	

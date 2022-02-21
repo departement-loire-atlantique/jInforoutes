@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import com.jalios.jcms.Channel;
 
 import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
+import generated.RouteEvenement;
 
 public final class InforoutesUtils {
 	private static Channel channel = Channel.getChannel();
@@ -35,6 +36,19 @@ public final class InforoutesUtils {
 	    return itEvent.getNature();
 	}
 	
+  /**
+   * Renvoie la nature d'un événement, ou son type si sa nature est "Bacs de Loire" pour sélectionner plus tard
+   * une icône depuis un autre pool
+   * @param itEvent
+   * @return
+   */
+  public static String getNatureOrTypeEvent(RouteEvenement itEvent) {
+      if (itEvent.getNature().equals(channel.getProperty("jcmsplugin.inforoutes.evenement.nature.bacs"))) {
+          return itEvent.getTypeEvenement();
+      }
+      return itEvent.getNature();
+  }	
+	
 	/**
    * Retourne la classe CSS correspondant à la nature de l'évènement
    * 
@@ -51,7 +65,7 @@ public final class InforoutesUtils {
   /**
    * Retourne le picto correspondant à la nature de l'évènement
    * 
-   * @param nature nature de l'évènement
+   * @param itEvent l'évènement
    * @return L'URL du picto correspondant
    */
   public static String getPictoNatureEvt(EvenementDTO itEvent) {
@@ -61,6 +75,18 @@ public final class InforoutesUtils {
     LOGGER.debug("getPictoNatureEvt - Nature = " + nature + " / src picto = " + rootPng + srcPicto);
     return rootPng + srcPicto;
   }
+  
+  /**
+   * Retourne le picto correspondant à la nature de l'évènement
+   * 
+   * @param itEvent l'évènement
+   * @return L'URL du picto correspondant
+   */
+  public static String getPictoNatureEvt(RouteEvenement itEvent) {
+    String nature = getNatureOrTypeEvent(itEvent);
+    String srcPicto = getNatureValue("png", getNatureParam(nature));
+    return srcPicto;
+  }  
   
   /**
    * Renvoie le suffixe du nom de la prop associée à une nature

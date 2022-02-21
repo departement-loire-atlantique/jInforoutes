@@ -3,6 +3,7 @@ package fr.cg44.plugin.inforoutes.newsletter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.jalios.jcms.Channel;
 import com.jalios.util.Util;
 
 import generated.CG44PontPictogramme;
@@ -10,8 +11,9 @@ import generated.PSNSens;
 
 public class PsnSensBean {
 	
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd|MM|yyyy");
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	private SimpleDateFormat heureFormat = new SimpleDateFormat("HH:mm");
+	private Channel channel = Channel.getChannel();
 	
 	private String texteAlternatif;
 	private String picto;
@@ -26,7 +28,7 @@ public class PsnSensBean {
 			this.mentionHTMLHaut =  Util.notEmpty(picto.getMentionHTMLHaut()) ? picto.getMentionHTMLHaut() : "";
 			this.mentionHTMLBas =  Util.notEmpty(picto.getMentionHTMLHaut()) ? picto.getMentionHTMLBas() : "";
 			this.texteAlternatif = picto.getTexteAlternatif();
-			this.picto = "https://inforoutes.loire-atlantique.fr/" + picto.getPictogramme();
+			this.picto = channel.getProperty("jcmsplugin.inforoutes.designsystem.png.folder") + picto.getTitle().toLowerCase() + ".png";
 		
 			if(Util.notEmpty(sens.getDateDeDebut() ) && now.after(sens.getDateDeDebut())){
 				date = "changement imminent";
