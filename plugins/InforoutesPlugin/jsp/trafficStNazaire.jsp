@@ -12,8 +12,10 @@ TraficParametersDTO traficParams = InforoutesApiRequestManager.getTraficParamete
 String lblCityA = glp("jcmsplugin.inforoutes.stnazaire");
 String lblCityB = glp("jcmsplugin.inforoutes.stbrevin");
 %>
+<h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoutes.trafic") %></h2>
+
 <jalios:select>
-    <jalios:if predicate="<%= Util.isEmpty(traficParams) %>">
+    <jalios:if predicate="<%= Util.isEmpty(traficParams) || Util.notEmpty(psnStatut.getError()) %>">
         <p><%= glp("jcmsplugin.inforoutes.erreur.trafic") %></p>
     </jalios:if>
     <jalios:default>
