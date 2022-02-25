@@ -92,7 +92,7 @@
   
   <plugincomponents>
         <!-- Inforoutes -->
-        <!--<channellistener class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.InfoTraficTempsReelChannelListener" />--> 
+        <channellistener class="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.InfoTraficTempsReelChannelListener" /> 
         <!-- Pont Saint-Nazaire -->
         <channellistener class="fr.cg44.plugin.inforoutes.legacy.pont.PontChannelListener" />
         <channellistener class="fr.cg44.plugin.inforoutes.legacy.webcam.WebCamManager" />

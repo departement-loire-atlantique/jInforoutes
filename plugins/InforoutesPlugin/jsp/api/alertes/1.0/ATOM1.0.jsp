@@ -13,22 +13,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="<%= userLang %>">
   <id><%= XmlUtil.normalize(ServletUtil.getUrl(request)) %></id>
   <title><%= feedTitle %></title>
-  <updated><%= Util.formatW3cDate(new Date()) %></updated>
+  <updated><%= DateUtil.formatW3cDate(new Date()) %></updated>>
   <link rel="self" href="<%= ServletUtil.getUrl(request) %>" />
   <generator>feedCreator</generator>
   <rights><%= feedRights %></rights>
-
+    
 <jalios:foreach collection="<%= alertes %>" name="it" type="generated.AlertCG" >
   <entry>
     <id><%= ServletUtil.getBaseUrl(request) + it.getDisplayUrl(userLocale) %></id>
     <title><%= XmlUtil.normalize(it.getTitle()) %></title>
-    <updated><%= Util.formatW3cDate(it.getMdate()) %></updated>
+    <updated><%= DateUtil.formatW3cDate(it.getMdate()) %></updated>
     <author>
-      <name>Conseil général de Loire-Atlantique</name>
+      <name>Département de Loire-Atlantique</name>
       <email>contact@loire-atlantique.fr</email>
     </author>
     <link rel="alternate" type="text/html" href="<%= getAlerteLink(it, userLocale) %>" />
-    <summary type="text"><%=Util.html2text(renderPubAbstract(it, userLocale)) %></summary>
+    <summary type="html"><%= XmlUtil.normalize(renderPubAbstract(it, userLocale)) %></summary>
     <%
     Category rootCatAlertes = channel.getCategory(idCatParenteAlertes);
     Set<Category> catsAlertes = rootCatAlertes.getChildrenSet();
@@ -40,10 +40,9 @@
       <%
     }
     %>
-    <published><%= Util.formatW3cDate(it.getCdate()) %></published>
+    <published><%= DateUtil.formatW3cDate(it.getCdate()) %></published>
   </entry>
 </jalios:foreach>
-
 </feed>
 
 </jalios:cache>

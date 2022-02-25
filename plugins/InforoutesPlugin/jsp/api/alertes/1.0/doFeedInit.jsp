@@ -19,7 +19,7 @@
   public String getAlerteLink(AlertCG alerte, Locale userLocale) {
     String alerteLink = "";
     String baseUrl = ServletUtil.getBaseUrl(channel.getCurrentServletRequest());
-    if (Util.notEmpty(alerte.getDescription())) {
+    if (Util.notEmpty(alerte.getSummary())) {
       alerteLink = baseUrl + alerte.getDisplayUrl(userLocale);
     } else {
       alerteLink = channel.getUrl();
@@ -28,14 +28,14 @@
   }
 %><%
 
-  String feedTitle = "Alertes info route du conseil Général de Loire-Atlantique";
-  String feedDescription = "Flux des alertes du portail mobilité du conseil Général de Loire-Atlantique";
-  String feedDate = Util.formatW3cDate(new Date());
-  String feedCreator = "Conseil général de Loire-Atlantique (mailto:contact@loire-atlantique.fr)";
-  String feedRights = "Conseil général de Loire-Atlantique";
+  String feedTitle = "Alertes info route du Département de Loire-Atlantique";
+  String feedDescription = "Flux des alertes du site Inforoutes du Département de Loire-Atlantique";
+  String feedDate = DateUtil.formatW3cDate(new Date());
+  String feedCreator = "Département de Loire-Atlantique (mailto:contact@loire-atlantique.fr)";
+  String feedRights = "Département de Loire-Atlantique";
   
-  String idCatParenteAlertes = "dev_5002"; // Navigation principale
-  String strCatsAlertes = "inforoutes:dev_5004;pontstnaz:dev_5005;bacs:dev_5006;pontancenis:dev_5007;conditionshivernales:dev_5008;pistescyclables:dev_5009";
+  String idCatParenteAlertes = "j_5"; // Navigation principale
+  String strCatsAlertes = "inforoutes:dev_5004;pontstnaz:dev_5005;bacs:dev_5006;conditionshivernales:info_61095";
   List<String> listeCatsAlertes = Util.splitToList(strCatsAlertes, ";");
   Map<String, String> mapCatsAlertes = new HashMap<String, String>();
   for (String el : listeCatsAlertes) {
