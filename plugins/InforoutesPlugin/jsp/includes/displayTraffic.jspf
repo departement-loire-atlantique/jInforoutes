@@ -45,8 +45,6 @@ lblTimeBToA = Integer.parseInt(psnStatut.getTime_st_brevin()) >= 20 ? glp("jcmsp
 
 %>
 
-<h2 class="h2-like h2-like--mobileSize"><%= glp("jcmsplugin.inforoutes.trafic") %></h2>
-
 <section class="ds44-mtb3">
    <h3 class="h5-like ds44-mb1" role="heading"><%= lblCityA %><span aria-hidden="true"> &gt; <span class="visually-hidden"><%= glp("jcmsplugin.inforoutes.vers") %></span></span><%= lblCityB %></h3>
    <section class="ds44-card ds44-card--horizontal--inforoutes">
