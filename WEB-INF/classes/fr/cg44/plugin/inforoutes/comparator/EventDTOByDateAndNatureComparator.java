@@ -63,7 +63,7 @@ public class EventDTOByDateAndNatureComparator implements Comparator<EvenementDT
     int compareInt = 0;
     // Si les deux Data sont des évènements
 
-    if(Util.notEmpty(event1.getStatut()) && Util.notEmpty(event1.getStatut())) {
+    if(Util.notEmpty(event1.getStatut()) && Util.notEmpty(event2.getStatut())) {
       
       // Les en cours sont prioritaires
       if(event1.getStatut().equals(Channel.getChannel().getProperty("cg44.infotrafic.entempsreel.event.status.encours")) &&  
