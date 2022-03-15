@@ -5,13 +5,9 @@
 
 <%
 PSNSens itFermeture = PontHtmlHelper.getProchaineFermeture();
-boolean pontFerme = false; 
 %>
 
 <jalios:if predicate='<%= Util.notEmpty(itFermeture) && itFermeture.getDateDeDebut() != null && itFermeture.getEdate() != null %>'>
-    <%
-    pontFerme = true;
-    %>
     <div class="ds44-inner-container ds44-mtb5">
         <div class="grid-12-small-1">
             <div class="col-12">
@@ -45,5 +41,3 @@ boolean pontFerme = false;
         </div>
     </div>
 </jalios:if>
-
-<% request.setAttribute("pontFerme", pontFerme); %>

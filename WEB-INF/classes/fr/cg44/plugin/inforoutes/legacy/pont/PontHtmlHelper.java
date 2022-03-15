@@ -195,4 +195,18 @@ public class PontHtmlHelper {
     return result;
   }
 
+  /**
+   * Teste si le pont est actuellement fermé
+   * (conditionne l'affichage de certains éléments sur le portail)
+   * 
+   * @return true si le pont est fermé (PSNSens de type "fermeture")
+   */
+  public static boolean isPontFerme() {
+    PSNSens sensCourant = getModeCirculationCourant();
+    if(null != sensCourant && Util.notEmpty(sensCourant.getSensDeCirculation()) && sensCourant.getSensDeCirculation().getTitle().equalsIgnoreCase("M000")) {
+        return true;
+    }
+    return false;
+
+  }  
 }
