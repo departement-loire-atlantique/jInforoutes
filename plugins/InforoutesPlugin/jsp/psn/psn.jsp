@@ -11,7 +11,6 @@ ServletUtil.backupAttribute(pageContext , "ShowChildPortalElement");
 ServletUtil.restoreAttribute(pageContext , "ShowChildPortalElement");
 
 boolean isPontFerme = PontHtmlHelper.isPontFerme();
-request.setAttribute("isPontFerme", isPontFerme);
 %>
 
 <%@ include file='psn.jspf' %>
