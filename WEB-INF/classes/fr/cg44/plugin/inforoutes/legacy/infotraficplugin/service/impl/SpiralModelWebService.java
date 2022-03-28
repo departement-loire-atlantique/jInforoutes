@@ -139,7 +139,6 @@ public class SpiralModelWebService implements SpiralModeleService {
 	 * @throws IOException
 	 */
 	public EventList getEvenementsPubliesPrevisionnels() throws Exception {
-	  /*
 		// Déclaration des variables
 		String listeDesEvents;
 		javax.xml.rpc.Service service = new ServiceSpiralServiceLocator();
@@ -156,8 +155,7 @@ public class SpiralModelWebService implements SpiralModeleService {
 		long newHashCode = eventList.hashCode();
 		lastEvenementsPubliesPrevisionnels = newHashCode;
 		return eventList;
-		*/
-	  return null;
+
 	}
 
 	/**
