@@ -30,14 +30,14 @@ boolean isAVenir = Util.notEmpty(request.getAttribute("eventsAVenir")) ? (Boolea
 				               <td><i class="icon ds44-icoInfoRoutes <%= InforoutesUtils.getClasseCssNatureEvt(itEvent) %>" aria-hidden="true"></i></td>
 				               <td><span><%= itEvent.getType() %></span></td>
 				               <td>
-				                  <p><%= itEvent.getLigne2() %></p>
+				                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne2()) && !"null".equals(itEvent.getLigne2()) %>'><p><%= itEvent.getLigne2() %></p></jalios:if>
 				                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne3()) && !"null".equals(itEvent.getLigne3()) %>'><p><%= itEvent.getLigne3() %></p></jalios:if>
 				               </td>
 				               <td>
-				                  <p><%= itEvent.getLigne4() %></p>
+				                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne4()) && !"null".equals(itEvent.getLigne4()) %>'><p><%= itEvent.getLigne4() %></p></jalios:if>
 				                  <jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne5()) && !"null".equals(itEvent.getLigne5()) %>'><p><%= itEvent.getLigne5() %></p></jalios:if>
 				               </td>
-				               <td><%= itEvent.getLigne1() %></td>
+				               <td><jalios:if predicate='<%= Util.notEmpty(itEvent.getLigne1()) && !"null".equals(itEvent.getLigne1()) %>'><%= itEvent.getLigne1() %></jalios:if></td>
 				               <td><%= glp("jcmsplugin.inforoutes.date-maj.display", sdfShownDate.format(itDate), sdfShownHour.format(itDate)) %></td>
 				            </tr>
 			            </jalios:foreach>
