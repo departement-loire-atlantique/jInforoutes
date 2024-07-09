@@ -332,6 +332,10 @@ jcmsplugin.inforoutes.bacs.horaire.liaison2.to_last:       [Bacs] Liaison 2 Heur
 
 jcmsplugin.inforoutes.api.spiral: Url du service Spiral pour les tracés de la carte
 
+jcmsplugin.inforoutes.api.sireo.url: Url du service Sireo
+jcmsplugin.inforoutes.api.sireo.username: Login du service Sireo
+jcmsplugin.inforoutes.api.sireo.password: Mot de passe du service Sireo
+
 # ----------------------------------------------------------------------
 # Fin propriétés éditables
 # ----------------------------------------------------------------------

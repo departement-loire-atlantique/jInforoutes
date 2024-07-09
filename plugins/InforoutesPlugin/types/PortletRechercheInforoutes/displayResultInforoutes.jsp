@@ -1,3 +1,4 @@
+<%@page import="fr.cg44.plugin.inforoutes.legacy.infotraficplugin.sireo.beans.Feature"%>
 <%@page import="fr.cg44.plugin.inforoutes.comparator.EventDTOByDateAndNatureComparator"%>
 <%@page import="fr.cg44.plugin.inforoutes.dto.TraceEvtSpiralDTO"%>
 <%@page import="fr.cg44.plugin.inforoutes.api.InforoutesApiRequestManager"%>
@@ -25,7 +26,8 @@ response.setContentType("application/json");
 
 List<EvenementDTO> allEvents = InforoutesApiRequestManager.getTraficEvents();
 Set<EvenementDTO> filterEvents = new TreeSet<EvenementDTO>(new EventDTOByDateAndNatureComparator());
-List<TraceEvtSpiralDTO> allTraces = InforoutesApiRequestManager.getTraficEventsTrace();
+// List<TraceEvtSpiralDTO> allTraces = InforoutesApiRequestManager.getTraficEventsTrace();
+List<Feature> allTraces = InforoutesApiRequestManager.getTraficEventsTraceSireo();
 
 
 String etat[] = request.getParameterValues("evenement");
@@ -50,10 +52,18 @@ for(EvenementDTO itEvent : allEvents) {
 
 
 // Affiche seulement les tracés reliés à un marqueur
-List<TraceEvtSpiralDTO> filtreTraces = new ArrayList<TraceEvtSpiralDTO>();
-for(TraceEvtSpiralDTO itTrace : allTraces) { 
-  if(eventsMap.containsKey((itTrace.getErf() + itTrace.getSnm()))) {
+// List<TraceEvtSpiralDTO> filtreTraces = new ArrayList<TraceEvtSpiralDTO>();
+// for(TraceEvtSpiralDTO itTrace : allTraces) { 
+//   if(eventsMap.containsKey((itTrace.getErf() + itTrace.getSnm()))) {
+//     filtreTraces.add(itTrace);
+//   }   
+// }
+
+List<Feature> filtreTraces = new ArrayList<Feature>();
+for(Feature itTrace : allTraces) { 
+  if(eventsMap.containsKey(itTrace.getProperties().getInforouteEvenementsNumeroArrete())) {
     filtreTraces.add(itTrace);
+    
   }   
 }
 
@@ -224,14 +234,15 @@ request.setAttribute("eventLien", eventLies);
 %></jalios:foreach><%
 
 
-%><jalios:foreach collection="<%= filtreTraces %>" name="itTrace" type="TraceEvtSpiralDTO"> <%
+%><jalios:foreach collection="<%= filtreTraces %>" name="itTrace" type="Feature"> <%
 
 	%><jalios:buffer name="itPubMarkerGabarit"><%
-	    request.setAttribute("itEventDTO", eventsMap.get(itTrace.getErf() + itTrace.getSnm()));
+	    request.setAttribute("itEventDTO", eventsMap.get(itTrace.getProperties().getInforouteEvenementsNumeroArrete()));
         %><jsp:include page="/plugins/InforoutesPlugin/jsp/cards/doEvenementInforouteMarker.jsp" /><%
 	%></jalios:buffer>
 	<%
-     jsonArray.add(InforoutesApiRequestManager.traceToJsonObject(itTrace, itPubMarkerGabarit));
+     //jsonArray.add(InforoutesApiRequestManager.traceToJsonObject(itTrace, itPubMarkerGabarit));
+	jsonArray.add(InforoutesApiRequestManager.traceToJsonObjectSireo(itTrace, itPubMarkerGabarit));
 %><%
 %></jalios:foreach><%
 

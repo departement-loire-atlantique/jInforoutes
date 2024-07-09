@@ -272,6 +272,10 @@ $id.jcmsplugin.inforoutes.workspace.pcroutes: dev_5153
 jcmsplugin.inforoutes.api.root: https://rec-api.loire-atlantique.fr/opendata/1.0/
 jcmsplugin.inforoutes.api.spiral: https://spiralpublication.loire-atlantique.fr/spiral-publication-servlet/servlet/Publication?methode=getCoordonneesEvenementsPublies
 
+jcmsplugin.inforoutes.api.sireo.url: http://rec-sireo.loire-atlantique.fr/Sireo/api/executer_recherche_geojson/1.0?idRecherche=793
+jcmsplugin.inforoutes.api.sireo.username: API_CD44
+jcmsplugin.inforoutes.api.sireo.password.pwd: APICD44
+
 # ----------------------------------------------------------------------
 # Propriétés non éditables API
 # ----------------------------------------------------------------------

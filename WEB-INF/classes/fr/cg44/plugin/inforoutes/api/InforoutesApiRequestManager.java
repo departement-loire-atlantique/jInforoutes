@@ -27,6 +27,9 @@ import fr.cg44.plugin.inforoutes.dto.EvenementDTO;
 import fr.cg44.plugin.inforoutes.dto.PsnStatutDTO;
 import fr.cg44.plugin.inforoutes.dto.TraceEvtSpiralDTO;
 import fr.cg44.plugin.inforoutes.dto.TraficParametersDTO;
+import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.alarm.WebServicesCallAlarm;
+import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.sireo.beans.Feature;
+import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.sireo.beans.Sireo;
 import fr.cg44.plugin.socle.ApiUtil;
 
 public class InforoutesApiRequestManager {
@@ -50,10 +53,13 @@ public class InforoutesApiRequestManager {
      * Récupérer le JSON renvoyé par une URL sous la forme d'un InputStream, utilisé plus tard pour un ObjectMapper
      * qui définiera un objet Java
      */
-    private static String getDtoJsonStringFromApi(String url) {
-        
-      return ApiUtil.getJsonObjectFromApi(url, null).toString();
-      
+    private static String getDtoJsonStringFromApi(String url) {        
+      return ApiUtil.getJsonObjectFromApi(url, null).toString();      
+    }
+    
+    
+    private static String getDtoJsonStringFromApi(String url, String username, String password) {      
+      return ApiUtil.getJsonObjectFromApi(url, username, password).toString();     
     }
     
     /**
@@ -73,11 +79,27 @@ public class InforoutesApiRequestManager {
      * @param url
      * @return
      */
-    private static <T> Object getObjectFromJson(Class<T> clazz, String url) {
+    public static <T> Object getObjectFromJson(Class<T> clazz, String url) {
       ObjectMapper mapper = new ObjectMapper();
       mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
       try {
         String jsonStr = getDtoJsonStringFromApi(url);
+        if (Util.isEmpty(jsonStr) || "{}".equals(jsonStr)) {
+            LOGGER.warn("Warn sur getObjectFromJson -> objet vide retourné depuis URL " + url + " pour la classe " + clazz.getName());
+            return null;
+        }
+        return mapper.readValue(jsonStr, clazz);
+      } catch (Exception e) {
+        LOGGER.warn("Erreur sur getObjectFromJson pour classe " + clazz.getName() + " -> " + e.getMessage());
+        return null;
+      }
+    }
+    
+    public static <T> Object getObjectFromJson(Class<T> clazz, String url, String username, String password) {
+      ObjectMapper mapper = new ObjectMapper();
+      mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
+      try {
+        String jsonStr = getDtoJsonStringFromApi(url, username, password);
         if (Util.isEmpty(jsonStr) || "{}".equals(jsonStr)) {
             LOGGER.warn("Warn sur getObjectFromJson -> objet vide retourné depuis URL " + url + " pour la classe " + clazz.getName());
             return null;
@@ -160,6 +182,18 @@ public class InforoutesApiRequestManager {
         return (List<TraceEvtSpiralDTO>) getObjectsFromJsonList(TraceEvtSpiralDTO[].class, channel.getProperty("jcmsplugin.inforoutes.api.spiral"));
     }
     
+    
+    /**
+     * Renvoie une liste d'objets trace (inforoute) à partir du JSON fourni par l'API Sireo (meme api que les Evenements)
+     * @return
+     */
+    public static List<Feature> getTraficEventsTraceSireo() { 
+      
+      Sireo sireo = (Sireo) InforoutesApiRequestManager.getObjectFromJson(Sireo.class, "http://localhost:9080/jcms/sireo2.json");      
+      return WebServicesCallAlarm.getEvenementSIREO().getFeatures();          
+    }
+    
+    
     /**
      * Transforme un objet event en json pour la recherche à facette
      * @param event
@@ -228,6 +262,45 @@ public class InforoutesApiRequestManager {
         itCoordArrayJson.add(out.getY());
         //itCoordArrayJson.add(itCoord.getX());
         //itCoordArrayJson.add(itCoord.getY());        
+        coordonnees.add(itCoordArrayJson);
+      }
+
+      if(Util.notEmpty(pubMarkerGabarit)) {
+        jsonMetaObject.addProperty("html_marker", pubMarkerGabarit);
+      }   
+      jsonObject.add("metadata", jsonMetaObject);
+      
+      return jsonObject;
+    }
+    
+    
+    public static JsonObject traceToJsonObjectSireo(Feature trace, String pubMarkerGabarit) {
+      
+      JsonObject jsonObject = new JsonObject();
+      JsonObject jsonMetaObject = new JsonObject();
+
+//      jsonObject.addProperty("id", trace.getErf() + trace.getSnm());
+//      jsonObject.addProperty("snm", trace.getSnm());
+      jsonObject.addProperty("id", trace.getProperties().getInforouteEvenementsNumeroArrete());
+      jsonObject.addProperty("snm", trace.getProperties().getInforouteEvenementsNumeroArrete());
+      
+      jsonMetaObject.addProperty("type", trace.getClass().getSimpleName());
+      
+
+      JsonArray coordonnees = new JsonArray();
+      jsonMetaObject.add("coordinates", coordonnees);
+      for (Double[] itCoord : trace.getGeometry().getCoordinates()[0]) {
+        //String[] coordGoogleMaps = UtilWS.convertLambert93CoordGoogleMaps(Double.toString(itCoord.getX()) , Double.toString(itCoord.getY()));
+        //Point2D.Double out = new Point2D.Double();
+        //Lambert93.toLatLon(itCoord.getX(), itCoord.getY(), out);        
+        JsonArray itCoordArrayJson = new JsonArray();
+//        itCoordArrayJson.add(out.getX());
+//        itCoordArrayJson.add(out.getY());
+        //itCoordArrayJson.add(itCoord.getX());
+        //itCoordArrayJson.add(itCoord.getY()); 
+        
+        itCoordArrayJson.add(itCoord[0]);
+        itCoordArrayJson.add(itCoord[1]); 
         coordonnees.add(itCoordArrayJson);
       }
 

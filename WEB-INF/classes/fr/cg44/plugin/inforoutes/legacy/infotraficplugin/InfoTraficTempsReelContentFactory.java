@@ -2,6 +2,9 @@ package fr.cg44.plugin.inforoutes.legacy.infotraficplugin;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,6 +30,9 @@ import com.jalios.util.Util;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.modeles.Alert;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.modeles.Event;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.modeles.EventList;
+import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.sireo.beans.Feature;
+import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.sireo.beans.Properties;
+import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.sireo.beans.Sireo;
 import generated.Alerte;
 import generated.RouteEvenement;
 
@@ -81,8 +87,87 @@ public class InfoTraficTempsReelContentFactory {
 			logger.trace("createEvenements(EventList, boolean) - end");
 		}
 	}
+	
+	
+	public static void createEvenementsSireo(Sireo sireo) {
+	  if(Util.notEmpty(sireo) && Util.notEmpty(sireo.getFeatures())) {
+	    for(Feature itFeature : sireo.getFeatures()) {
+	      RouteEvenement existingEvent = existingEvent(itFeature.getProperties().getInforouteEvenementsNumeroArrete());
+	      if (Util.notEmpty(existingEvent)) {
+          // Mise à jour de l'évènement
+          updateEvent(itFeature, existingEvent);
+        } else {
+          // Création de l'évènement
+          createEvent(itFeature);
+        }
+	    }
+	  }
+	}
 
-	/**
+	private static void createEvent(Feature itFeature) {
+    if (logger.isTraceEnabled()) {
+      logger.trace("createEvent(Event event=" + itFeature + ") - start");
+    }
+
+    // Chargement du workspace de stockage
+    String workspaceId = channel.getProperty("cg44.infotrafic.entempsreel.workspace.id");
+    Workspace workspace = channel.getWorkspace(workspaceId);
+    // Ouverture de la transaction hibernate
+
+    final RouteEvenement creation = new RouteEvenement();
+    // Affectation des valeurs aux champs de l'évènement
+    copyProperties(itFeature, creation, true);
+    creation.setWorkspace(workspace);
+    creation.setAuthor(channel.getDefaultAdmin());
+
+    // Création du contenu via l'admin par défaut
+    creation.performCreate(channel.getDefaultAdmin());
+
+    if (logger.isTraceEnabled()) {
+      logger.trace("createEvent(Event) - end - return value=" + creation);
+    }
+    
+  }
+
+
+  private static void copyProperties(Feature feature, RouteEvenement routeEvenementToUpdate, boolean isThisACreation) {
+    Properties event = feature.getProperties();
+    routeEvenementToUpdate.setTitle(getEventTitle(event));
+    routeEvenementToUpdate.setLigne1(event.getInforouteEvenementsLigne1Nature());
+    routeEvenementToUpdate.setLigne2(event.getInforouteEvenementsLigne2());
+    routeEvenementToUpdate.setLigne3(event.getInforouteEvenementsLigne3());
+    routeEvenementToUpdate.setLigne4(event.getInforouteEvenementsLigne4());
+    routeEvenementToUpdate.setLigne5(event.getInforouteEvenementsLigne5());
+    routeEvenementToUpdate.setLigne6(event.getInforouteEvenementsLigne6());
+    try {
+      routeEvenementToUpdate.setDateDePublicationModification(new SimpleDateFormat("yyyy-MM-ddXXX", Locale.FRENCH).parse(event
+          .getInforouteEvenementsDateDePublication()));
+    } catch (ParseException e) {
+      routeEvenementToUpdate.setDateDePublicationModification(null);
+    }
+//    routeEvenementToUpdate.setSnm(event.getSnm());
+    routeEvenementToUpdate.setSnm("SIREO_" + event.getInforouteEvenementsNumeroArrete());
+    routeEvenementToUpdate.setIdentifiantEvenement(event.getInforouteEvenementsNumeroArrete());
+    routeEvenementToUpdate.setStatut(getStatut(event));
+    
+    routeEvenementToUpdate.setNature("Chantier");
+    //routeEvenementToUpdate.setNature(event.getInforouteEvenementsLigne1Nature());
+    
+//    routeEvenementToUpdate.setNature(event.getNature());
+//    routeEvenementToUpdate.setRattachement(event.getRattachement());
+    routeEvenementToUpdate.setRattachement(event.getInforouteEvenementsNumeroArrete());
+//    routeEvenementToUpdate.setSousCategorie(event.getSousCategorie());
+//    routeEvenementToUpdate.setInformationComplementaire(event.getInformationComplementaire());
+//    routeEvenementToUpdate.setTypeEvenement(event.getTypeEvenement());
+    routeEvenementToUpdate.setLongitude(String.valueOf(feature.getGeometry().getCoordinates()[0][0][0]));
+    routeEvenementToUpdate.setLatitude(String.valueOf(feature.getGeometry().getCoordinates()[0][0][1]));
+    if (isThisACreation || Util.isEmpty(routeEvenementToUpdate.getSignificatif())) {
+      routeEvenementToUpdate.setSignificatif("non");
+    }
+  }
+
+
+  /**
 	 * Passe à "terminé" les évènements du site qui sont non présents dans la
 	 * liste en paramètre.
 	 * 
@@ -115,7 +200,7 @@ public class InfoTraficTempsReelContentFactory {
 				// S'il n'existe pas dans la liste des évènement du WS on le
 				// termine
 				int index = Util.indexOf(eventItem.getIdentifiantEvenement(), listIDUniqueWS);
-				if (index < 0) {
+				if (index < 0 && !eventItem.getSnm().startsWith("SIREO_")) {
 					// Mise à jour du champ statut de l'évènement
 					terminateEvent(eventItem);
 				}
@@ -138,7 +223,7 @@ public class InfoTraficTempsReelContentFactory {
 				// S'il n'existe pas dans la liste des évènement du WS on le
 				// termine
 				int index = Util.indexOf(eventItem.getIdentifiantEvenement(), listIDUniqueWS);
-				if (index < 0) {
+				if (index < 0 && !eventItem.getSnm().startsWith("SIREO_")) {
 					// Mise à jour du champ statut de l'évènement
 					unpublishEvent(eventItem);
 
@@ -148,6 +233,28 @@ public class InfoTraficTempsReelContentFactory {
 		if (logger.isTraceEnabled()) {
 			logger.trace("terminateEvenements(EventList, boolean) - end");
 		}
+	}
+	
+	
+	
+	public static void terminateEvenementsSireo(Sireo sireo) {
+	  if(Util.notEmpty(sireo) && Util.notEmpty(sireo.getFeatures())) {      
+	    final List<RouteEvenement> eventSetJCMS = getListeEvenementsPubliesDeStatut(channel.getProperty("cg44.infotrafic.entempsreel.event.status.encours"));
+
+	    // Construction d'un Array d'identifiant unique provenant du WS
+	    List<String> listIDUniqueWS = new ArrayList<String>();
+	    // Parcours des évènements JCMS
+	    for(Feature itFeature :  sireo.getFeatures()) {
+	      listIDUniqueWS.add(itFeature.getProperties().getInforouteEvenementsNumeroArrete());
+	    }
+
+	    for(RouteEvenement itEvent : eventSetJCMS) {
+	      if(itEvent.getSnm().contains("SIREO_") && !listIDUniqueWS.contains(itEvent.getIdentifiantEvenement())) {
+	        // Mise à jour du champ statut de l'évènement
+	        terminateEvent(itEvent);
+	      }
+	    }
+	  }
 	}
 
 	/**
@@ -181,8 +288,65 @@ public class InfoTraficTempsReelContentFactory {
 		}
 		return creation;
 	}
+	
+	
+	 private static String getEventTitle(Properties event) {
+	    return getStatut(event) + " - " + event.getInforouteEvenementsLigne1Nature() + " - " + event.getInforouteEvenementsLigne2() + " - " + event.getInforouteEvenementsLigne3();
+	  }
 
-	private static String getEventTitle(Event event) {
+	private static String getStatut(Properties event) {
+	  String statut = "Error";
+	  Integer statutDate = checkCurrentDate(event.getInforouteEvenementsLigne4());
+	  if(statutDate == 0) {
+	    statut = "en cours";
+	  } else if(statutDate == -1) {
+	    statut = "prévisionnel";
+	  } else if(statutDate == 1) {
+	    statut = "terminé";
+	  }
+    return statut;
+  }
+	
+	
+	/**
+	 * -1 prévisionnel. 1 terminé. 0 en cours
+	 * @param dateRange
+	 * @return
+	 */
+	public static int checkCurrentDate(String dateRange) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    LocalDate currentDate = LocalDate.now();
+
+    try {
+        // Split the date range string
+        String[] parts = dateRange.split(" au ");
+        if (parts.length != 2) {
+            throw new IllegalArgumentException("Invalid date range format");
+        }
+
+        // Parse the start and end dates
+        String startDateString = parts[0].replace("du ", "").trim();
+        String endDateString = parts[1].trim();
+
+        LocalDate startDate = LocalDate.parse(startDateString, formatter);
+        LocalDate endDate = LocalDate.parse(endDateString, formatter);
+
+        // Check the position of the current date relative to the start and end dates
+        if (currentDate.isBefore(startDate)) {
+            return -1;
+        } else if (currentDate.isAfter(endDate)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    } catch (DateTimeParseException | IllegalArgumentException e) {
+        e.printStackTrace();
+        return -2; // Indicate an error
+    }
+}
+
+
+  private static String getEventTitle(Event event) {
 		return event.getStatut() + " - " + event.getLigne1() + " - " + event.getNature() + " - " + event.getLigne2() + " - " + event.getLigne3();
 	}
 
@@ -292,6 +456,38 @@ public class InfoTraficTempsReelContentFactory {
 			logger.trace("updateEvent(Event, RouteEvenement) - end - return value=" + routeEvenementToUpdate);
 		}
 		return routeEvenementToUpdate;
+	}
+	
+	
+	private static RouteEvenement updateEvent(Feature event, RouteEvenement eventExistant) {
+	  if (logger.isTraceEnabled()) {
+	    logger.trace("updateEvent(Event event=" + event + ", RouteEvenement eventExistant=" + eventExistant + ") - start");
+	  }
+
+	  final RouteEvenement routeEvenementToUpdate = (RouteEvenement) eventExistant.getUpdateInstance();
+	  int hashCode = hashCode(routeEvenementToUpdate);
+	  // Affectation des valeurs aux champs de l'évènement
+	  copyProperties(event, routeEvenementToUpdate, false);
+	  if (Util.notEmpty(routeEvenementToUpdate.getEdate())) {
+	    routeEvenementToUpdate.setEdate(null);
+	  }
+	  routeEvenementToUpdate.setPstatus(WorkflowConstants.PUBLISHED_PSTATUS);
+
+	  // Si les paramètres de mise à jour sont valides
+	  if (routeEvenementToUpdate.checkUpdate(channel.getDefaultAdmin()).isOK()) {
+	    if (hashCode != hashCode(routeEvenementToUpdate)) {
+	      routeEvenementToUpdate.performUpdate(channel.getDefaultAdmin());
+	      logger.debug("L'évèvenement " + eventExistant + " a été mis à jour.");
+	    }
+	  } else {
+	    logger.warn("La mise à jour de l'évèvenement à échouée (ID = " + eventExistant.getTitle() + ").");
+	  }
+	  // Fermeture transaction hibernate
+
+	  if (logger.isTraceEnabled()) {
+	    logger.trace("updateEvent(Event, RouteEvenement) - end - return value=" + routeEvenementToUpdate);
+	  }
+	  return routeEvenementToUpdate;
 	}
 
 	/**
@@ -664,4 +860,7 @@ public class InfoTraficTempsReelContentFactory {
 		List<RouteEvenement> listeEvenements = new ArrayList(setRouteEvenements);
 		return listeEvenements;
 	}
+
+
+
 }

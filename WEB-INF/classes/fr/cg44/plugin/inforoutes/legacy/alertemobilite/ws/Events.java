@@ -33,6 +33,10 @@ public class Events {
       // Sélectionne la liste des évènements
       Set<RouteEvenement> listeEvenements = channel.select(channel.getPublicationSet(RouteEvenement.class, channel.getDefaultAdmin()), new ApiEventSelector(
           filters), new EventDatePubMAJComparator());
+      
+      
+//      Set<RouteEvenement> listeEvenements = channel.getPublicationSet(RouteEvenement.class, channel.getDefaultAdmin());
+      
       int count = 0;
       for (RouteEvenement event : listeEvenements) {
         count++;
@@ -86,10 +90,15 @@ public class Events {
       jsonObject.put("informationcomplementaire", event.getInformationComplementaire());
 
       // Si des coordonnées existe, on les convertit au format Google Maps
-      if (Util.notEmpty(event.getLongitude()) && Util.notEmpty(event.getLatitude())) {
-        String[] coordGoogleMaps = UtilWS.convertLambert93CoordGoogleMaps(event.getLongitude(), event.getLatitude());        
-        jsonObject.put("longitude", coordGoogleMaps[0]);
-        jsonObject.put("latitude", coordGoogleMaps[1]);       
+      if (Util.notEmpty(event.getLongitude()) && Util.notEmpty(event.getLatitude())) {        
+        if(event.getSnm().startsWith("SIREO_")) {        
+          jsonObject.put("longitude", event.getLongitude());
+          jsonObject.put("latitude", event.getLatitude());                   
+        }else {       
+          String[] coordGoogleMaps = UtilWS.convertLambert93CoordGoogleMaps(event.getLongitude(), event.getLatitude());        
+          jsonObject.put("longitude", coordGoogleMaps[0]);
+          jsonObject.put("latitude", coordGoogleMaps[1]); 
+        }        
       }
            
     } catch (JSONException e) {

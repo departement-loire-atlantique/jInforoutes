@@ -16,10 +16,12 @@ import com.jalios.jstore.jsync.JSyncConstants;
 import com.jalios.jstore.jsync.JSyncReplica;
 import com.jalios.util.Util;
 
+import fr.cg44.plugin.inforoutes.api.InforoutesApiRequestManager;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.InfoTraficTempsReelContentFactory;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.modeles.Alert;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.modeles.EventList;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.service.InfoTrafficServiceManager;
+import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.sireo.beans.Sireo;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.ws.ServiceSpiralServiceLocator;
 import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.ws.SpiralSoapBindingStub;
 
@@ -29,6 +31,8 @@ import fr.cg44.plugin.inforoutes.legacy.infotraficplugin.ws.SpiralSoapBindingStu
  */
 public class WebServicesCallAlarm implements AlarmListener, PluginComponent {
 
+  private static Channel channel = Channel.getChannel();
+  
 	/**
 	 * Initialisation du composant de module.
 	 * 
@@ -61,10 +65,18 @@ public class WebServicesCallAlarm implements AlarmListener, PluginComponent {
 		try {
 			EventList eventListEnCours = getEvenementEnCours();
 			boolean noWSEvent = eventListEnCours == null;
-			Channel channel = Channel.getChannel();
+			
+			Sireo eventListSireo = getEvenementSIREO();
 
 			if(!channel.isJSyncEnabled() || channel.isMainLeader()){
 
+			  // Création des évènement depuis Sireo
+			  InfoTraficTempsReelContentFactory.createEvenementsSireo(eventListSireo);
+			  
+			  InfoTraficTempsReelContentFactory.terminateEvenementsSireo(eventListSireo);
+
+			  
+			  
 				// Création des évènements en cours et à venir
 				InfoTraficTempsReelContentFactory.createEvenements(
 						eventListEnCours, noWSEvent);
@@ -99,7 +111,18 @@ public class WebServicesCallAlarm implements AlarmListener, PluginComponent {
 		}
 	}
 
-	private EventList getEvenementEnCours() throws Exception {
+	
+	public static Sireo getEvenementSIREO() {
+	  //Sireo siro = (Sireo) InforoutesApiRequestManager.getObjectFromJson(Sireo.class, "http://localhost:9080/jcms/sireo2.json");
+	  String sireoUrl = channel.getProperty("jcmsplugin.inforoutes.api.sireo.url");
+	  String username = channel.getProperty("jcmsplugin.inforoutes.api.sireo.username");
+	  String password = channel.getProperty("jcmsplugin.inforoutes.api.sireo.password");
+	  Sireo sireo = (Sireo) InforoutesApiRequestManager.getObjectFromJson(Sireo.class, sireoUrl, username, password);
+    return sireo;
+  }
+
+	
+  private EventList getEvenementEnCours() throws Exception {
 		EventList eventListEnCours = null;
 		EventList eventListAVenir = null;
 		try {
